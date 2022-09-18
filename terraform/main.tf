@@ -10,3 +10,7 @@ provider "google" {
   project = "terrateam-362405"
   region  = "us-central1"
 }
+
+data "google_client_config" "default" {
+}
+
