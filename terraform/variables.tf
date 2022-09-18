@@ -117,12 +117,6 @@ variable "cinema_scale1_core_max_count" {
   default     = "8"
 }
 
-variable "cinema_node_scale1_initial_count" {
-  type        = string
-  description = "Cinema node scale1 min node count"
-  default     = "2"
-}
-
 variable "gke_external_dns_iam_memeber" {
   type        = string
   description = "GKE ExternalDNS IAM Account Member"
