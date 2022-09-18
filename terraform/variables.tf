@@ -84,7 +84,7 @@ variable "cinema_node_core_min_count" {
 variable "cinema_node_core_max_count" {
   type        = string
   description = "Cinema node core min node count"
-  default     = "4"
+  default     = "8"
 }
 
 variable "cinema_node_core_initial_count" {
