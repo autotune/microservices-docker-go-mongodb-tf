@@ -43,11 +43,11 @@ module "gke-cinema" {
       name               = "scale1"
       machine_type       = var.cinema_node_core_machine_type # slightly above minimum required for Anthos Service Mesh. We easily hit quota with n2
       node_locations     = "us-central1-a,us-central1-b"
-      min_count          = var.cinema_node_scale1_min_count # 2 per zone, with extra for ASM 
-      max_count          = var.cinema_node_scale1_max_count # need to allow for load testing
+      min_count          = var.cinema_scale1_min_count  
+      max_count          = var.cinema_scale1_max_count 
       local_ssd_count    = 1 
       spot               = false
-      disk_size_gb       = var.cinema_scale1_core_disk_size 
+      disk_size_gb       = var.cinema_scale1_disk_size 
       disk_type          = "pd-standard"
       image_type         = "COS_CONTAINERD"
       enable_gcfs        = false
@@ -56,7 +56,7 @@ module "gke-cinema" {
       auto_upgrade       = true
       service_account    = var.gke_service_account
       preemptible        = false
-      initial_node_count = var.cinema_node_scale1_initial_count
+      initial_node_count = var.cinema_scale1_initial_count
     },
   ]
 
