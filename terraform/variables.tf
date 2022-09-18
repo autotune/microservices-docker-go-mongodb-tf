@@ -87,13 +87,13 @@ variable "cinema_node_core_max_count" {
   default     = "4"
 }
 
-variable "cinema_node_scale1_initial_count" {
+variable "cinema_scale1_initial_count" {
   type        = string
   description = "Cinema node core min node count"
   default     = "2"
 }
 
-variable "cinema_node_scale1_machine_type" {
+variable "cinema_scale1_machine_type" {
   type        = string
   description = "Cinema node core machine type"
   default     = "n2d-highmem-2" // 2vCPU AMD 16 GB memory
