@@ -7,8 +7,8 @@ module "gke-cinema" {
   zones                      = ["us-central1-a", "us-central1-b"]
   network                    = "cinema"
   subnetwork                 = "prod"
-  ip_range_pods              = "asia-east1-01-gke-01-pods"
-  ip_range_services          = "asia-east1-01-gke-01-services"
+  ip_range_pods              = "us-central1-01-gke-01-pods"
+  ip_range_services          = "us-central1-01-gke-01-services"
   http_load_balancing        = true
   network_policy             = false
   horizontal_pod_autoscaling = true
@@ -21,7 +21,7 @@ module "gke-cinema" {
 
   node_pools = [
     {
-      name               = "primary"
+      name               = "core"
       machine_type       = var.cinema_node_core_machine_type # slightly above minimum required for Anthos Service Mesh. We easily hit quota with n2
       node_locations     = "us-central1-a,us-central1-b"
       min_count          = var.cinema_node_core_min_count # 2 per zone, with extra for ASM 
