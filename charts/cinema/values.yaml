@@ -8,9 +8,12 @@ mongodb:
   enabled: true
 
   auth:
-    enabled: false
+    enabled: true
+    rootUser: changeme
+    rootPassword: changeme
+    
   persistence:
-    enabled: false
+    enabled: true 
 
 # Cinema website values
 website:

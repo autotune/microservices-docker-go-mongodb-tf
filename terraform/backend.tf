@@ -1,6 +1,6 @@
 terraform {
   backend "gcs" {
     bucket = "terrateam"
-    prefix = "cinema/production"
+    prefix = "cinema/prod"
   }
 }
