@@ -28,7 +28,7 @@ module "gke-cinema" {
       max_count          = var.cinema_node_core_max_count # need to allow for load testing
       local_ssd_count    = 1 
       spot               = false
-      disk_size_gb       = 15
+      disk_size_gb       = var.cinema_node_core_disk_size 
       disk_type          = "pd-standard"
       image_type         = "COS_CONTAINERD"
       enable_gcfs        = false

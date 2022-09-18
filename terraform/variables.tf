@@ -69,6 +69,12 @@ variable "cinema_node_core_machine_type" {
   default     = "n2-standard-2"
 }
 
+variable "cinema_node_core_disk_size" {
+  type        = string
+  description = "Cinema node core machine ssd disk size"
+  default     = "15"
+}
+
 variable "cinema_node_core_min_count" {
   type        = string
   description = "Cinema node core min node count"
