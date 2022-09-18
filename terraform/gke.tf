@@ -26,7 +26,7 @@ module "gke-cinema" {
       node_locations     = "us-central1-a,us-central1-b"
       min_count          = var.cinema_node_core_min_count # 2 per zone, with extra for ASM 
       max_count          = var.cinema_node_core_max_count # need to allow for load testing
-      local_ssd_count    = 15
+      local_ssd_count    = 1 
       spot               = false
       disk_size_gb       = 15
       disk_type          = "pd-standard"
