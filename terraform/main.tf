@@ -5,3 +5,8 @@ terraform {
     }
   }
 }
+
+provider "google" {
+  project = "terrateam-362405"
+  region  = "us-central1"
+}
