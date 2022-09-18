@@ -78,10 +78,16 @@ variable "cinema_node_core_disk_size" {
 variable "cinema_node_core_min_count" {
   type        = string
   description = "Cinema node core min node count"
-  default     = "2"
+  default     = "4"
 }
 
 variable "cinema_node_core_max_count" {
+  type        = string
+  description = "Cinema node core min node count"
+  default     = "4"
+}
+
+variable "cinema_node_core_initial_count" {
   type        = string
   description = "Cinema node core min node count"
   default     = "4"
@@ -99,19 +105,19 @@ variable "cinema_scale1_machine_type" {
   default     = "n2d-highmem-2" // 2vCPU AMD 16 GB memory
 }
 
-variable "cinema_scale1_core_disk_size" {
+variable "cinema_scale1_disk_size" {
   type        = string
   description = "Cinema node scale1 machine ssd disk size"
   default     = "15"
 }
 
-variable "cinema_scale1_core_min_count" {
+variable "cinema_scale1_min_count" {
   type        = string
   description = "Cinema node scale1 min node count"
   default     = "2"
 }
 
-variable "cinema_scale1_core_max_count" {
+variable "cinema_scale1_max_count" {
   type        = string
   description = "Cinema node scale1 max node count"
   default     = "8"
