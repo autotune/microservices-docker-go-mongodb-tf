@@ -1,5 +1,5 @@
 module "argocd" {
-  source              = "https://github.com/autotune/infrastructure/tree/master/terraform/modules/terraform-argocd"
+  source              = "git::https://github.com/autotune/infrastructure.git//terraform/modules/terraform-argocd"
   git_url             = var.argocd_gitops_repo
   git_access_token    = var.argocd_access_token
   ingress_host        = "argocd.${var.managed_zone_name}"
