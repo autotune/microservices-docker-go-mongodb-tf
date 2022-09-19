@@ -47,11 +47,11 @@ resource "kubernetes_manifest" "istio-deployment" {
               "name"  = "istio-proxy"
               "resources" = {
                 "limits" = {
-                  "cpu"    = "2000m"
-                  "memory" = "1024Mi"
+                  "cpu"    = "2000"
+                  "memory" = "1Gi"
                 }
                 "requests" = {
-                  "cpu"    = "100m"
+                  "cpu"    = "100"
                   "memory" = "128Mi"
                 }
               }
