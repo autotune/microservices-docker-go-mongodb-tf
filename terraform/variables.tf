@@ -5,7 +5,7 @@
 variable "billing_account" {
   type        = string
   description = "ID of the billing account to set a budget on."
-  default     = "015525-9D090C-CC8778"
+  default     = "011853-711B63-995445"
 }
 
 variable "billing_spend" {
@@ -27,7 +27,7 @@ variable "project_id" {
     condition     = can(regex("^[a-z][a-z0-9-]{4,28}[a-z0-9]$", var.project_id))
     error_message = "Invalid project ID!"
   }
-  default = "terrateam-cinema"
+  default = "wayofthesys-cinema"
 }
 
 variable "user_zone_name" {
