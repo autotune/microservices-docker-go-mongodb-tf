@@ -27,7 +27,7 @@ resource "kubernetes_labels" "default-istio" {
   provider   = kubernetes.cinema
   kind        = "Namespace"
   metadata {
-    name = "istio-asm"
+    name = "default"
   }
   labels = {
     "istio.io/rev" = "asm-managed-regular"
@@ -39,7 +39,7 @@ resource "kubernetes_annotations" "cinema" {
   provider   = kubernetes.cinema
   kind        = "Namespace"
   metadata {
-    name = "asm-dataplane"
+    name = "cinema"
   }
   annotations = {
     "mesh.cloud.google.com/proxy" = "{\"managed\":\"true\"}"
