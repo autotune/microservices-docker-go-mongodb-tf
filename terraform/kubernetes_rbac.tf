@@ -20,7 +20,8 @@ resource "kubernetes_manifest" "istio-rbac-role" {
     "apiVersion" = "rbac.authorization.k8s.io/v1"
     "kind"       = "Role"
     "metadata" = {
-      "name" = "istio-ingressgateway"
+      "name"      = "istio-ingressgateway"
+      "namespace" = "istio-system"
     }
     "rules" = [
       {
@@ -47,7 +48,8 @@ resource "kubernetes_manifest" "istio-rbac-rolebinding" {
     "apiVersion" = "rbac.authorization.k8s.io/v1"
     "kind"       = "RoleBinding"
     "metadata" = {
-      "name" = "istio-ingressgateway"
+      "name"      = "istio-ingressgateway"
+      "namespace" = "istio-system"
     }
     "roleRef" = {
       "apiGroup" = "rbac.authorization.k8s.io"
