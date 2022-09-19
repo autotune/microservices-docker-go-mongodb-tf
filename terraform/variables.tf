@@ -127,10 +127,12 @@ variable "mongodb_rootpassword" {
   description = "MongoDB Root Password"
 }
 
-variable "gcp_service_list" {
-  type        = list(any)
-  description = "GCP APIs to enable"
-  default = ["mesh.googleapis.com",
-    "gkehub.googleapis.com"
-  ]
+variable "argocd_gitops_repo" {
+  type        = string
+  description = "ArgoCD GitOps Repo"
+}
+
+variable "argocd_access_token" {
+  type        = string
+  description = "ArgoCD Access Token"
 }

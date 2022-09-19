@@ -1,5 +1,9 @@
 locals {
-  all_project_services           = var.gcp_service_list
-  cinema_hub_mesh_update_command = "gcloud alpha container hub mesh update --control-plane automatic --membership ${var.project_id}-cinema --project=${var.project_id}"
+  # Example annotations when using Nginx ingress controller as shown here https://argoproj.github.io/argo-cd/operator-manual/ingress/#option-1-ssl-passthrough
+  argocd_ingress_annotations = {
+    "kubernetes.io/ingress.class" = nginx
+    "nginx.ingress.kubernetes.io/force-ssl-redirect" = "true"
+    "nginx.ingress.kubernetes.io/ssl-passthrough" = "true"
+  }
 }
 
