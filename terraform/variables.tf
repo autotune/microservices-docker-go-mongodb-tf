@@ -96,7 +96,7 @@ variable "cinema_node_core_initial_count" {
 variable "gke_external_dns_iam_memeber" {
   type        = string
   description = "GKE ExternalDNS IAM Account Member"
-  default     = "serviceAccount:terrateam-tf@terrateam-362405.iam.gserviceaccount.com"
+  default     = "serviceAccount:terrateam-tf@terrateam-cinema.iam.gserviceaccount.com"
 }
 
 variable "gke_external_dns_sa_id" {
@@ -114,7 +114,7 @@ variable "gke_external_dns_namespace" {
 variable "gke_service_account" {
   type        = string
   description = "GKE Service Account Member"
-  default     = "terrateam-tf@terrateam-362405.iam.gserviceaccount.com"
+  default     = "terrateam-tf@terrateam-cinema.iam.gserviceaccount.com"
 }
 
 variable "mongodb_rootusername" {
