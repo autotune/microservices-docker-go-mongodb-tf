@@ -24,6 +24,7 @@ resource "kubernetes_namespace" "istio-gateway" {
 
 resource "kubernetes_labels" "default-istio" {
   api_version = "v1"
+  provider   = kubernetes.cinema
   kind        = "Namespace"
   metadata {
     name = "istio-asm"
@@ -35,6 +36,7 @@ resource "kubernetes_labels" "default-istio" {
 
 resource "kubernetes_annotations" "cinema" {
   api_version = "v1"
+  provider   = kubernetes.cinema
   kind        = "Namespace"
   metadata {
     name = "asm-dataplane"
