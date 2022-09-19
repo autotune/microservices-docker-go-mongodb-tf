@@ -1,6 +1,7 @@
 resource "kubernetes_manifest" "allow-egress-googlemetadata" {
   provider   = kubernetes.cinema
   depends_on = [module.gke-cinema, kubernetes_namespace.cinema]
+  namespace  = "cinema"
   manifest = {
     "apiVersion" = "networking.istio.io/v1alpha3"
     "kind"       = "ServiceEntry"
