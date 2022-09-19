@@ -78,19 +78,19 @@ variable "cinema_node_core_disk_size" {
 variable "cinema_node_core_min_count" {
   type        = string
   description = "Cinema node core min node count"
-  default     = "4"
+  default     = "2"
 }
 
 variable "cinema_node_core_max_count" {
   type        = string
   description = "Cinema node core min node count"
-  default     = "4"
+  default     = "8"
 }
 
 variable "cinema_node_core_initial_count" {
   type        = string
   description = "Cinema node core min node count"
-  default     = "4"
+  default     = "2"
 }
 
 variable "gke_external_dns_iam_memeber" {
