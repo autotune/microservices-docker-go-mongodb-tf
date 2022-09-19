@@ -19,8 +19,8 @@ resource "kubernetes_manifest" "allow-egress-googlemetadata" {
     "apiVersion" = "networking.istio.io/v1alpha3"
     "kind"       = "ServiceEntry"
     "metadata" = {
-      "name"       = "allow-egress-google-metadata"
-      "namespace"  = "cinema"
+      "name"      = "allow-egress-google-metadata"
+      "namespace" = "cinema"
     }
     "spec" = {
       "addresses" = [
