@@ -1,5 +1,5 @@
 module "gke-cinema" {
-  depends_on                 = [module.vpc-cinema, google_project_service.enabled_apis]
+  depends_on                 = [module.vpc-cinema]
   source                     = "terraform-google-modules/kubernetes-engine/google"
   project_id                 = var.project_id
   name                       = "cinema"
