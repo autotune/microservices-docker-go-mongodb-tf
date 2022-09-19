@@ -7,7 +7,7 @@ terraform {
 }
 
 provider "google" {
-  project = "terrateam-362405"
+  project = "terrateam-cinema"
   region  = "us-central1"
 }
 
