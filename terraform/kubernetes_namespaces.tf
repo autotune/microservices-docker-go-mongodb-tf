@@ -40,6 +40,6 @@ resource "kubernetes_annotations" "cinema" {
     name = "asm-dataplane"
   }
   annotations = {
-    "mesh.cloud.google.com/proxy" = '{"managed":"true"}'
+    "mesh.cloud.google.com/proxy" = "{\"managed\":\"true\"}"
   }
 }
