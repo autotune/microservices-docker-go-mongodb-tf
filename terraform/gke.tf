@@ -47,7 +47,7 @@ module "gke-cinema" {
       max_count          = 1
       local_ssd_count    = 0
       spot               = false
-      disk_size_gb       = 0
+      disk_size_gb       = 15
       disk_type          = "pd-standard"
       image_type         = "COS_CONTAINERD"
       enable_gcfs        = false
