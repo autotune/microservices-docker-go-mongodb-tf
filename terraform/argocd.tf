@@ -5,5 +5,5 @@ module "argocd" {
   ingress_host        = "argocd.${var.managed_zone_name}"
   ingress_annotations = local.argocd_ingress_annotations
 
-  module_depends_on = [hem_release.external_dns, helm_release.nginx-ingress-chart, helm_release.cert_manager]
+  depends_on = [hem_release.external_dns, helm_release.nginx-ingress-chart, helm_release.cert_manager]
 }
