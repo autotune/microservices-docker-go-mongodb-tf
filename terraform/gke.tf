@@ -4,7 +4,7 @@ module "gke-cinema" {
   project_id                 = var.project_id
   name                       = "cinema"
   region                     = "us-central1"
-  zones                      = ["us-central1-a", "us-central1-b"]
+  zones                      = ["us-central1-a"]
   network                    = "cinema"
   subnetwork                 = "prod"
   ip_range_pods              = "us-central1-01-gke-01-pods"
@@ -23,7 +23,7 @@ module "gke-cinema" {
     {
       name               = "core"
       machine_type       = var.cinema_node_core_machine_type # slightly above minimum required for Anthos Service Mesh. We easily hit quota with n2
-      node_locations     = "us-central1-a,us-central1-b"
+      node_locations     = "us-central1-a"
       min_count          = var.cinema_node_core_min_count
       max_count          = var.cinema_node_core_max_count
       local_ssd_count    = 1
