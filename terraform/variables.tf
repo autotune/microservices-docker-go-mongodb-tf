@@ -93,36 +93,6 @@ variable "cinema_node_core_initial_count" {
   default     = "4"
 }
 
-variable "cinema_scale1_initial_count" {
-  type        = string
-  description = "Cinema node core min node count"
-  default     = "2"
-}
-
-variable "cinema_scale1_machine_type" {
-  type        = string
-  description = "Cinema node core machine type"
-  default     = "n2d-highmem-2" // 2vCPU AMD 16 GB memory
-}
-
-variable "cinema_scale1_disk_size" {
-  type        = string
-  description = "Cinema node scale1 machine ssd disk size"
-  default     = "15"
-}
-
-variable "cinema_scale1_min_count" {
-  type        = string
-  description = "Cinema node scale1 min node count"
-  default     = "2"
-}
-
-variable "cinema_scale1_max_count" {
-  type        = string
-  description = "Cinema node scale1 max node count"
-  default     = "8"
-}
-
 variable "gke_external_dns_iam_memeber" {
   type        = string
   description = "GKE ExternalDNS IAM Account Member"
