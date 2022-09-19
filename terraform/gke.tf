@@ -39,6 +39,25 @@ module "gke-cinema" {
       preemptible        = false
       initial_node_count = var.cinema_node_core_initial_count
     },
+    {
+      name               = "istio"
+      machine_type       = "n2-standard-2" # slightly above minimum required for Anthos Service Mesh. We easily hit quota with n2
+      node_locations     = "us-central1-a"
+      min_count          = 1
+      max_count          = 1
+      local_ssd_count    = 0
+      spot               = false
+      disk_size_gb       = 0
+      disk_type          = "pd-standard"
+      image_type         = "COS_CONTAINERD"
+      enable_gcfs        = false
+      enable_gvnic       = false
+      auto_repair        = true
+      auto_upgrade       = true
+      service_account    = var.gke_service_account
+      preemptible        = true
+      initial_node_count = 1
+    },
   ]
 
   node_pools_oauth_scopes = {
