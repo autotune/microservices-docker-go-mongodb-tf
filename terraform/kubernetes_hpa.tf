@@ -20,7 +20,8 @@ resource "kubernetes_manifest" "istio-hpa" {
     "apiVersion" = "autoscaling/v2beta1"
     "kind"       = "HorizontalPodAutoscaler"
     "metadata" = {
-      "name" = "istio-ingressgateway"
+      "name"      = "istio-ingressgateway"
+      "namespace" = "istio-system"
     }
     "spec" = {
       "maxReplicas" = 5

@@ -19,7 +19,8 @@ resource "kubernetes_manifest" "istio-serviceaccount" {
     "apiVersion" = "v1"
     "kind"       = "ServiceAccount"
     "metadata" = {
-      "name" = "istio-ingressgateway"
+      "name"      = "istio-ingressgateway"
+      "namespace" = "istio-system"
     }
   }
 }

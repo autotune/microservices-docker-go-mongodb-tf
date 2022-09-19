@@ -20,7 +20,8 @@ resource "kubernetes_manifest" "istio-pdb" {
     "apiVersion" = "policy/v1beta1"
     "kind"       = "PodDisruptionBudget"
     "metadata" = {
-      "name" = "istio-ingressgateway"
+      "name"     = "istio-ingressgateway"
+      "namespace = "istio-system"
     }
     "spec" = {
       "minAvailable" = 1

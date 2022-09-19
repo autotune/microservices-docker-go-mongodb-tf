@@ -24,7 +24,8 @@ resource "kubernetes_manifest" "istio-service" {
         "app"   = "istio-ingressgateway"
         "istio" = "ingressgateway"
       }
-      "name" = "istio-ingressgateway"
+      "name"      = "istio-ingressgateway"
+      "namespace" = "istio-system"
     }
     "spec" = {
       "ports" = [

@@ -20,7 +20,8 @@ resource "kubernetes_manifest" "istio-deployment" {
     "apiVersion" = "apps/v1"
     "kind"       = "Deployment"
     "metadata" = {
-      "name" = "istio-ingressgateway"
+      "name"     = "istio-ingressgateway"
+      "namespace = "istio-system"
     }
     "spec" = {
       "selector" = {
