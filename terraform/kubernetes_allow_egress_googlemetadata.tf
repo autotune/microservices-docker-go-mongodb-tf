@@ -1,4 +1,4 @@
-resource "kubernetes_manifest" "allow-egress-googleapis" {
+resource "kubernetes_manifest" "allow-egress-googlemetadata" {
   provider   = kubernetes.cinema
   depends_on = [module.gke-cinema, kubernetes_namespace.cinema]
   manifest = {
