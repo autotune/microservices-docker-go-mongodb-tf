@@ -13,7 +13,7 @@
 ## modified and converted for use in terraform by Brian Adams
 
 
-resource "kubernetes_manifest" "istio-rbac-role" {
+resource "kubernetes_manifest" "istioingress-rbac-role" {
   provider   = kubernetes.cinema
   depends_on = [module.gke-cinema, kubernetes_namespace.cinema]
   manifest = {
@@ -41,7 +41,35 @@ resource "kubernetes_manifest" "istio-rbac-role" {
   }
 }
 
-resource "kubernetes_manifest" "istio-rbac-rolebinding" {
+resource "kubernetes_manifest" "istioegress-rbac-role" {
+  provider   = kubernetes.cinema
+  depends_on = [module.gke-cinema, kubernetes_namespace.cinema]
+  manifest = {
+    "apiVersion" = "rbac.authorization.k8s.io/v1"
+    "kind"       = "Role"
+    "metadata" = {
+      "name"      = "istio-egressgateway"
+      "namespace" = "istio-system"
+    }
+    "rules" = [
+      {
+        "apiGroups" = [
+          "",
+        ]
+        "resources" = [
+          "secrets",
+        ]
+        "verbs" = [
+          "get",
+          "watch",
+          "list",
+        ]
+      },
+    ]
+  }
+}
+
+resource "kubernetes_manifest" "istioingress-rbac-rolebinding" {
   provider   = kubernetes.cinema
   depends_on = [module.gke-cinema, kubernetes_namespace.cinema]
   manifest = {
@@ -60,6 +88,30 @@ resource "kubernetes_manifest" "istio-rbac-rolebinding" {
       {
         "kind" = "ServiceAccount"
         "name" = "istio-ingressgateway-service-account"
+      },
+    ]
+  }
+}
+
+resource "kubernetes_manifest" "istioegress-rbac-rolebinding" {
+  provider   = kubernetes.cinema
+  depends_on = [module.gke-cinema, kubernetes_namespace.cinema]
+  manifest = {
+    "apiVersion" = "rbac.authorization.k8s.io/v1"
+    "kind"       = "RoleBinding"
+    "metadata" = {
+      "name"      = "istio-egressgateway"
+      "namespace" = "istio-system"
+    }
+    "roleRef" = {
+      "apiGroup" = "rbac.authorization.k8s.io"
+      "kind"     = "Role"
+      "name"     = "istio-egressgateway-sds"
+    }
+    "subjects" = [
+      {
+        "kind" = "ServiceAccount"
+        "name" = "istio-egressgateway-service-account"
       },
     ]
   }

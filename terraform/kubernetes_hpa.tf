@@ -13,7 +13,7 @@
 ## modified and converted for use in terraform by Brian Adams
 
 
-resource "kubernetes_manifest" "istio-hpa" {
+resource "kubernetes_manifest" "istioingress-hpa" {
   provider   = kubernetes.cinema
   depends_on = [module.gke-cinema, kubernetes_namespace.cinema]
   manifest = {
@@ -44,3 +44,34 @@ resource "kubernetes_manifest" "istio-hpa" {
   }
 }
 
+
+resource "kubernetes_manifest" "istioegress-hpa" {
+  provider   = kubernetes.cinema
+  depends_on = [module.gke-cinema, kubernetes_namespace.cinema]
+  manifest = {
+    "apiVersion" = "autoscaling/v2beta1"
+    "kind"       = "HorizontalPodAutoscaler"
+    "metadata" = {
+      "name"      = "istio-egressgateway"
+      "namespace" = "istio-system"
+    }
+    "spec" = {
+      "maxReplicas" = 5
+      "metrics" = [
+        {
+          "resource" = {
+            "name"                     = "cpu"
+            "targetAverageUtilization" = 80
+          }
+          "type" = "Resource"
+        },
+      ]
+      "minReplicas" = 2
+      "scaleTargetRef" = {
+        "apiVersion" = "apps/v1"
+        "kind"       = "Deployment"
+        "name"       = "istio-egressgateway"
+      }
+    }
+  }
+}

@@ -13,7 +13,7 @@
 ## modified and converted for use in terraform by Brian Adams
 
 
-resource "kubernetes_manifest" "istio-deployment" {
+resource "kubernetes_manifest" "istioingress-deployment" {
   provider   = kubernetes.cinema
   depends_on = [module.gke-cinema, kubernetes_namespace.cinema]
   manifest = {
@@ -58,6 +58,58 @@ resource "kubernetes_manifest" "istio-deployment" {
             },
           ]
           "serviceAccountName" = "istio-ingressgateway"
+        }
+      }
+    }
+  }
+}
+
+
+resource "kubernetes_manifest" "istioegress-deployment" {
+  provider   = kubernetes.cinema
+  depends_on = [module.gke-cinema, kubernetes_namespace.cinema]
+  manifest = {
+    "apiVersion" = "apps/v1"
+    "kind"       = "Deployment"
+    "metadata" = {
+      "name"      = "istio-egressgateway"
+      "namespace" = "istio-system"
+    }
+    "spec" = {
+      "selector" = {
+        "matchLabels" = {
+          "app"   = "istio-egressgateway"
+          "istio" = "egressgateway"
+        }
+      }
+      "template" = {
+        "metadata" = {
+          "annotations" = {
+            "inject.istio.io/templates" = "gateway"
+          }
+          "labels" = {
+            "app"   = "istio-egressgateway"
+            "istio" = "egressgateway"
+          }
+        }
+        "spec" = {
+          "containers" = [
+            {
+              "image" = "auto"
+              "name"  = "istio-proxy"
+              "resources" = {
+                "limits" = {
+                  "cpu"    = "2Gi"
+                  "memory" = "1Gi"
+                }
+                "requests" = {
+                  "cpu"    = "100Mi"
+                  "memory" = "128Mi"
+                }
+              }
+            },
+          ]
+          "serviceAccountName" = "istio-egressgateway"
         }
       }
     }

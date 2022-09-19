@@ -12,7 +12,7 @@
 # limitations under the License.
 ## modified and converted for use in terraform by Brian Adams
 
-resource "kubernetes_manifest" "istio-serviceaccount" {
+resource "kubernetes_manifest" "istioingress-serviceaccount" {
   provider   = kubernetes.cinema
   depends_on = [module.gke-cinema, kubernetes_namespace.cinema]
   manifest = {
@@ -20,6 +20,19 @@ resource "kubernetes_manifest" "istio-serviceaccount" {
     "kind"       = "ServiceAccount"
     "metadata" = {
       "name"      = "istio-ingressgateway"
+      "namespace" = "istio-system"
+    }
+  }
+}
+
+resource "kubernetes_manifest" "istioegress-serviceaccount" {
+  provider   = kubernetes.cinema
+  depends_on = [module.gke-cinema, kubernetes_namespace.cinema]
+  manifest = {
+    "apiVersion" = "v1"
+    "kind"       = "ServiceAccount"
+    "metadata" = {
+      "name"      = "istio-egressgateway"
       "namespace" = "istio-system"
     }
   }

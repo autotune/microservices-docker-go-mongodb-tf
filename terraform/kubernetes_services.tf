@@ -13,7 +13,7 @@
 ## modified and converted for use in terraform by Brian Adams
 
 
-resource "kubernetes_manifest" "istio-service" {
+resource "kubernetes_manifest" "istioingress-service" {
   provider   = kubernetes.cinema
   depends_on = [module.gke-cinema, kubernetes_namespace.cinema]
   manifest = {
@@ -47,6 +47,46 @@ resource "kubernetes_manifest" "istio-service" {
       "selector" = {
         "app"   = "istio-ingressgateway"
         "istio" = "ingressgateway"
+      }
+      "type" = "LoadBalancer"
+    }
+  }
+}
+
+resource "kubernetes_manifest" "istioegress-service" {
+  provider   = kubernetes.cinema
+  depends_on = [module.gke-cinema, kubernetes_namespace.cinema]
+  manifest = {
+    "apiVersion" = "v1"
+    "kind"       = "Service"
+    "metadata" = {
+      "labels" = {
+        "app"   = "istio-egressgateway"
+        "istio" = "egressgateway"
+      }
+      "name"      = "istio-egressgateway"
+      "namespace" = "istio-system"
+    }
+    "spec" = {
+      "ports" = [
+        {
+          "name"       = "status-port"
+          "port"       = 15021
+          "protocol"   = "TCP"
+          "targetPort" = 15021
+        },
+        {
+          "name" = "http2"
+          "port" = 80
+        },
+        {
+          "name" = "https"
+          "port" = 443
+        },
+      ]
+      "selector" = {
+        "app"   = "istio-egressgateway"
+        "istio" = "egressgateway"
       }
       "type" = "LoadBalancer"
     }
