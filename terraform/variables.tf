@@ -66,7 +66,7 @@ variable "zerossl_eab_hmac_key_id" {
 variable "cinema_node_core_machine_type" {
   type        = string
   description = "Cinema node core machine type"
-  default     = "n2-standard-2" // 2 vCPU 8 GB memory
+  default     = "n2-highcpu-4" // 4 vCPU 4 GB memory
 }
 
 variable "cinema_node_core_disk_size" {
@@ -78,19 +78,19 @@ variable "cinema_node_core_disk_size" {
 variable "cinema_node_core_min_count" {
   type        = string
   description = "Cinema node core min node count"
-  default     = "1"
+  default     = "2"
 }
 
 variable "cinema_node_core_max_count" {
   type        = string
   description = "Cinema node core min node count"
-  default     = "2"
+  default     = "4"
 }
 
 variable "cinema_node_core_initial_count" {
   type        = string
   description = "Cinema node core min node count"
-  default     = "1"
+  default     = "2"
 }
 
 variable "gke_external_dns_iam_memeber" {
