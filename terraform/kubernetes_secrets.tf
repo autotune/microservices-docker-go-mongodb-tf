@@ -60,7 +60,7 @@ resource "kubernetes_secret" "external-dns-credentials" {
 }
 
 resource "kubernetes_secret" "tls" {
-  provider = kubernetes.cinema
+  provider   = kubernetes.cinema
   depends_on = [module.gke-cinema, module.external-dns, kubernetes_namespace.cinema]
   metadata {
     name      = "${replace(var.domain_name[0], ".", "-")}-cinema-tls"

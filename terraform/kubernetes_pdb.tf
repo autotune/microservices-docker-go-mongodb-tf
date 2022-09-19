@@ -12,35 +12,25 @@
 # limitations under the License.
 ## modified and converted for use in terraform by Brian Adams
 
-resource "kubernetes_manifest" "allow-egress-googlemetadata" {
+
+resource "kubernetes_manifest" "istio-pdb" {
   provider   = kubernetes.cinema
   depends_on = [module.gke-cinema, kubernetes_namespace.cinema]
   manifest = {
-    "apiVersion" = "networking.istio.io/v1alpha3"
-    "kind"       = "ServiceEntry"
+    "apiVersion" = "policy/v1beta1"
+    "kind"       = "PodDisruptionBudget"
     "metadata" = {
-      "name"       = "allow-egress-google-metadata"
-      "namespace"  = "cinema"
+      "name" = "istio-ingressgateway"
     }
     "spec" = {
-      "addresses" = [
-        "169.254.169.254",
-      ]
-      "hosts" = [
-        "metadata.google.internal",
-      ]
-      "ports" = [
-        {
-          "name"     = "http"
-          "number"   = 80
-          "protocol" = "HTTP"
-        },
-        {
-          "name"     = "https"
-          "number"   = 443
-          "protocol" = "HTTPS"
-        },
-      ]
+      "minAvailable" = 1
+      "selector" = {
+        "matchLabels" = {
+          "app"   = "istio-ingressgateway"
+          "istio" = "ingressgateway"
+        }
+      }
     }
   }
 }
+
