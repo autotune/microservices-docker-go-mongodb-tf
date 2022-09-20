@@ -191,8 +191,8 @@ resource "kubernetes_namespace" "istio-egress" {
   }
 }
 
-resource "helm_release" "istio_egress" {
-  repository = local.istio_repo
+resource "helm_release" "istio-egress" {
+  repository = local.istio-repo
   name       = "istio-egressgateway"
   chart      = "gateway"
 
