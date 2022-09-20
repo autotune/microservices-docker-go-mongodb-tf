@@ -18,7 +18,7 @@ resource "kubernetes_namespace" "istio-system" {
   depends_on = [module.gke-cinema]
   provider   = kubernetes.cinema
   metadata {
-    name = "istio-gateway"
+    name = "istio-system"
   }
 }
 
