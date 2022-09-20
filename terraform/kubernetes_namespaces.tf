@@ -47,6 +47,8 @@ resource "kubernetes_annotations" "cinema" {
 }
 
 resource "kubernetes_namespace" "istio-ingress" {
+  depends_on = [module.gke-cinema]
+  provider   = kubernetes.cinema
   metadata {
     name = "istio-ingress"
 
@@ -58,6 +60,8 @@ resource "kubernetes_namespace" "istio-ingress" {
 }
 
 resource "kubernetes_namespace" "istio-egress" {
+  depends_on = [module.gke-cinema]
+  provider   = kubernetes.cinema
   metadata {
     name = "istio-egress"
 
