@@ -102,3 +102,104 @@ resource "helm_release" "cinema" {
     value = var.mongodb_rootpassword
   }
 }
+
+resource "helm_release" "istio_base" {
+  repository      = local.istio_repo
+  name            = "istio-base"
+  chart           = "base"
+  cleanup_on_fail = true
+  force_update    = true
+  namespace       = kubernetes_namespace.istio_system.metadata.0.name
+
+  depends_on = [kubernetes_namespace.istio_system]
+}
+
+resource "helm_release" "istiod" {
+  repository      = local.istio_repo
+  name            = "istiod"
+  chart           = "istiod"
+  cleanup_on_fail = true
+  force_update    = true
+  namespace       = kubernetes_namespace.istio_system.metadata.0.name
+
+  set {
+    name  = "meshConfig.accessLogFile"
+    value = "/dev/stdout"
+  }
+
+  set {
+    name  = "grafana.enabled"
+    value = "true"
+  }
+
+  set {
+    name  = "kiali.enabled"
+    value = "true"
+  }
+
+  set {
+    name  = "servicegraph.enabled"
+    value = "true"
+  }
+
+  set {
+    name  = "tracing.enabled"
+    value = "true"
+  }
+
+  depends_on = [helm_release.istio_base]
+}
+
+resource "kubernetes_namespace" "istio_ingress" {
+  metadata {
+    name = "istio-ingress"
+
+    labels = {
+      istio-injection = "enabled"
+    }
+
+  }
+}
+
+resource "helm_release" "istio_ingress" {
+  repository = local.istio_repo
+  name       = "istio-ingressgateway"
+  chart      = "gateway"
+
+  cleanup_on_fail = true
+  force_update    = true
+  namespace       = kubernetes_namespace.istio_ingress.metadata.0.name
+
+  set {
+    name  = "service.loadBalancerIP"
+    value = var.loadBalancer_IP
+  }
+  depends_on = [helm_release.istiod]
+}
+
+resource "kubernetes_namespace" "istio_egress" {
+  metadata {
+    name = "istio-egress"
+
+    labels = {
+      istio-injection = "enabled"
+    }
+
+  }
+}
+
+resource "helm_release" "istio_egress" {
+  repository = local.istio_repo
+  name       = "istio-egressgateway"
+  chart      = "gateway"
+
+  cleanup_on_fail = true
+  force_update    = true
+  namespace       = kubernetes_namespace.istio_egress.metadata.0.name
+
+  set {
+    name  = "service.type"
+    value = "ClusterIP"
+  }
+  depends_on = [helm_release.istiod]
+}
