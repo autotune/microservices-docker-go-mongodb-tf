@@ -103,6 +103,7 @@ resource "helm_release" "cinema" {
   }
 }
 
+/*
 resource "helm_release" "istio-base" {
   provider        = helm.cinema
   repository      = local.istio-repo
@@ -185,3 +186,4 @@ resource "helm_release" "istio-egress" {
   }
   depends_on = [helm_release.istiod]
 }
+*/
