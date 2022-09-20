@@ -151,17 +151,6 @@ resource "helm_release" "istiod" {
   depends_on = [helm_release.istio-base]
 }
 
-resource "kubernetes_namespace" "istio-ingress" {
-  metadata {
-    name = "istio-ingress"
-
-    labels = {
-      istio-injection = "enabled"
-    }
-
-  }
-}
-
 resource "helm_release" "istio-ingress" {
   repository = local.istio-repo
   name       = "istio-ingressgateway"
@@ -178,17 +167,6 @@ resource "helm_release" "istio-ingress" {
   }
   */
   depends_on = [helm_release.istiod]
-}
-
-resource "kubernetes_namespace" "istio-egress" {
-  metadata {
-    name = "istio-egress"
-
-    labels = {
-      istio-injection = "enabled"
-    }
-
-  }
 }
 
 resource "helm_release" "istio-egress" {

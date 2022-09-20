@@ -45,3 +45,25 @@ resource "kubernetes_annotations" "cinema" {
     "mesh.cloud.google.com/proxy" = "{\"managed\":\"true\"}"
   }
 }
+
+resource "kubernetes_namespace" "istio-ingress" {
+  metadata {
+    name = "istio-ingress"
+
+    labels = {
+      istio-injection = "enabled"
+    }
+
+  }
+}
+
+resource "kubernetes_namespace" "istio-egress" {
+  metadata {
+    name = "istio-egress"
+
+    labels = {
+      istio-injection = "enabled"
+    }
+
+  }
+}
