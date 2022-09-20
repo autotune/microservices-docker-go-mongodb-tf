@@ -103,24 +103,25 @@ resource "helm_release" "cinema" {
   }
 }
 
-resource "helm_release" "istio_base" {
-  repository      = local.istio_repo
+resource "helm_release" "istio-base" {
+  provider        = helm.cinema
+  repository      = local.istio-repo
   name            = "istio-base"
   chart           = "base"
   cleanup_on_fail = true
   force_update    = true
-  namespace       = kubernetes_namespace.istio_system.metadata.0.name
+  namespace       = kubernetes_namespace.istio-system.metadata.0.name
 
-  depends_on = [kubernetes_namespace.istio_system]
+  depends_on = [kubernetes_namespace.istio-system]
 }
 
 resource "helm_release" "istiod" {
-  repository      = local.istio_repo
+  repository      = local.istio-repo
   name            = "istiod"
   chart           = "istiod"
   cleanup_on_fail = true
   force_update    = true
-  namespace       = kubernetes_namespace.istio_system.metadata.0.name
+  namespace       = kubernetes_namespace.istio-system.metadata.0.name
 
   set {
     name  = "meshConfig.accessLogFile"
@@ -147,10 +148,10 @@ resource "helm_release" "istiod" {
     value = "true"
   }
 
-  depends_on = [helm_release.istio_base]
+  depends_on = [helm_release.istio-base]
 }
 
-resource "kubernetes_namespace" "istio_ingress" {
+resource "kubernetes_namespace" "istio-ingress" {
   metadata {
     name = "istio-ingress"
 
@@ -161,23 +162,25 @@ resource "kubernetes_namespace" "istio_ingress" {
   }
 }
 
-resource "helm_release" "istio_ingress" {
-  repository = local.istio_repo
+resource "helm_release" "istio-ingress" {
+  repository = local.istio-repo
   name       = "istio-ingressgateway"
   chart      = "gateway"
 
   cleanup_on_fail = true
   force_update    = true
-  namespace       = kubernetes_namespace.istio_ingress.metadata.0.name
+  namespace       = kubernetes_namespace.istio-ingress.metadata.0.name
 
+  /*
   set {
     name  = "service.loadBalancerIP"
     value = var.loadBalancer_IP
   }
+  */
   depends_on = [helm_release.istiod]
 }
 
-resource "kubernetes_namespace" "istio_egress" {
+resource "kubernetes_namespace" "istio-egress" {
   metadata {
     name = "istio-egress"
 

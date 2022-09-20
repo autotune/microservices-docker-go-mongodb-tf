@@ -1,4 +1,4 @@
 locals {
-  istio_repo = "https://istio-release.storage.googleapis.com/charts"
+  istio-repo = "https://istio-release.storage.googleapis.com/charts"
 }
 
