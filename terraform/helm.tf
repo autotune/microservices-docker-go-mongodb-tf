@@ -116,6 +116,7 @@ resource "helm_release" "istio-base" {
 }
 
 resource "helm_release" "istiod" {
+  provider        = helm.cinema
   repository      = local.istio-repo
   name            = "istiod"
   chart           = "istiod"
