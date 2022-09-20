@@ -14,7 +14,7 @@ resource "kubernetes_namespace" "external-dns" {
   }
 }
 
-resource "kubernetes_namespace" "istio-gateway" {
+resource "kubernetes_namespace" "istio-system" {
   depends_on = [module.gke-cinema]
   provider   = kubernetes.cinema
   metadata {
