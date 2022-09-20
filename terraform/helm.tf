@@ -159,7 +159,7 @@ resource "helm_release" "istio-ingress" {
 
   cleanup_on_fail = true
   force_update    = true
-  namespace       = kubernetes_namespace.istio-ingress.metadata.0.name
+  namespace       = kubernetes_namespace.istio-system.metadata.0.name
 
   /*
   set {
@@ -177,7 +177,7 @@ resource "helm_release" "istio-egress" {
 
   cleanup_on_fail = true
   force_update    = true
-  namespace       = kubernetes_namespace.istio-egress.metadata.0.name
+  namespace       = kubernetes_namespace.istio-system.metadata.0.name
 
   set {
     name  = "service.type"
