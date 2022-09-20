@@ -1,6 +1,6 @@
 module "argocd" {
   providers = {
-    kubernetes = kubernetes.cinema
+    helm = helm.cinema
   }
   source              = "git::https://github.com/autotune/infrastructure.git//terraform/modules/terraform-argocd"
   git_url             = var.argocd_gitops_repo
