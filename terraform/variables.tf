@@ -66,7 +66,7 @@ variable "zerossl_eab_hmac_key_id" {
 variable "cinema_node_core_machine_type" {
   type        = string
   description = "Cinema node core machine type"
-  default     = "n2-highcpu-16" 
+  default     = "c2d-highcpu-4" 
 }
 
 variable "cinema_node_core_disk_size" {
