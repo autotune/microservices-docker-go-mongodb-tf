@@ -1,3 +1,4 @@
+/*
 resource "helm_release" "cluster-issuer" {
   provider  = helm.cinema
   name      = "cluster-issuer"
@@ -103,7 +104,6 @@ resource "helm_release" "cinema" {
   }
 }
 
-/*
 resource "helm_release" "istio-base" {
   provider        = helm.cinema
   repository      = local.istio-repo
