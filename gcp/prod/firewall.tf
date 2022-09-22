@@ -1,3 +1,4 @@
+/*
 module "firewall-cinema" {
   source       = "terraform-google-modules/network/google//modules/firewall-rules"
   project_id   = var.project_id
@@ -23,3 +24,4 @@ module "firewall-cinema" {
     }
   }]
 }
+*/
