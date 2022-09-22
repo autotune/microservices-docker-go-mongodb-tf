@@ -75,6 +75,7 @@ resource "helm_release" "external-dns" {
   }
 }
 
+/*
 resource "helm_release" "nginx-ingress-chart" {
   provider   = helm.cinema
   name       = "nginx-ingress-controller"
@@ -82,6 +83,7 @@ resource "helm_release" "nginx-ingress-chart" {
   repository = "https://charts.bitnami.com/bitnami"
   chart      = "nginx-ingress-controller"
 }
+*/
 
 resource "helm_release" "cinema" {
   provider   = helm.cinema
