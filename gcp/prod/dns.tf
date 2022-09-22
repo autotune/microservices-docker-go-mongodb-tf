@@ -10,5 +10,5 @@ resource "google_dns_record_set" "do" {
   type         = "NS"
   ttl          = 300
 
-  rrdatas = ["ns1.digitalocean.com", "ns2.digitalocean.com", "ns3.digitalocean.com"]
+  rrdatas = ["ns1.digitalocean.com.", "ns2.digitalocean.com.", "ns3.digitalocean.com."]
 }
