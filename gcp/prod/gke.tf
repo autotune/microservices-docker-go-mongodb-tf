@@ -19,6 +19,7 @@ module "gke-cinema" {
     "mesh_id" : "proj-${data.google_project.cinema.number}"
   }
 
+  /*
   node_pools = [
     {
       name               = "core"
@@ -40,6 +41,7 @@ module "gke-cinema" {
       initial_node_count = var.cinema_node_core_initial_count
     },
   ]
+  */
 
   node_pools_oauth_scopes = {
     all = [
