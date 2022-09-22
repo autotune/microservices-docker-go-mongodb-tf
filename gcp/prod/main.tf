@@ -18,10 +18,12 @@ data "google_project" "cinema" {
   project_id = var.project_id
 }
 
+/*
 data "google_service_account" "gke-external-dns" {
   account_id = module.external-dns.service_account
   depends_on = [module.external-dns]
 }
+*/
 
 provider "helm" {
   kubernetes {
