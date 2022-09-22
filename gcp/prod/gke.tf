@@ -1,3 +1,4 @@
+/* 
 module "gke-cinema" {
   depends_on                 = [module.vpc-cinema]
   source                     = "terraform-google-modules/kubernetes-engine/google"
@@ -63,4 +64,4 @@ module "gke-cinema" {
       "default-node-pool",
     ]
   }
-}
+}*/
