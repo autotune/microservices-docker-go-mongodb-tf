@@ -23,7 +23,6 @@ data "google_service_account" "gke-external-dns" {
   account_id = module.external-dns.service_account
   depends_on = [module.external-dns]
 }
-*/
 
 provider "helm" {
   kubernetes {
@@ -40,6 +39,8 @@ provider "kubernetes" {
   cluster_ca_certificate = base64decode(module.gke-cinema.ca_certificate)
   alias                  = "cinema"
 }
+
+/* 
 
 output "project" {
   value = data.google_client_config.default.project
