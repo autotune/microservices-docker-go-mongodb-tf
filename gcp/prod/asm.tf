@@ -1,3 +1,4 @@
+/*
 module "asm" {
   providers = {
     kubernetes = kubernetes.cinema
@@ -10,3 +11,4 @@ module "asm" {
   enable_fleet_registration = true
   enable_mesh_feature       = true
 }
+*/
