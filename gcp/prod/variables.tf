@@ -126,14 +126,3 @@ variable "mongodb_rootpassword" {
   type        = string
   description = "MongoDB Root Password"
 }
-
-variable "argocd_gitops_repo" {
-  type        = string
-  description = "ArgoCD GitOps Repo"
-  default     = "https://github.com/autotune/microservices-docker-go-mongodb-tf"
-}
-
-variable "argocd_access_token" {
-  type        = string
-  description = "ArgoCD Access Token"
-}
