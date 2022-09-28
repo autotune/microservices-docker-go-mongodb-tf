@@ -5,7 +5,7 @@
 variable "billing_account" {
   type        = string
   description = "ID of the billing account to set a budget on."
-  default     = "011853-711B63-995445"
+  default     = "0150C1-937237-2C8418"
 }
 
 variable "billing_spend" {
