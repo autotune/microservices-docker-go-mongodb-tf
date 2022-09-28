@@ -27,7 +27,7 @@ variable "project_id" {
     condition     = can(regex("^[a-z][a-z0-9-]{4,28}[a-z0-9]$", var.project_id))
     error_message = "Invalid project ID!"
   }
-  default = "wayofthesys-cinema"
+  default = "wayofthesys-cinema-363715"
 }
 
 variable "user_zone_name" {
