@@ -126,3 +126,8 @@ variable "mongodb_rootpassword" {
   type        = string
   description = "MongoDB Root Password"
 }
+
+variable "argocd_oidc_client_secret" {
+  type        = string
+  description = "ArgoCD OIDC Client Secret"
+}
