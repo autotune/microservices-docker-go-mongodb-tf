@@ -7,9 +7,10 @@ spec:
     email: {{ .Values.zerossl_email }}
     server: https://acme.zerossl.com/v2/DV90
     externalAccountBinding:
-      keyID: {{ .Values.zerossl_eab_hmac_key_id }}
+      keyID: "uAOxe7WsWUN0HAkadE-gyA"
+      # {{ .Values.zerossl_eab_hmac_key_id }}
       keySecretRef:
-        name: zerossl-hmac-key 
+        name: zerossl-eab-hmac-key 
         key: secret
       keyAlgorithm: HS256
     privateKeySecretRef:
@@ -17,4 +18,9 @@ spec:
     solvers:
     - http01:
         ingress:
-          class: nginx
+          class: istio
+    - dns01:
+        digitalocean:
+          tokenSecretRef:
+            name: digital-ocean-secret 
+            key: token 
