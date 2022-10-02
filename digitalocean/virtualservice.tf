@@ -26,9 +26,9 @@ resource "kubernetes_manifest" "virtualservice_resource" {
         "route" = [
           {
             "destination" = {
-              "host" = "argocd-argo-cd-server"
+              "host" = "argocd-server"
               "port" = {
-                "number" = 443
+                "number" = 80
               }
             }
           },

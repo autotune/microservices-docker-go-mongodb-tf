@@ -13,7 +13,7 @@ resource "helm_release" "external-dns" {
   }
   set_sensitive {
     name  = "digitalocean.apiToken"
-    value = var.do_token 
+    value = var.do_token
   }
   set {
     name  = "rbac.create"
@@ -21,13 +21,13 @@ resource "helm_release" "external-dns" {
   }
   set {
     name  = "domainFilters"
-    value = "{${var.domain_name[0]}}" 
+    value = "{${var.domain_name[0]}}"
   }
   set {
     name  = "sources"
     value = "{ingress,service,istio-gateway}"
   }
-   set {
+  set {
     name  = "istio-ingress-gateway"
     value = "istio-system/istio-ingressgateway"
   }
@@ -125,10 +125,10 @@ resource "helm_release" "istio-ingress" {
 }
 
 resource "helm_release" "istio-egress" {
-  provider   = helm.cinema
-  repository = local.istio-repo
-  name       = "istio-egressgateway"
-  chart      = "gateway"
+  provider        = helm.cinema
+  repository      = local.istio-repo
+  name            = "istio-egressgateway"
+  chart           = "gateway"
   cleanup_on_fail = true
   force_update    = true
   namespace       = kubernetes_namespace.istio-system.metadata.0.name
@@ -153,10 +153,10 @@ resource "helm_release" "istio-csr" {
 */
 
 resource "helm_release" "bookinfo" {
-  provider   = helm.cinema
-  repository = local.bookinfo-repo
-  name       = "bookinfo"
-  chart      = "istio-bookinfo"
+  provider        = helm.cinema
+  repository      = local.bookinfo-repo
+  name            = "bookinfo"
+  chart           = "istio-bookinfo"
   cleanup_on_fail = true
   force_update    = true
   namespace       = kubernetes_namespace.devingress.metadata.0.name
@@ -176,18 +176,33 @@ resource "helm_release" "bookinfo" {
 }
 
 resource "helm_release" "argocd" {
-  depends_on = [kubernetes_namespace.argocd]
-  provider   = helm.cinema
-  repository = local.argocd-repo
-  namespace  = "argocd"
-  name       = "argocd"
-  chart      = "argo-cd"
+  depends_on      = [kubernetes_namespace.argocd]
+  provider        = helm.cinema
+  repository      = local.argocd-repo
+  version         = "5.1.0"
+  namespace       = "argocd"
+  name            = "argocd"
+  chart           = "argo-cd"
   cleanup_on_fail = true
   force_update    = true
+  values = [
+    local.argocd_dex_google,
+    local.argocd_dex_rbac
+  ]
   set {
-    name = "server.extraArgs"
-    value = "- --insecure"
+    name  = "server.extraArgs"
+    value = "{--insecure}"
   }
+  /*
+  set_sensitive {
+    name  = "configs.secret.argocdServerAdminPassword"
+    value = var.argocd_oidc_client_secret
+  }
+  set {
+    name  = "configs.secret.argocdServerAdminPasswordMtime"
+    value = timestamp()
+  }
+ */
 }
 
 resource "helm_release" "cluster-issuer" {

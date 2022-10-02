@@ -15,3 +15,4 @@ provider "kubernetes" {
   )
   alias = "cinema"
 }
+

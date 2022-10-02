@@ -43,12 +43,13 @@ variable "argocd_oidc_issuer" {
 variable "argocd_oidc_client_id" {
   type        = string
   description = "ArgoCD OIDC Client ID"
-  default     = "argocd"
+  sensitive   = true
 }
 
 variable "argocd_oidc_client_secret" {
   type        = string
   description = "ArgoCD OIDC Client Secret"
+  sensitive   = true
 }
 
 variable "zerossl_email" {
@@ -64,4 +65,10 @@ variable "zerossl_eab_hmac_key" {
 variable "zerossl_eab_hmac_key_id" {
   type        = string
   description = "ZeroSSL EAB HMAC KEY ID"
+}
+
+variable "github_repo" {
+  type        = string
+  description = "GitHub Repository for ArgoCD deploy key"
+  default     = "microservices-docker-go-mongodb-tf"
 }
