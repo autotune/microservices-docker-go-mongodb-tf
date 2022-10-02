@@ -34,7 +34,7 @@ jobs:
           build_file: Dockerfile
           path: ./users/
           image: users
-          tag: ${{ env.USERS_IMAGE_NAME }}-${{ steps..get_version.outputs.VERSION }}
+          tag: ${{ env.USERS_IMAGE_NAME }}-${{ steps.get_version.outputs.VERSION }}
           cache: true
           cache_registry: cache
       - name: GitHub Package Registry - Website
