@@ -10,7 +10,15 @@ image:
   # Overrides the image tag whose default is the chart appVersion.
   tag: "1.1.16"
 
-imagePullSecrets:  [ wayofthesys-org-docker-login ]
+imagePullSecrets:  [ 
+  wayofthesys-org:
+    wayofthesys-org-docker-login
+]
+
+website:
+  args:
+    - "-usersAPI"
+
 nameOverride: ""
 fullnameOverride: ""
 
