@@ -5,10 +5,10 @@
 replicaCount: 1
 
 image:
-  repository: ghcr.io/mmorejon/cinema-bookings
+  repository: ghcr.io/autotune/microservices-docker-go-mongodb-tf/bookings
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: "1.1.16"
 
 imagePullSecrets: []
 nameOverride: ""
