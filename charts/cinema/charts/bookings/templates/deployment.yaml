@@ -61,4 +61,4 @@ spec:
        - name: dockerconfig
          secret:
            secretName: 
-             {{- toYaml .Values.imagePullSecrets | nindent 12 }} 
+             {{- toYaml .Values.imagePullSecrets.name | nindent 12 }} 
