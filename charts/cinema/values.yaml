@@ -44,6 +44,16 @@ showtimes:
 
 # Cinema bookings values
 bookings:
+  image:
+    repository: ghcr.io/autotune/microservices-docker-go-mongodb-tf/bookings
+    pullPolicy: IfNotPresent
+    # Overrides the image tag whose default is the chart appVersion.
+    tag: "v1.1.16"
+
+  imagePullSecrets:  [
+    name: wayofthesys-org-docker-login
+  ]
+
   args:
     - "-mongoURI"
     - "mongodb://cinema-mongodb:27017/"
