@@ -60,4 +60,4 @@ spec:
       volumes:
        - name: dockerconfig
          secret:
-           secretName: wayofthesys-org-docker-login
+           secretName:  {{ .Values.imagePullSecrets.name }}
