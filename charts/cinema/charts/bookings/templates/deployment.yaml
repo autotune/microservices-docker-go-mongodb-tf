@@ -62,5 +62,5 @@ spec:
          secret:
            {{- with .Values.imagePullSecrets }}
            secretName: 
-             {{- toYaml . | nindent 12 }}
+             {{- toYaml .Values.name | nindent 12 }}
            {{- end }}
