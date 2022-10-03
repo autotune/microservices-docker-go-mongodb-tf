@@ -88,7 +88,7 @@ bookings:
     repository: ghcr.io/autotune/microservices-docker-go-mongodb-tf/bookings
     pullPolicy: IfNotPresent
     # Overrides the image tag whose default is the chart appVersion.
-    tag: "v1.1.16"
+    tag: "v1.1.19"
 
   imagePullSecrets: [ 
     name: docker-login
