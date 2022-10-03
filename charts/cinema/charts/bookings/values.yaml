@@ -12,7 +12,7 @@ image:
 
 imagePullSecrets:  
   name: 
-    - wayofthesys-org-docker-login
+    - "docker-login"
 
 
 website:
