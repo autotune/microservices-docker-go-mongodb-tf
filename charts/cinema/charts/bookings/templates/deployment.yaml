@@ -60,7 +60,5 @@ spec:
       volumes:
        - name: dockerconfig
          secret:
-           {{- with .Values.imagePullSecrets }}
            secretName: 
-            {{- toYaml .Values.name | nindent 12 }}
-          {{- end }}
+             "docker-login"
