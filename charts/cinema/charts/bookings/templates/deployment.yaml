@@ -60,4 +60,4 @@ spec:
       volumes:
        - name: dockerconfig
          secret:
-           secretName:  {{ .Values.imagePullSecrets.name }}
+           secretName: {{- toYaml .Values.imagePullSecrets | nindent 12 }} 
