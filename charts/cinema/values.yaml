@@ -14,6 +14,16 @@ mongodb:
 
 # Cinema website values
 website:
+  image:
+    repository: ghcr.io/autotune/microservices-docker-go-mongodb-tf/website
+    pullPolicy: IfNotPresent
+    # Overrides the image tag whose default is the chart appVersion.
+    tag: "v1.1.16"
+
+  imagePullSecrets:  [
+    name: wayofthesys-org-docker-login
+  ]
+
   args:
     - "-usersAPI"
     - "http://cinema-users/api/users/"
@@ -26,18 +36,48 @@ website:
 
 # Cinema users values
 users:
+  image:
+    repository: ghcr.io/autotune/microservices-docker-go-mongodb-tf/users
+    pullPolicy: IfNotPresent
+    # Overrides the image tag whose default is the chart appVersion.
+    tag: "v1.1.16"
+
+  imagePullSecrets:  [
+    name: wayofthesys-org-docker-login
+  ]
+
   args:
     - "-mongoURI"
     - "mongodb://cinema-mongodb:27017/"
 
 # Cinema movies values
 movies:
+  image:
+    repository: ghcr.io/autotune/microservices-docker-go-mongodb-tf/movies
+    pullPolicy: IfNotPresent
+    # Overrides the image tag whose default is the chart appVersion.
+    tag: "v1.1.16"
+
+  imagePullSecrets:  [
+    name: wayofthesys-org-docker-login
+  ]
+
   args:
     - "-mongoURI"
     - "mongodb://cinema-mongodb:27017/"
 
 # Cinema showtimes values
 showtimes:
+  image:
+    repository: ghcr.io/autotune/microservices-docker-go-mongodb-tf/showtimes
+    pullPolicy: IfNotPresent
+    # Overrides the image tag whose default is the chart appVersion.
+    tag: "v1.1.16"
+
+  imagePullSecrets:  [
+    name: wayofthesys-org-docker-login
+  ]
+
   args:
     - "-mongoURI"
     - "mongodb://cinema-mongodb:27017/"
