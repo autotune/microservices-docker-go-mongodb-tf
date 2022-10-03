@@ -16,6 +16,7 @@ RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-w -s" -a -installsuffix cgo -o 
 
 # build a small image
 FROM alpine:3.14.1
+RUN apk add curl
 LABEL language="golang"
 LABEL org.opencontainers.image.source https://github.com/autotune/microservices-docker-go-mongodb-tf
 # import the user and group files from the builder
@@ -25,6 +26,5 @@ COPY --from=builder /go/bin/cinema-users /cinema-users
 RUN chown -R elf:"$(id -g elf)" /cinema-users
 # use a non-root user
 USER elf
-RUN apk add curl
 # run app
 ENTRYPOINT ["./cinema-users"]
