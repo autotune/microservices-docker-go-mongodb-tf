@@ -21,7 +21,7 @@ website:
     tag: "v1.1.16"
 
   imagePullSecrets:  [
-    name: wayofthesys-org-docker-login
+    name: docker-login
   ]
 
   args:
@@ -43,7 +43,7 @@ users:
     tag: "v1.1.16"
 
   imagePullSecrets:  [
-    name: wayofthesys-org-docker-login
+    name: docker-login
   ]
 
   args:
@@ -59,7 +59,7 @@ movies:
     tag: "v1.1.16"
 
   imagePullSecrets:  [
-    name: wayofthesys-org-docker-login
+    name: docker-login
   ]
 
   args:
@@ -75,7 +75,7 @@ showtimes:
     tag: "v1.1.16"
 
   imagePullSecrets:  [
-    name: wayofthesys-org-docker-login
+    name: docker-login
   ]
 
   args:
@@ -91,7 +91,7 @@ bookings:
     tag: "v1.1.16"
 
   imagePullSecrets:  [
-    name: wayofthesys-org-docker-login
+    name: docker-login
   ]
 
   args:
