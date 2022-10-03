@@ -16,6 +16,7 @@ RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-w -s" -a -installsuffix cgo -o 
 
 # build a small image
 FROM alpine:3.14.1
+RUN apk add curl
 LABEL language="golang"
 LABEL org.opencontainers.image.source https://github.com/autotune/microservices-docker-go-mongodb-tf
 # import the user and group files from the builder
@@ -24,7 +25,6 @@ COPY --from=builder /etc/passwd /etc/passwd
 COPY --from=builder /go/bin/cinema-bookings /cinema-bookings
 # change permissions since doing so via COPY --chown=elf:1000 fails
 RUN chown -R elf:"$(id -g elf)" cinema-bookings
-RUN apk add curl
 # use a non-root user
 USER elf
 # run app
