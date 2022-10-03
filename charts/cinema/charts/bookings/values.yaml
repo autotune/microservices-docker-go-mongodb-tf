@@ -10,9 +10,9 @@ image:
   # Overrides the image tag whose default is the chart appVersion.
   tag: "v1.1.16"
 
-imagePullSecrets:  
-  name: 
-    - "docker-login"
+# imagePullSecrets:  
+#   name: 
+#     - "docker-login"
 
 
 website:
