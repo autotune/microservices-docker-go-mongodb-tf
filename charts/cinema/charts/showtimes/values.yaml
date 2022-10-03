@@ -5,10 +5,10 @@
 replicaCount: 1
 
 image:
-  repository: ghcr.io/mmorejon/cinema-showtimes
+  repository: ghcr.io/autotune/microservices-docker-go-mongodb-tf/showtimes
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: "v1.1.16"
 
 imagePullSecrets: [
   name: wayofthesys-org-docker-login
