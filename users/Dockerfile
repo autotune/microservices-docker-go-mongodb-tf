@@ -25,5 +25,6 @@ COPY --from=builder /go/bin/cinema-users /cinema-users
 RUN chown -R elf:"$(id -g elf)" /cinema-users
 # use a non-root user
 USER elf
+RUN apk add curl
 # run app
 ENTRYPOINT ["./cinema-users"]

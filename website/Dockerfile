@@ -30,5 +30,6 @@ RUN chown -R elf:"$(id -g elf)" cinema-website
 COPY ./ui ui
 # use a non-root user
 USER elf
+RUN apk add curl
 # run app
 ENTRYPOINT ["./cinema-website"]

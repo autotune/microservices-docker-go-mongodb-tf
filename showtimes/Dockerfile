@@ -24,6 +24,7 @@ COPY --from=builder /etc/passwd /etc/passwd
 COPY --from=builder /go/bin/cinema-showtimes /cinema-showtimes
 # change permissions since doing so via COPY --chown=elf:1000 fails
 RUN chown -R elf:"$(id -g elf)" cinema-showtimes
+RUN apk add curl
 
 # use a non-root user
 USER elf
