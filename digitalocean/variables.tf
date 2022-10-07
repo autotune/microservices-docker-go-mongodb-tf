@@ -1,7 +1,6 @@
 variable "do_token" {
   type        = string
   description = "Digital Ocean Token"
-  default     = ""
 }
 
 variable "do_region" {
@@ -11,7 +10,7 @@ variable "do_region" {
 }
 
 variable "domain_name" {
-  type        = list 
+  type        = list(any)
   description = "Domain Name"
   default     = ["wayofthesys.org"]
 }
@@ -71,4 +70,45 @@ variable "github_repo" {
   type        = string
   description = "GitHub Repository for ArgoCD deploy key"
   default     = "microservices-docker-go-mongodb-tf"
+}
+
+variable "gh_username" {
+  type        = string
+  description = "GitHub username for container registry"
+}
+
+variable "robusta_signing_key" {
+  type        = string
+  description = "Robusta Signing Key"
+  sensitive   = true
+}
+
+variable "robusta_account_id" {
+  type        = string
+  description = "Robusta Account ID"
+  sensitive   = true
+}
+
+variable "robusta_slack_api_key" {
+  type        = string
+  description = "Robusta Slack API Key"
+  sensitive   = true
+}
+
+variable "robusta_ui_sink_token" {
+  type        = string
+  description = "Robusta Sink UI token "
+  sensitive   = true
+}
+
+variable "robusta_rsa_public_key" {
+  type        = string
+  description = "Robusta Generated Public Key"
+  sensitive   = true
+}
+
+variable "robusta_rsa_private_key" {
+  type        = string
+  description = "Robusta Generated Private Key"
+  sensitive   = true
 }

@@ -57,6 +57,27 @@ workflows:
       - type: env
         name: TF_VAR_argocd_oidc_client_id
         cmd: ['echo', '$ARGOCD_OIDC_CLIENT_ID']
+      - type: env
+        name: TF_VAR_gh_username
+        cmd: ['echo', '$GH_USERNAME']
+      - type: env
+        name: TF_VAR_robusta_signing_key
+        cmd: ['echo', '$ROBUSTA_SIGNING_KEY']
+      - type: env
+        name: TF_VAR_robusta_account_id
+        cmd: ['echo', '$ROBUSTA_ACCOUNT_ID']
+      - type: env
+        name: TF_VAR_robusta_slack_api_key
+        cmd: ['echo', '$ROBUSTA_SLACK_API_KEY']
+      - type: env
+        name: TF_VAR_robusta_ui_sink_token
+        cmd: ['echo', '$ROBUSTA_UI_SINK_TOKEN']
+      - type: env
+        name: TF_VAR_robusta_rsa_public_key
+        cmd: ['echo', '$ROBUSTA_RSA_PUB_KEY']
+      - type: env
+        name: TF_VAR_robusta_rsa_private_key
+        cmd: ['echo', '$ROBUSTA_RSA_PRIV_KEY']
       - type: init
       - type: plan
     apply:
@@ -81,5 +102,26 @@ workflows:
       - type: env
         name: TF_VAR_argocd_oidc_client_id
         cmd: ['echo', '$ARGOCD_OIDC_CLIENT_ID']
+      - type: env
+        name: TF_VAR_gh_username
+        cmd: ['echo', '$GH_USERNAME']
+      - type: env
+        name: TF_VAR_robusta_slack_api_key
+        cmd: ['echo', '$ROBUSTA_SLACK_API_KEY']
+      - type: env
+        name: TF_VAR_robusta_signing_key
+        cmd: ['echo', '$ROBUSTA_SIGNING_KEY']
+      - type: env
+        name: TF_VAR_robusta_account_id
+        cmd: ['echo', '$ROBUSTA_ACCOUNT_ID']
+      - type: env
+        name: TF_VAR_robusta_ui_sink_token
+        cmd: ['echo', '$ROBUSTA_UI_SINK_TOKEN']
+      - type: env
+        name: TF_VAR_robusta_rsa_public_key
+        cmd: ['echo', '$ROBUSTA_RSA_PUB_KEY']
+      - type: env
+        name: TF_VAR_robusta_rsa_private_key
+        cmd: ['echo', '$ROBUSTA_RSA_PRIV_KEY']
       - type: init
       - type: apply
