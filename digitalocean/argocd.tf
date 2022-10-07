@@ -68,6 +68,10 @@ resource "argocd_project" "cinema" {
       server    = digitalocean_kubernetes_cluster.cinema.endpoint
       namespace = "loadtesting"
     }
+    destination {
+      server    = digitalocean_kubernetes_cluster.cinema.endpoint
+      namespace = "robusta"
+    }
   }
 }
 
@@ -133,7 +137,7 @@ resource "argocd_application" "cinema" {
 }
 
 resource "argocd_application" "cinema-robusta" {
-  depends_on = [argocd_project.cinema]
+  depends_on = [argocd_project.cinema, kubernetes_namespace.robusta]
   provider   = argocd
   metadata {
     name      = "robusta"
@@ -151,14 +155,31 @@ resource "argocd_application" "cinema-robusta" {
       helm {
         release_name = "robusta"
 
+        skip_crds = "true"
+
         parameter {
           name  = "globalConfig.signing_key"
           value = var.robusta_signing_key
         }
 
         parameter {
+          name  = "enablePrometheusStack"
+          value = "true"
+        }
+
+        parameter {
+          name  = "enablePlatformPlaybooks"
+          value = "true"
+        }
+
+        parameter {
+          name  = "runner.sendAdditionalTelemetry"
+          value = "false"
+        }
+
+        parameter {
           name  = "clusterName"
-          value = "cinema"
+          value = "do-nyc3-cinema"
         }
 
         parameter {
@@ -209,8 +230,13 @@ resource "argocd_application" "cinema-robusta" {
     }
     destination {
       server    = digitalocean_kubernetes_cluster.cinema.endpoint
-      namespace = "cinema"
+      namespace = "robusta"
     }
+   # we run into https://blog.ediri.io/kube-prometheus-stack-and-argocd-23-how-to-remove-a-workaround
+   # if replace=true not enabled 
+   sync_policy {
+     sync_options = ["replace=true"]
+   }
   }
 }
 
