@@ -30,7 +30,9 @@ spec:
       containers:
         - name: {{ .Chart.Name }}
           env:
-            - name: MONGODB_ROOT_PASSWORD
+            - name: MONGODB_USERNAME
+              value: "root"
+            - name: MONGODB_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: cinema-mongodb
