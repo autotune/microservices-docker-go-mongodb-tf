@@ -8,9 +8,9 @@ mongodb:
   enabled: true
 
   auth:
-    enabled: false
+    enabled: true 
   persistence:
-    enabled: false
+    enabled: true
 
 # Cinema website values
 website:
