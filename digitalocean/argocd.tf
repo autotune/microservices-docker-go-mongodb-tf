@@ -194,7 +194,7 @@ resource "argocd_application" "cinema-robusta" {
 
         parameter {
           name  = "sinksConfig[0].slack_sink.slack_channel"
-          value = "robusta-dev"
+          value = "robusta-digitalocean"
         }
 
         parameter {
