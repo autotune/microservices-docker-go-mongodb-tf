@@ -209,7 +209,7 @@ resource "argocd_application" "cinema-robusta" {
 
         parameter {
           name  = "sinksConfig[0].robusta_sink.token"
-          value = var.robusta_ui_sink_token 
+          value = var.robusta_ui_sink_token
         }
 
         parameter {
@@ -232,11 +232,11 @@ resource "argocd_application" "cinema-robusta" {
       server    = digitalocean_kubernetes_cluster.cinema.endpoint
       namespace = "robusta"
     }
-   # we run into https://blog.ediri.io/kube-prometheus-stack-and-argocd-23-how-to-remove-a-workaround
-   # if replace=true not enabled 
-   sync_policy {
-     sync_options = ["replace=true"]
-   }
+    # we run into https://blog.ediri.io/kube-prometheus-stack-and-argocd-23-how-to-remove-a-workaround
+    # if replace=true not enabled 
+    sync_policy {
+      sync_options = ["replace=true"]
+    }
   }
 }
 
@@ -298,10 +298,10 @@ resource "argocd_application" "keda-loadtesting" {
   }
 }
 
-resource "argocd_application" "keda-scaledobject-cinema" {
+resource "argocd_application" "keda-scaledobject-cinema-bookings" {
   depends_on = [argocd_application.cinema-keda]
   metadata {
-    name      = "keda-cron"
+    name      = "keda-cinema-bookings"
     namespace = "argocd"
     labels = {
       env = "dev"
@@ -317,7 +317,7 @@ resource "argocd_application" "keda-scaledobject-cinema" {
         release_name = "keda-cron"
         parameter {
           name  = "keda.name"
-          value = "cinema"
+          value = "cinema-bookings"
         }
         parameter {
           name  = "keda.namespace"
@@ -326,6 +326,129 @@ resource "argocd_application" "keda-scaledobject-cinema" {
         parameter {
           name  = "keda.scaletargetname"
           value = "cinema-bookings"
+        }
+      }
+      repo_url        = "https://github.com/autotune/microservices-docker-go-mongodb-tf"
+      target_revision = "main"
+      path            = "charts/keda"
+    }
+    destination {
+      server    = digitalocean_kubernetes_cluster.cinema.endpoint
+      namespace = "cinema"
+    }
+  }
+}
+
+resource "argocd_application" "keda-scaledobject-cinema-users" {
+  depends_on = [argocd_application.cinema-keda]
+  metadata {
+    name      = "keda-cinema-users"
+    namespace = "argocd"
+    labels = {
+      env = "dev"
+    }
+  }
+
+  wait = true
+
+  spec {
+    project = "cinema"
+    source {
+      helm {
+        release_name = "keda-cron"
+        parameter {
+          name  = "keda.name"
+          value = "cinema-users"
+        }
+        parameter {
+          name  = "keda.namespace"
+          value = "cinema"
+        }
+        parameter {
+          name  = "keda.scaletargetname"
+          value = "cinema-users"
+        }
+      }
+      repo_url        = "https://github.com/autotune/microservices-docker-go-mongodb-tf"
+      target_revision = "main"
+      path            = "charts/keda"
+    }
+    destination {
+      server    = digitalocean_kubernetes_cluster.cinema.endpoint
+      namespace = "cinema"
+    }
+  }
+}
+
+resource "argocd_application" "keda-scaledobject-cinema-movies" {
+  depends_on = [argocd_application.cinema-keda]
+  metadata {
+    name      = "keda-cinema-movies"
+    namespace = "argocd"
+    labels = {
+      env = "dev"
+    }
+  }
+
+  wait = true
+
+  spec {
+    project = "cinema"
+    source {
+      helm {
+        release_name = "keda-cron"
+        parameter {
+          name  = "keda.name"
+          value = "cinema-movies"
+        }
+        parameter {
+          name  = "keda.namespace"
+          value = "cinema"
+        }
+        parameter {
+          name  = "keda.scaletargetname"
+          value = "cinema-movies"
+        }
+      }
+      repo_url        = "https://github.com/autotune/microservices-docker-go-mongodb-tf"
+      target_revision = "main"
+      path            = "charts/keda"
+    }
+    destination {
+      server    = digitalocean_kubernetes_cluster.cinema.endpoint
+      namespace = "cinema"
+    }
+  }
+}
+
+resource "argocd_application" "keda-scaledobject-cinema-showtimes" {
+  depends_on = [argocd_application.cinema-keda]
+  metadata {
+    name      = "keda-cinema-showtimes"
+    namespace = "argocd"
+    labels = {
+      env = "dev"
+    }
+  }
+
+  wait = true
+
+  spec {
+    project = "cinema"
+    source {
+      helm {
+        release_name = "keda-cron"
+        parameter {
+          name  = "keda.name"
+          value = "cinema-showtimes"
+        }
+        parameter {
+          name  = "keda.namespace"
+          value = "cinema"
+        }
+        parameter {
+          name  = "keda.scaletargetname"
+          value = "cinema-showtimes"
         }
       }
       repo_url        = "https://github.com/autotune/microservices-docker-go-mongodb-tf"
