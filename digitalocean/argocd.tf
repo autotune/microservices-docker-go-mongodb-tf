@@ -240,7 +240,7 @@ resource "argocd_application" "cinema-robusta" {
   }
 }
 
-resource "argocd_application" "cinema-keda" {
+resource "argocd_application" "cinema-keda-bookings" {
   depends_on = [argocd_project.cinema]
   metadata {
     name      = "cinema-keda"
@@ -325,7 +325,7 @@ resource "argocd_application" "keda-scaledobject-cinema" {
         }
         parameter {
           name  = "keda.scaletargetname"
-          value = "cinema"
+          value = "cinema-bookings"
         }
       }
       repo_url        = "https://github.com/autotune/microservices-docker-go-mongodb-tf"
