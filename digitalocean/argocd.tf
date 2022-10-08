@@ -168,8 +168,18 @@ resource "argocd_application" "cinema-robusta" {
         }
 
         parameter {
+          name  = "playbooksPersistentVolume"
+          value = "true"
+        }
+
+        parameter {
           name  = "enablePlatformPlaybooks"
           value = "true"
+        }
+
+        parameter {
+          name  = "playbookRepos.my_extra_playbooks.url"
+          value = "https://github.com/autotune/microservices-docker-go-mongodb-tf"
         }
 
         parameter {
