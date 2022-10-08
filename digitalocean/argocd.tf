@@ -179,7 +179,7 @@ resource "argocd_application" "cinema-robusta" {
 
         parameter {
           name  = "playbookRepos.my_extra_playbooks.url"
-          value = "https://github.com/autotune/microservices-docker-go-mongodb-tf"
+          value = "https://github.com/autotune/demo-actions-robusta"
         }
 
         parameter {
