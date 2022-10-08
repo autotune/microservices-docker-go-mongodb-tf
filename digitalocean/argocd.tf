@@ -444,7 +444,7 @@ resource "argocd_application" "keda-scaledobject-cinema-showtimes" {
         }
         parameter {
           name  = "keda.namespace"
-          value = "cinema-bookings"
+          value = "cinema"
         }
         parameter {
           name  = "keda.scaletargetname"
