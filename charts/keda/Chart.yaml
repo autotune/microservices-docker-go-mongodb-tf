@@ -1,0 +1,12 @@
+apiVersion: v2
+name: keda
+description: A Helm chart to deploy Cinema project in Kubernetes
+# chart type
+type: application
+# chart version
+version: 0.0.1
+# cinema app version
+appVersion: "v0.0.1"
+dependencies:
+  - name: keda 
+    version: 0.x.x

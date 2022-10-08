@@ -318,7 +318,7 @@ resource "argocd_application" "keda-scaledobject-cinema-bookings" {
         parameter {
           name  = "keda.name"
           value = "cinema-bookings"
-        }
+          }
         parameter {
           name  = "keda.namespace"
           value = "cinema"
@@ -444,7 +444,7 @@ resource "argocd_application" "keda-scaledobject-cinema-showtimes" {
         }
         parameter {
           name  = "keda.namespace"
-          value = "cinema"
+          value = "cinema-bookings"
         }
         parameter {
           name  = "keda.scaletargetname"

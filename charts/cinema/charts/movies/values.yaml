@@ -5,12 +5,14 @@
 replicaCount: 1
 
 image:
-  repository: ghcr.io/mmorejon/cinema-movies
+  repository: ghcr.io/autotune/microservices-docker-go-mongodb-tf/movies
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: "v1.1.16"
 
-imagePullSecrets: []
+imagePullSecrets: [
+  name: docker-login
+]
 nameOverride: ""
 fullnameOverride: ""
 

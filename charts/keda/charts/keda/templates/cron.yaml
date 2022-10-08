@@ -1,0 +1,15 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: {{ .Values.name }} 
+  namespace: {{ .Values.namespace }}
+spec:
+  scaleTargetRef:
+    name: {{ .Values.scaletargetname }}
+  triggers:
+  - type: cron
+    metadata:
+      timezone: America/Chicago
+      start: 0 1 * * *
+      end: 0 8 * * *
+      desiredReplicas: "1"
