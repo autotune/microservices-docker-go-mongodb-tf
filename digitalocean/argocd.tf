@@ -240,7 +240,7 @@ resource "argocd_application" "cinema-robusta" {
   }
 }
 
-resource "argocd_application" "cinema-keda-bookings" {
+resource "argocd_application" "cinema-keda" {
   depends_on = [argocd_project.cinema]
   metadata {
     name      = "cinema-keda"
