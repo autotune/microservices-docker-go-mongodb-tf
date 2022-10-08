@@ -30,6 +30,9 @@ spec:
       containers:
         - name: {{ .Chart.Name }}
           env:
+            - name: enableCredentials
+              value: "true"
+
             - name: MONGODB_USERNAME
               value: "root"
             - name: MONGODB_PASSWORD
