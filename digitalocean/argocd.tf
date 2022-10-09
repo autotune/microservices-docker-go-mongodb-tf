@@ -157,7 +157,7 @@ resource "argocd_application" "cinema-robusta" {
 
         skip_crds = "true"
 
-        value_files = ["robusta_playbooks.yml"]
+        value_files = [file("${path.module}/robusta_playbooks.yml")]
 
         parameter {
           name  = "globalConfig.signing_key"
