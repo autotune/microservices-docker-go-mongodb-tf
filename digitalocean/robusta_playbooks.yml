@@ -1,4 +1,4 @@
-customPlaybooks
+customPlaybooks:
 - triggers:
     - on_replicaset_update: {}
   actions:
