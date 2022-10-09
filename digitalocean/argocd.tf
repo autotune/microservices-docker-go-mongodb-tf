@@ -195,7 +195,7 @@ resource "argocd_application" "cinema-robusta" {
 
         parameter {
           name  = "customPlaybooks[0].actions.resource_babysitter.fields_to_monitor"
-          value = replace(tostring(jsonencode(["spec.replicas"])), "'", "")
+          value = replace("['spec.replicas']", "\"", "")
         }
 
         parameter {
