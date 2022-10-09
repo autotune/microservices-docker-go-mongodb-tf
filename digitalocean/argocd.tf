@@ -194,7 +194,7 @@ resource "argocd_application" "cinema-robusta" {
 
 
         parameter {
-          name  = "customPlaybooks[0].actions.resource_babysitter"
+          name  = "customPlaybooks[0].actions.resource_babysitter[0]"
           value = <<-EOT
 fields_to_monitor: ["spec.replicas"]
 EOT
