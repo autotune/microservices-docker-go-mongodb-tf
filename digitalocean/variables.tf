@@ -3,6 +3,10 @@ variable "do_token" {
   description = "Digital Ocean Token"
 }
 
+variable "escape_list" {
+  type    = string
+  default = "[\"spec.replicas\"]"
+}
 variable "do_region" {
   type        = string
   description = "Digital Ocean Region"
