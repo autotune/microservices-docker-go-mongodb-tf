@@ -184,7 +184,7 @@ resource "argocd_application" "cinema-robusta" {
 
         parameter {
           name  = "customPlaybooks[0].actions[0]"
-          value = "on_replicaset_update: {}"
+          value = replace(yamlencode("on_replicaset_update: {}"), "'", "")
         }
 
         /* parameter {
