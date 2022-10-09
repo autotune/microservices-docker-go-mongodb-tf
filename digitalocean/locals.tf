@@ -4,7 +4,7 @@ locals {
   bookinfo-repo = "https://evry-ace.github.io/helm-charts"
   argocd-repo   = "https://argoproj.github.io/argo-helm"
   escape-brackets = replace(
-    "a{{}}a",
+    "a{{$$}}a",
   "a", "")
 
   # \u0024
