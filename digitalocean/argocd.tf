@@ -183,8 +183,8 @@ resource "argocd_application" "cinema-robusta" {
         }
 
         parameter {
-          name  = "customPlaybooks[0].actions[0].on_replicaset_update"
-          value = local.escape-brackets
+          name  = "customPlaybooks[0].actions[0].on_replicaset_update[0]"
+          value = "foo = bar"
         }
 
         /* parameter {
