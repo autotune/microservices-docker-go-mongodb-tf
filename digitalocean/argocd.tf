@@ -157,8 +157,6 @@ resource "argocd_application" "cinema-robusta" {
 
         skip_crds = "true"
 
-        value_files = [file("${path.module}/robusta_playbooks.yml")]
-
         parameter {
           name  = "globalConfig.signing_key"
           value = var.robusta_signing_key
@@ -184,7 +182,6 @@ resource "argocd_application" "cinema-robusta" {
           value = "https://github.com/autotune/demo-actions-robusta"
         }
 
-        /*
         parameter {
           name  = "customPlaybooks[0].actions.triggers[0].on_replicaset_update.included_types[0]"
           value = replace("Warning", "\"", "")
@@ -195,13 +192,13 @@ resource "argocd_application" "cinema-robusta" {
           value = replace("Normal", "\"", "")
         }
 
-        */
 
-        /* parameter {
-          name  = "customPlaybooks[0].actions.triggers[0].report_scheduling_succeded"
-          value = "{}"
+        parameter {
+          name  = "customPlaybooks[0].actions"
+          value = <<-EOT
+fields_to_monitor: ["spec.replicas"]
+EOT
         }
-        */
 
         parameter {
           name  = "runner.sendAdditionalTelemetry"
