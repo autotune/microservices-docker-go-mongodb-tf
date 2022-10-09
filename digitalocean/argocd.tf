@@ -192,6 +192,11 @@ resource "argocd_application" "cinema-robusta" {
           value = replace("Normal", "\"", "")
         }
 
+        parameter {
+          name  = "customPlaybooks[0].actions[0].resource_babysitter[0].fields_to_monitor"
+          value = "[\"spec.replicas\"]"
+        }
+
 
         /* parameter {
           name  = "customPlaybooks[0].actions.triggers[0].report_scheduling_succeded"
