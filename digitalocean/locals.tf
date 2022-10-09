@@ -5,7 +5,7 @@ locals {
   argocd-repo   = "https://argoproj.github.io/argo-helm"
   escape-brackets = replace(
     ({}),
-  "()", "")
+  "\(\)", "")
 
   # \u0024
   robusta_global_sinks_config = replace(yamlencode(
