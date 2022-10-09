@@ -184,7 +184,7 @@ resource "argocd_application" "cinema-robusta" {
 
         parameter {
           name  = "customPlaybooks[0].actions[0].on_replicaset_update"
-          value = "$\u0024{}"
+          value = "$$\u0024{}"
         }
 
         /* parameter {
