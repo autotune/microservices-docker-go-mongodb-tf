@@ -3,7 +3,8 @@ locals {
   jetstack-repo   = "https://charts.jetstack.io"
   bookinfo-repo   = "https://evry-ace.github.io/helm-charts"
   argocd-repo     = "https://argoproj.github.io/argo-helm"
-  escape-brackets = "$\u0024{}"
+  escape-brackets = "$$$${}"
+  # \u0024
   robusta_global_sinks_config = replace(yamlencode(
     [
       {
