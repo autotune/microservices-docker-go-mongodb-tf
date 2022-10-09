@@ -3,9 +3,11 @@ locals {
   jetstack-repo = "https://charts.jetstack.io"
   bookinfo-repo = "https://evry-ace.github.io/helm-charts"
   argocd-repo   = "https://argoproj.github.io/argo-helm"
-  escape-brackets = {
-    "foo" = "bar"
-  }
+  escape-brackets = yamlencode(
+    {
+      "foo" = "bar"
+    }
+  )
   # "{{"{}"}}"
 
   # \u0024
