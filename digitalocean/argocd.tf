@@ -183,15 +183,9 @@ resource "argocd_application" "cinema-robusta" {
         }
 
         parameter {
-          name  = "customPlaybooks[0].actions.triggers[0].on_replicaset_update.included_types[0]"
-          value = replace("Warning", "\"", "")
+          name  = "customPlaybooks[0].actions.triggers[0].on_replicaset_update"
+          value = "~" 
         }
-
-        parameter {
-          name  = "customPlaybooks[0].actions.triggers[0].on_replicaset_update.included_types[1]"
-          value = replace("Normal", "\"", "")
-        }
-
 
         parameter {
           name  = "customPlaybooks[0].actions.resource_babysitter.fields_to_monitor[0]"
