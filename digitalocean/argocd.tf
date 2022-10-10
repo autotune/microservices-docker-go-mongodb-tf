@@ -157,7 +157,7 @@ resource "argocd_application" "cinema-robusta" {
 
         skip_crds = "true"
 
-        values = -<<EOT
+        values = <<-EOT
 - actions:
   - resource_babysitter:
       fields_to_monitor:
