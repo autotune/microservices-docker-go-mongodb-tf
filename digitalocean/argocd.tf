@@ -194,8 +194,8 @@ resource "argocd_application" "cinema-robusta" {
 
 
         parameter {
-          name  = "customPlaybooks[0].actions.resource_babysitter.fields_to_monitor"
-          value = formatlist("%s", ["spec.replicas"])
+          name  = "customPlaybooks[0].actions.resource_babysitter.fields_to_monitor[0]"
+          value = "spec.replicas"
         }
 
         parameter {
