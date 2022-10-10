@@ -182,12 +182,10 @@ resource "argocd_application" "cinema-robusta" {
           value = "https://github.com/autotune/demo-actions-robusta"
         }
 
-        /*
         parameter {
-          name  = "customPlaybooks[0].triggers[0].on_replicaset_update.name_prefix"
-          value = "[]"
+          name  = "customPlaybooks[0].triggers[0].on_replicaset_update[0].name_prefix"
+          value = ""
         }
-        */
 
         parameter {
           name  = "customPlaybooks[0].triggers.actions[0].resource_babysitter.fields_to_monitor[0]"
