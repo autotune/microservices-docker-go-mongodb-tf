@@ -157,6 +157,15 @@ resource "argocd_application" "cinema-robusta" {
 
         skip_crds = "true"
 
+        values = -<<EOT
+- actions:
+  - resource_babysitter:
+      fields_to_monitor:
+      - spec.replicas
+  triggers:
+  - on_replicaset_update: 
+      name_prefix: ""
+EOT 
         parameter {
           name  = "globalConfig.signing_key"
           value = var.robusta_signing_key
@@ -182,15 +191,17 @@ resource "argocd_application" "cinema-robusta" {
           value = "https://github.com/autotune/demo-actions-robusta"
         }
 
+        /*
         parameter {
           name  = "customPlaybooks[0].triggers[0].on_replicaset_update[0].name_prefix"
-          value = ""
+          value = "{}"
         }
 
         parameter {
           name  = "customPlaybooks[0].triggers.actions[0].resource_babysitter.fields_to_monitor[0]"
           value = "spec.replicas"
         }
+        */
 
         parameter {
           name  = "runner.sendAdditionalTelemetry"
