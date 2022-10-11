@@ -215,7 +215,7 @@ EOT
         }
 
         parameter {
-          name  = "globalConfig.account_key"
+          name  = "globalConfig.account_id"
           value = var.robusta_account_id
         }
 
