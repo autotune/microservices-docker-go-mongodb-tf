@@ -162,7 +162,7 @@ customPlaybooks:
 - actions:
   - resource_babysitter:
       fields_to_monitor:
-      - spec.replicas
+      - replicas
   triggers:
   - on_replicaset_update: 
       name_prefix: ""
