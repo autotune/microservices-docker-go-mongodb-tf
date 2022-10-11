@@ -159,7 +159,6 @@ resource "argocd_application" "metrics-server" {
         release_name = "metrics-server"
       }
       repo_url = "https://kubernetes-sigs.github.io/metrics-server"
-      path     = "metrics-server"
     }
     destination {
       server    = digitalocean_kubernetes_cluster.cinema.endpoint
