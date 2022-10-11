@@ -8,8 +8,12 @@ mongodb:
   enabled: true
 
   externalAccess:
-    autoDiscovery: true
+    autoDiscovery: 
+      enabled: true
     enabled: true
+    service:
+      type: LoadBalancer
+      port: 27017 
 
   auth:
     enabled: false
