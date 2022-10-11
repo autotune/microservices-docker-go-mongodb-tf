@@ -36,7 +36,6 @@ resource "argocd_project" "metrics-server" {
   depends_on = [helm_release.argocd]
   metadata {
     name      = "cinema"
-    namespace = "kube-system"
     labels = {
       environment = "dev"
     }
@@ -54,7 +53,7 @@ resource "argocd_project" "metrics-server" {
 
     destination {
       server    = digitalocean_kubernetes_cluster.cinema.endpoint
-      namespace = "kube-system"
+      namespace = "*"
     }
   }
 }
