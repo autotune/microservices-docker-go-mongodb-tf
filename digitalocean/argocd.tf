@@ -49,12 +49,12 @@ resource "argocd_project" "metrics-server" {
       kind  = "*"
     }
 
-    description  = "Cinema"
-    source_repos = ["https://github.com/autotune/microservices-docker-go-mongodb-tf", "https://kedacore.github.io/charts", "https://robusta-charts.storage.googleapis.com", "https://github.com/kubernetes-sigs/metrics-server"]
+    description  = "Metrics Server"
+    source_repos = ["https://github.com/kubernetes-sigs/metrics-server"]
 
     destination {
       server    = digitalocean_kubernetes_cluster.cinema.endpoint
-      namespace = "*"
+      namespace = "kube-system"
     }
   }
 }
