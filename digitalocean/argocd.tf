@@ -160,6 +160,10 @@ resource "argocd_application" "cinema" {
     source {
       helm {
         release_name = "cinema"
+        parameter {
+          name  = "mongodb.replicaCount"
+          value = var.robusta_signing_key
+        }
       }
       repo_url        = "https://github.com/autotune/microservices-docker-go-mongodb-tf"
       path            = "charts/cinema"
@@ -175,7 +179,7 @@ resource "argocd_application" "cinema" {
 resource "argocd_application" "metrics-server" {
   depends_on = [argocd_project.metrics-server]
   metadata {
-    name      = "metrics-server"
+    name = "metrics-server"
     # namespace = "kube-system"
     labels = {
       env = "dev"
