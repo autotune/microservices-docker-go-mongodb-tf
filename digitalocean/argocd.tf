@@ -50,11 +50,15 @@ resource "argocd_project" "cinema" {
     }
 
     description  = "Cinema"
-    source_repos = ["https://github.com/autotune/microservices-docker-go-mongodb-tf", "https://kedacore.github.io/charts", "https://robusta-charts.storage.googleapis.com"]
+    source_repos = ["https://github.com/autotune/microservices-docker-go-mongodb-tf", "https://kedacore.github.io/charts", "https://robusta-charts.storage.googleapis.com", "https://kubernetes-sigs.github.io/metrics-server"]
 
     destination {
       server    = "https://kubernetes.default.svc"
       namespace = "cinema"
+    }
+    destination {
+      server    = digitalocean_kubernetes_cluster.cinema.endpoint
+      namespace = "kube-system"
     }
     destination {
       server    = digitalocean_kubernetes_cluster.cinema.endpoint
@@ -132,6 +136,34 @@ resource "argocd_application" "cinema" {
     destination {
       server    = digitalocean_kubernetes_cluster.cinema.endpoint
       namespace = "cinema"
+    }
+  }
+}
+
+resource "argocd_application" "metrics-server" {
+  depends_on = [argocd_project.cinema]
+  metadata {
+    name      = "metrics-server"
+    namespace = "kube-system"
+    labels = {
+      env = "dev"
+    }
+  }
+
+  wait = true
+
+  spec {
+    project = "cinema"
+    source {
+      helm {
+        release_name = "metrics-server"
+      }
+      repo_url = "https://kubernetes-sigs.github.io/metrics-server/"
+      path     = "metrics-server/metrics-server"
+    }
+    destination {
+      server    = digitalocean_kubernetes_cluster.cinema.endpoint
+      namespace = "kube-system"
     }
   }
 }
