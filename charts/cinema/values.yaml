@@ -23,8 +23,7 @@ mongodb:
   annotations:
     sidecar.istio.io/inject: "false"
 
-  auth.databases:
-    - hello 
+  auth.databases: ["hello"]
 
   extraDeploy:
 ## This needs to be uncommented and added to 'extraDeploy' in order to use the replicaset 'mongo-labeler' sidecar
