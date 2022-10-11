@@ -13,6 +13,8 @@ mongodb:
   persistence:
     enabled: true
 
+  replicaCount: 10
+
 # Cinema website values
 website:
   image:
