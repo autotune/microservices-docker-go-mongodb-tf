@@ -7,6 +7,9 @@ mongodb:
   # define if use mongodb dependency
   enabled: true
 
+  rbac:
+   create: true 
+
   externalAccess:
     autoDiscovery: 
       enabled: true
