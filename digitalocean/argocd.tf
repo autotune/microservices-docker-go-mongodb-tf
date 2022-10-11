@@ -34,6 +34,7 @@ resource "argocd_repository_credentials" "cinema" {
 
 resource "argocd_project" "metrics-server" {
   depends_on = [helm_release.argocd]
+  namespace = "argocd"
   metadata {
     name      = "cinema"
     labels = {
