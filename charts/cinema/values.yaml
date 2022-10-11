@@ -11,7 +11,7 @@ mongodb:
     enabled: false
     
   persistence:
-    enabled: true
+    enabled: false
 
   architecture: replicaset 
 
