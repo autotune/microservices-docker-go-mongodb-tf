@@ -53,15 +53,12 @@ resource "argocd_project" "metrics-server" {
     source_repos = ["https://github.com/autotune/microservices-docker-go-mongodb-tf", "https://kedacore.github.io/charts", "https://robusta-charts.storage.googleapis.com", "https://github.com/kubernetes-sigs/metrics-server"]
 
     destination {
-      server    = "https://kubernetes.default.svc"
-      namespace = "cinema"
-    }
-    destination {
       server    = digitalocean_kubernetes_cluster.cinema.endpoint
       namespace = "kube-system"
     }
   }
 }
+
 resource "argocd_project" "cinema" {
   depends_on = [helm_release.argocd]
   metadata {
