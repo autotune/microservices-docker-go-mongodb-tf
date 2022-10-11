@@ -50,7 +50,7 @@ resource "argocd_project" "cinema" {
     }
 
     description  = "Cinema"
-    source_repos = ["https://github.com/autotune/microservices-docker-go-mongodb-tf", "https://kedacore.github.io/charts", "https://robusta-charts.storage.googleapis.com", "https://kubernetes-sigs.github.io/metrics-server"]
+    source_repos = ["https://github.com/autotune/microservices-docker-go-mongodb-tf", "https://kedacore.github.io/charts", "https://robusta-charts.storage.googleapis.com", "https://github.com/kubernetes-sigs/metrics-server"]
 
     destination {
       server    = "https://kubernetes.default.svc"
