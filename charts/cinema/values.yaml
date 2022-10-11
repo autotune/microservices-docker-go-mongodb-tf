@@ -8,6 +8,7 @@ mongodb:
   enabled: true
 
   externalAccess:
+    autoDiscovery: true
     enabled: true
 
   auth:
