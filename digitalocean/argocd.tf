@@ -158,7 +158,9 @@ resource "argocd_application" "metrics-server" {
       helm {
         release_name = "metrics-server"
       }
-      repo_url = "https://kubernetes-sigs.github.io/metrics-server"
+      repo_url        = "https://github.com/kubernetes-sigs/metrics-server"
+      path            = "charts/metrics-server"
+      target_revision = "master"
     }
     destination {
       server    = digitalocean_kubernetes_cluster.cinema.endpoint
