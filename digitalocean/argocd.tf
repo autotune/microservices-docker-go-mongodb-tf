@@ -49,6 +49,11 @@ resource "argocd_project" "metrics-server" {
       kind  = "*"
     }
 
+    namespace_resource_whitelist {
+      group = "*"
+      kind  = "*"
+    }
+
     description  = "Metrics Server"
     source_repos = ["https://github.com/kubernetes-sigs/metrics-server"]
 
