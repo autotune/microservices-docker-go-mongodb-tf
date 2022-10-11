@@ -17,6 +17,9 @@ mongodb:
 
   replicaCount: 2 
 
+  commonAnnotations:
+    sidecar.istio.io/inject: "false"
+
 # Cinema website values
 website:
   image:
