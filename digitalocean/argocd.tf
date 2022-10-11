@@ -32,6 +32,36 @@ resource "argocd_repository_credentials" "cinema" {
   ssh_private_key = tls_private_key.argocd.private_key_openssh
 }
 
+resource "argocd_project" "metrics-server" {
+  depends_on = [helm_release.argocd]
+  metadata {
+    name      = "cinema"
+    namespace = "kube-system"
+    labels = {
+      environment = "dev"
+    }
+  }
+
+  spec {
+
+    cluster_resource_whitelist {
+      group = "*"
+      kind  = "*"
+    }
+
+    description  = "Cinema"
+    source_repos = ["https://github.com/autotune/microservices-docker-go-mongodb-tf", "https://kedacore.github.io/charts", "https://robusta-charts.storage.googleapis.com", "https://github.com/kubernetes-sigs/metrics-server"]
+
+    destination {
+      server    = "https://kubernetes.default.svc"
+      namespace = "cinema"
+    }
+    destination {
+      server    = digitalocean_kubernetes_cluster.cinema.endpoint
+      namespace = "kube-system"
+    }
+  }
+}
 resource "argocd_project" "cinema" {
   depends_on = [helm_release.argocd]
   metadata {
@@ -141,7 +171,7 @@ resource "argocd_application" "cinema" {
 }
 
 resource "argocd_application" "metrics-server" {
-  depends_on = [argocd_project.cinema]
+  depends_on = [argocd_project.metrics-server]
   metadata {
     name      = "metrics-server"
     namespace = "kube-system"
@@ -153,7 +183,7 @@ resource "argocd_application" "metrics-server" {
   wait = true
 
   spec {
-    project = "cinema"
+    project = "metrics-server"
     source {
       helm {
         release_name = "metrics-server"
@@ -162,6 +192,7 @@ resource "argocd_application" "metrics-server" {
       path            = "charts/metrics-server"
       target_revision = "master"
     }
+
     destination {
       server    = digitalocean_kubernetes_cluster.cinema.endpoint
       namespace = "kube-system"
