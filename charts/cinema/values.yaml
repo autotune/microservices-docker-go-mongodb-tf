@@ -15,7 +15,7 @@ mongodb:
 
   architecture: replicaset 
 
-  replicaCount: 1 
+  replicaCount: 2 
 
 # Cinema website values
 website:
