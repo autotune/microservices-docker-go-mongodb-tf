@@ -220,17 +220,17 @@ EOT
         }
 
         parameter {
-          name  = "sinksConfig[0].slack_sink.name"
+          name  = "sinksConfig[1].slack_sink.name"
           value = "main_slack_sink"
         }
 
         parameter {
-          name  = "sinksConfig[0].slack_sink.slack_channel"
+          name  = "sinksConfig[1].slack_sink.slack_channel"
           value = "robusta-digitalocean"
         }
 
         parameter {
-          name  = "sinksConfig[0].slack_sink.api_key"
+          name  = "sinksConfig[1].slack_sink.api_key"
           value = var.robusta_slack_api_key
         }
 
