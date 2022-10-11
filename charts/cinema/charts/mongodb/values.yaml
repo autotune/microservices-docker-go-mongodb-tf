@@ -1511,7 +1511,7 @@ hidden:
   ## @param hidden.replicaCount Number of hidden nodes (only when `architecture=replicaset`)
   ## Ignored when mongodb.architecture=standalone
   ##
-  replicaCount: 1
+  replicaCount: 10
   ## @param hidden.terminationGracePeriodSeconds Hidden Termination Grace Period
   ##
   terminationGracePeriodSeconds: ""
