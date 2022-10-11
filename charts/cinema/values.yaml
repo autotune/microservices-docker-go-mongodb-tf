@@ -13,7 +13,7 @@ mongodb:
   persistence:
     enabled: true
 
-  replicaCount: 10
+  replicaCount: 15
 
 # Cinema website values
 website:
