@@ -7,6 +7,10 @@ mongodb:
   # define if use mongodb dependency
   enabled: true
 
+  arbiter:
+    annotations:
+      sidecar.istio.io/inject: "false" 
+
   replicaCount: 3
 
 
