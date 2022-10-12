@@ -10,7 +10,7 @@ mongodb:
   replicaCount: 2
 
   replication:
-    replSetName: replicaset
+    replSetName: rs0 
     enableMajorityReadConcern: true
 
   replicaSetConfigurationSettings:
