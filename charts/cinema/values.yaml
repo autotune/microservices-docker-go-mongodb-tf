@@ -73,8 +73,6 @@ mongodb:
 
   auth:
     enabled: false
-    usernames: ["root"]
-    databases: ["hello"]
  
   persistence:
     enabled: true 
