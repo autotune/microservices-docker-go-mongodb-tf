@@ -29,6 +29,25 @@ website:
     - "-bookingsAPI"
     - "http://cinema-bookings/api/bookings/"
 
+  resources:
+    # We usually recommend not to specify default resources and to leave this as a conscious
+    # choice for the user. This also increases chances charts run on environments with little
+    # resources, such as Minikube. If you do want to specify resources, uncomment the following
+    # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+    limits:
+      memory: 1G
+    requests:
+      cpu: 100m
+      memory: 128Mi
+
+  autoscaling:
+    enabled: true
+    minReplicas: 1
+    maxReplicas: 100
+    targetCPUUtilizationPercentage: 25
+    targetMemoryUtilizationPercentage: 25 
+
+
 # Cinema users values
 users:
   image:
@@ -44,6 +63,24 @@ users:
   args:
     - "-mongoURI"
     - "mongodb://mongodb-replica-set-svc:27017/?replicaSet=mongodb-replica-set"
+
+  resources:
+    # We usually recommend not to specify default resources and to leave this as a conscious
+    # choice for the user. This also increases chances charts run on environments with little
+    # resources, such as Minikube. If you do want to specify resources, uncomment the following
+    # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+    limits:
+      memory: 1G
+    requests:
+      cpu: 100m
+      memory: 128Mi
+
+  autoscaling:
+    enabled: true
+    minReplicas: 1
+    maxReplicas: 100
+    targetCPUUtilizationPercentage: 25
+    targetMemoryUtilizationPercentage: 25 
 
 # Cinema movies values
 movies:
@@ -61,6 +98,24 @@ movies:
     - "-mongoURI"
     - "mongodb://mongodb-replica-set-svc:27017/?replicaSet=mongodb-replica-set"
 
+  resources:
+    # We usually recommend not to specify default resources and to leave this as a conscious
+    # choice for the user. This also increases chances charts run on environments with little
+    # resources, such as Minikube. If you do want to specify resources, uncomment the following
+    # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+    limits:
+      memory: 1G
+    requests:
+      cpu: 100m
+      memory: 128Mi
+
+  autoscaling:
+    enabled: true
+    minReplicas: 1
+    maxReplicas: 100
+    targetCPUUtilizationPercentage: 25
+    targetMemoryUtilizationPercentage: 25 
+
 # Cinema showtimes values
 showtimes:
   image:
@@ -76,6 +131,24 @@ showtimes:
   args:
     - "-mongoURI"
     - "mongodb://mongodb-replica-set-svc:27017/?replicaSet=mongodb-replica-set"
+
+  resources:
+    # We usually recommend not to specify default resources and to leave this as a conscious
+    # choice for the user. This also increases chances charts run on environments with little
+    # resources, such as Minikube. If you do want to specify resources, uncomment the following
+    # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+    limits:
+      memory: 1G
+    requests:
+      cpu: 100m
+      memory: 128Mi
+
+  autoscaling:
+    enabled: true
+    minReplicas: 1
+    maxReplicas: 100
+    targetCPUUtilizationPercentage: 25
+    targetMemoryUtilizationPercentage: 25 
 
 # Cinema bookings values
 bookings:
@@ -93,3 +166,21 @@ bookings:
   args:
     - "-mongoURI"
     - "mongodb://mongodb-replica-set-svc:27017/?replicaSet=mongodb-replica-set"
+
+  resources:
+    # We usually recommend not to specify default resources and to leave this as a conscious
+    # choice for the user. This also increases chances charts run on environments with little
+    # resources, such as Minikube. If you do want to specify resources, uncomment the following
+    # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+    limits:
+      memory: 1G
+    requests:
+      cpu: 100m
+      memory: 128Mi
+
+  autoscaling:
+    enabled: true
+    minReplicas: 1
+    maxReplicas: 100
+    targetCPUUtilizationPercentage: 25
+    targetMemoryUtilizationPercentage: 25 
