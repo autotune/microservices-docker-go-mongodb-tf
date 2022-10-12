@@ -3,89 +3,17 @@
 # Declare variables to be passed into your templates.
 
 ### Mongodb values ###
-mongodb:
+community-operator:
   # define if use mongodb dependency
   enabled: true
 
-configuration: 
-  replication:
-    replSetName: replicaset
-    enableMajorityReadConcern: true
-
-  replicaSetConfigurationSettings:
-    enabled: true
-    configuration: 
-      chainingAllowed: false
-      heartbeatTimeoutSecs: 10
-      heartbeatIntervalMillis: 2000
-      electionTimeoutMillis: 10000
-      catchUpTimeoutMillis: 30000
-
-  rbac:
-   create: true 
-
-  externalAccess:
-    autoDiscovery: 
-      enabled: true
-    enabled: true
-    service:
-      type: LoadBalancer
-      port: 27017 
-
-  auth:
-    enabled: false
-    usernames: ["root"]
-    databases: ["hello"]
- 
-  persistence:
-    enabled: true 
-
-  architecture: replicaset 
-
-  replicaCount: 2 
-
-  podAnnotations:
-    sidecar.istio.io/inject: "false"
-
-  annotations:
-    sidecar.istio.io/inject: "false"
-
-  extraDeploy:
-## This needs to be uncommented and added to 'extraDeploy' in order to use the replicaset 'mongo-labeler' sidecar
-## for dynamically discovering the mongodb primary pod
-## suggestion is to use a hard-coded and predictable TCP port for the primary mongodb pod (here is 30001, choose your own)
-    - apiVersion: v1
-      kind: Service
-      metadata:
-        name: mongodb-primary
-        namespace: cinema
-        labels:
-          app.kubernetes.io/component: mongodb
-          app.kubernetes.io/instance: mongodb
-          app.kubernetes.io/managed-by: Helm
-          app.kubernetes.io/name: mongodb
-      spec:
-        type: NodePort
-        externalTrafficPolicy: Cluster
-        ports:
-          - name: mongodb
-            port: 30001
-            nodePort: 30001
-            protocol: TCP
-            targetPort: mongodb
-        selector:
-          app.kubernetes.io/component: mongodb
-          app.kubernetes.io/instance: mongodb
-          app.kubernetes.io/name: mongodb
-          primary: "true"
-          
 # Cinema website values
 website:
   image:
     repository: ghcr.io/autotune/microservices-docker-go-mongodb-tf/website
     pullPolicy: IfNotPresent
     # Overrides the image tag whose default is the chart appVersion.
-    tag: "v1.1.16"
+    tag: "v1.1.22"
 
   imagePullSecrets:  [
     name: docker-login
@@ -107,7 +35,7 @@ users:
     repository: ghcr.io/autotune/microservices-docker-go-mongodb-tf/users
     pullPolicy: IfNotPresent
     # Overrides the image tag whose default is the chart appVersion.
-    tag: "v1.1.16"
+    tag: "v1.1.22"
 
   imagePullSecrets:  [
     name: docker-login
@@ -115,7 +43,7 @@ users:
 
   args:
     - "-mongoURI"
-    - "mongodb://cinema-mongodb:27017/"
+    - "mongodb://mongodb-replica-set-svc:27017/?replicaSet=mongodb-replica-set"
 
 # Cinema movies values
 movies:
@@ -123,7 +51,7 @@ movies:
     repository: ghcr.io/autotune/microservices-docker-go-mongodb-tf/movies
     pullPolicy: IfNotPresent
     # Overrides the image tag whose default is the chart appVersion.
-    tag: "v1.1.16"
+    tag: "v1.1.22"
 
   imagePullSecrets:  [
     name: docker-login
@@ -131,7 +59,7 @@ movies:
 
   args:
     - "-mongoURI"
-    - "mongodb://cinema-mongodb:27017/"
+    - "mongodb://mongodb-replica-set-svc:27017/?replicaSet=mongodb-replica-set"
 
 # Cinema showtimes values
 showtimes:
@@ -139,7 +67,7 @@ showtimes:
     repository: ghcr.io/autotune/microservices-docker-go-mongodb-tf/showtimes
     pullPolicy: IfNotPresent
     # Overrides the image tag whose default is the chart appVersion.
-    tag: "v1.1.16"
+    tag: "v1.1.22"
 
   imagePullSecrets:  [
     name: docker-login
@@ -147,7 +75,7 @@ showtimes:
 
   args:
     - "-mongoURI"
-    - "mongodb://cinema-mongodb:27017/"
+    - "mongodb://mongodb-replica-set-svc:27017/?replicaSet=mongodb-replica-set"
 
 # Cinema bookings values
 bookings:
@@ -155,7 +83,7 @@ bookings:
     repository: ghcr.io/autotune/microservices-docker-go-mongodb-tf/bookings
     pullPolicy: IfNotPresent
     # Overrides the image tag whose default is the chart appVersion.
-    tag: "v1.1.19"
+    tag: "v1.1.22"
 
   imagePullSecrets: [ 
     name: docker-login
@@ -164,4 +92,4 @@ bookings:
 
   args:
     - "-mongoURI"
-    - "mongodb://cinema-mongodb:27017/"
+    - "mongodb://mongodb-replica-set-svc:27017/?replicaSet=mongodb-replica-set"
