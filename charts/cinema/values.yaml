@@ -43,7 +43,7 @@ website:
   autoscaling:
     enabled: true
     minReplicas: 1
-    maxReplicas: 100
+    maxReplicas: 10
     targetCPUUtilizationPercentage: 25
     targetMemoryUtilizationPercentage: 25 
 
@@ -78,7 +78,7 @@ users:
   autoscaling:
     enabled: true
     minReplicas: 1
-    maxReplicas: 100
+    maxReplicas: 10
     targetCPUUtilizationPercentage: 25
     targetMemoryUtilizationPercentage: 25 
 
@@ -112,7 +112,7 @@ movies:
   autoscaling:
     enabled: true
     minReplicas: 1
-    maxReplicas: 100
+    maxReplicas: 10
     targetCPUUtilizationPercentage: 25
     targetMemoryUtilizationPercentage: 25 
 
@@ -145,7 +145,7 @@ showtimes:
 
   autoscaling:
     enabled: true
-    minReplicas: 1
+    minReplicas: 10
     maxReplicas: 100
     targetCPUUtilizationPercentage: 25
     targetMemoryUtilizationPercentage: 25 
@@ -181,6 +181,6 @@ bookings:
   autoscaling:
     enabled: true
     minReplicas: 1
-    maxReplicas: 100
+    maxReplicas: 10
     targetCPUUtilizationPercentage: 25
     targetMemoryUtilizationPercentage: 25 
