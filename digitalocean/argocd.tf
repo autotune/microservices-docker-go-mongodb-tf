@@ -176,7 +176,7 @@ resource "argocd_application" "metrics-server" {
   depends_on = [argocd_project.metrics-server]
   metadata {
     name = "metrics-server"
-    # namespace = "kube-system"
+    # namespace = "argocd"
     labels = {
       env = "dev"
     }
