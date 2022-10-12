@@ -24,7 +24,7 @@ mongodb:
     databases: ["hello"]
  
   persistence:
-    enabled: false
+    enabled: true 
 
   architecture: replicaset 
 
