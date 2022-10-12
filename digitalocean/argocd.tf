@@ -32,7 +32,6 @@ resource "argocd_repository_credentials" "cinema" {
   ssh_private_key = tls_private_key.argocd.private_key_openssh
 }
 
-/*
 resource "argocd_project" "metrics-server" {
   depends_on = [helm_release.argocd]
   metadata {
@@ -63,7 +62,7 @@ resource "argocd_project" "metrics-server" {
       namespace = "cinema"
     }
   }
-}*/
+}
 
 resource "argocd_project" "cinema" {
   depends_on = [helm_release.argocd]
@@ -186,7 +185,7 @@ resource "argocd_application" "metrics-server" {
   wait = true
 
   spec {
-    project = "cinema"
+    project = "metrics-server"
     source {
       helm {
         release_name = "metrics-server"
@@ -198,7 +197,7 @@ resource "argocd_application" "metrics-server" {
 
     destination {
       server    = digitalocean_kubernetes_cluster.cinema.endpoint
-      namespace = "cinema"
+      namespace = "kube-system"
     }
   }
 }
