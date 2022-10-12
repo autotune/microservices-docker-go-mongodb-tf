@@ -49,6 +49,11 @@ resource "argocd_project" "metrics-server" {
       kind  = "*"
     }
 
+    cluster_namespace_whitelist {
+      group = "*"
+      kind  = "*"
+    }
+
     namespace_resource_whitelist {
       group = "*"
       kind  = "*"
@@ -176,7 +181,7 @@ resource "argocd_application" "metrics-server" {
   depends_on = [argocd_project.cinema]
   metadata {
     name = "metrics-server"
-    # namespace = "argocd"
+    namespace = "argocd"
     labels = {
       env = "dev"
     }
