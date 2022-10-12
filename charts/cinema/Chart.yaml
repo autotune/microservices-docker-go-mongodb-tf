@@ -8,9 +8,9 @@ version: 0.2.1
 # cinema app version
 appVersion: "v2.1.2"
 dependencies:
-  - condition: mongodb.enabled
-    name: mongodb
-    version: 13.1.7
+  - condition: mongodb-community-operator.enabled
+    name: mongodb-community-operator 
+    version: 0.7.6
   - name: users
     version: 0.x.x
   - name: movies
