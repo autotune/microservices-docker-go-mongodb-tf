@@ -174,7 +174,7 @@ resource "argocd_application" "cinema" {
 }
 
 resource "argocd_application" "metrics-server" {
-  depends_on = [argocd_project.metrics-server]
+  depends_on = [argocd_project.cinema]
   metadata {
     name = "metrics-server"
     # namespace = "argocd"
