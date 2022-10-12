@@ -35,7 +35,7 @@ website:
     # resources, such as Minikube. If you do want to specify resources, uncomment the following
     # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
     limits:
-      memory: 256Mi
+      memory: 128Mi
     requests:
       cpu: 100m
       memory: 128Mi
@@ -43,9 +43,9 @@ website:
   autoscaling:
     enabled: true
     minReplicas: 1
-    maxReplicas: 10
+    maxReplicas: 5
     targetCPUUtilizationPercentage: 10
-    targetMemoryUtilizationPercentage: 10 
+    # targetMemoryUtilizationPercentage: 10 
 
 
 # Cinema users values
@@ -70,7 +70,7 @@ users:
     # resources, such as Minikube. If you do want to specify resources, uncomment the following
     # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
     limits:
-      memory: 256Mi
+      memory: 128Mi
     requests:
       cpu: 100m
       memory: 128Mi
@@ -78,7 +78,7 @@ users:
   autoscaling:
     enabled: true
     minReplicas: 1
-    maxReplicas: 10
+    maxReplicas: 5
     targetCPUUtilizationPercentage: 10
     targetMemoryUtilizationPercentage: 10 
 
@@ -104,7 +104,7 @@ movies:
     # resources, such as Minikube. If you do want to specify resources, uncomment the following
     # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
     limits:
-      memory: 256Mi
+      memory: 128Mi
     requests:
       cpu: 100m
       memory: 128Mi
@@ -112,7 +112,7 @@ movies:
   autoscaling:
     enabled: true
     minReplicas: 1
-    maxReplicas: 10
+    maxReplicas: 5
     targetCPUUtilizationPercentage: 10
     targetMemoryUtilizationPercentage: 10 
 
@@ -138,7 +138,7 @@ showtimes:
     # resources, such as Minikube. If you do want to specify resources, uncomment the following
     # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
     limits:
-      memory: 256Mi
+      memory: 128Mi
     requests:
       cpu: 100m
       memory: 128Mi
@@ -146,7 +146,7 @@ showtimes:
   autoscaling:
     enabled: true
     minReplicas: 1
-    maxReplicas: 10 
+    maxReplicas: 5 
     targetCPUUtilizationPercentage: 10
     targetMemoryUtilizationPercentage: 10 
 
@@ -173,7 +173,7 @@ bookings:
     # resources, such as Minikube. If you do want to specify resources, uncomment the following
     # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
     limits:
-      memory: 256Mi
+      memory: 128Mi
     requests:
       cpu: 100m
       memory: 128Mi
@@ -181,6 +181,6 @@ bookings:
   autoscaling:
     enabled: true
     minReplicas: 1
-    maxReplicas: 10
+    maxReplicas: 5
     targetCPUUtilizationPercentage: 10
     targetMemoryUtilizationPercentage: 10 
