@@ -64,7 +64,7 @@ mongodb:
       enabled: true
     enabled: true
     service:
-      type: ClusterIp 
+      type: ClusterIP 
       port: 27017 
 
   auth:
