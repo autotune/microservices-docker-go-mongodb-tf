@@ -7,7 +7,7 @@ mongodb:
   # define if use mongodb dependency
   enabled: true
 
-  replicaCount: 2
+  replicaCount: 3
 
 
   configuration: |-
