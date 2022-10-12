@@ -145,8 +145,8 @@ showtimes:
 
   autoscaling:
     enabled: true
-    minReplicas: 10
-    maxReplicas: 100
+    minReplicas: 1
+    maxReplicas: 10 
     targetCPUUtilizationPercentage: 25
     targetMemoryUtilizationPercentage: 25 
 
