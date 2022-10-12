@@ -185,7 +185,7 @@ resource "argocd_application" "metrics-server" {
   wait = true
 
   spec {
-    project = "metrics-server"
+    project = "cinema"
     source {
       helm {
         release_name = "metrics-server"
