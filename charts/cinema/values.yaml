@@ -7,7 +7,7 @@ mongodb:
   # define if use mongodb dependency
   enabled: true
 
-configuration: |-
+configuration: 
   replication:
     replSetName: replicaset
     enableMajorityReadConcern: true
