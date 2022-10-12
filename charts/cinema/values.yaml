@@ -3,7 +3,7 @@
 # Declare variables to be passed into your templates.
 
 ### Mongodb values ###
-mongodb-community-operator:
+community-operator:
   # define if use mongodb dependency
   enabled: true
 
