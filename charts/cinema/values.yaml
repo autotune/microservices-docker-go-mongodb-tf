@@ -64,7 +64,7 @@ mongodb:
       enabled: true
     enabled: true
     service:
-      type: LoadBalancer
+      type: ClusterIp 
       port: 27017 
 
   auth:
