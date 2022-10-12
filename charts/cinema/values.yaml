@@ -7,6 +7,8 @@ mongodb:
   # define if use mongodb dependency
   enabled: true
 
+  replicaCount: 2
+
 configuration: 
   replication:
     replSetName: replicaset
@@ -41,8 +43,6 @@ configuration:
     enabled: true 
 
   architecture: replicaset 
-
-  replicaCount: 2 
 
   podAnnotations:
     sidecar.istio.io/inject: "false"
