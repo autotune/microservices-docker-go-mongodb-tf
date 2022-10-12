@@ -11,7 +11,7 @@ mongodb:
 
 
   configuration: |-
-    replication:`
+    replication:
       replSetName: rs0 
       enableMajorityReadConcern: true
     storage:
