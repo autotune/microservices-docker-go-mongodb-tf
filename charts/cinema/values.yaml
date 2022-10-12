@@ -7,14 +7,78 @@ mongodb:
   # define if use mongodb dependency
   enabled: true
 
+configuration: 
+  replication:
+    replSetName: replicaset
+    enableMajorityReadConcern: true
+
+  replicaSetConfigurationSettings:
+    enabled: true
+    configuration: 
+      chainingAllowed: false
+      heartbeatTimeoutSecs: 10
+      heartbeatIntervalMillis: 2000
+      electionTimeoutMillis: 10000
+      catchUpTimeoutMillis: 30000
+
+  rbac:
+   create: true 
+
+  externalAccess:
+    autoDiscovery: 
+      enabled: true
+    enabled: true
+    service:
+      type: LoadBalancer
+      port: 27017 
+
   auth:
     enabled: false
-    
+    usernames: ["root"]
+    databases: ["hello"]
+ 
   persistence:
-    enabled: true
+    enabled: true 
 
-  replicaCount: 15
+  architecture: replicaset 
 
+  replicaCount: 2 
+
+  podAnnotations:
+    sidecar.istio.io/inject: "false"
+
+  annotations:
+    sidecar.istio.io/inject: "false"
+
+  extraDeploy:
+## This needs to be uncommented and added to 'extraDeploy' in order to use the replicaset 'mongo-labeler' sidecar
+## for dynamically discovering the mongodb primary pod
+## suggestion is to use a hard-coded and predictable TCP port for the primary mongodb pod (here is 30001, choose your own)
+    - apiVersion: v1
+      kind: Service
+      metadata:
+        name: mongodb-primary
+        namespace: cinema
+        labels:
+          app.kubernetes.io/component: mongodb
+          app.kubernetes.io/instance: mongodb
+          app.kubernetes.io/managed-by: Helm
+          app.kubernetes.io/name: mongodb
+      spec:
+        type: NodePort
+        externalTrafficPolicy: Cluster
+        ports:
+          - name: mongodb
+            port: 30001
+            nodePort: 30001
+            protocol: TCP
+            targetPort: mongodb
+        selector:
+          app.kubernetes.io/component: mongodb
+          app.kubernetes.io/instance: mongodb
+          app.kubernetes.io/name: mongodb
+          primary: "true"
+          
 # Cinema website values
 website:
   image:
