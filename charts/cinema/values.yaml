@@ -10,11 +10,11 @@ mongodb:
   replicaSetConfigurationSettings:
     enabled: true
     configuration: {}
-      chainingAllowed : false
-      heartbeatTimeoutSecs : 10
-      heartbeatIntervalMillis : 2000
-      electionTimeoutMillis : 10000
-      catchUpTimeoutMillis : 30000
+      chainingAllowed: false
+      heartbeatTimeoutSecs: 10
+      heartbeatIntervalMillis: 2000
+      electionTimeoutMillis: 10000
+      catchUpTimeoutMillis: 30000
 
   rbac:
    create: true 
