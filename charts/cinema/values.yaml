@@ -9,7 +9,7 @@ mongodb:
 
   replicaSetConfigurationSettings:
     enabled: true
-    configuration: {}
+    configuration: 
       chainingAllowed: false
       heartbeatTimeoutSecs: 10
       heartbeatIntervalMillis: 2000
