@@ -18,7 +18,7 @@ mongodb:
       dbPath: /bitnami/mongodb/data/db
       journal:
         enabled: true
-        directoryPerDB: false
+      directoryPerDB: false
      # where to write logging data
     systemLog:
       destination: file
