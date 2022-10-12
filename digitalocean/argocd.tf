@@ -49,11 +49,6 @@ resource "argocd_project" "metrics-server" {
       kind  = "*"
     }
 
-    cluster_namespace_whitelist {
-      group = "*"
-      kind  = "*"
-    }
-
     namespace_resource_whitelist {
       group = "*"
       kind  = "*"
