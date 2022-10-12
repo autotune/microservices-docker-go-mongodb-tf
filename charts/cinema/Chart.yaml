@@ -11,9 +11,6 @@ dependencies:
   - condition: community-operator.enabled
     name: community-operator 
     version: 0.7.6
-  - name: community-operator-crds
-    repository: https://mongodb.github.io/helm-charts
-    version: 0.7.6
   - name: users
     version: 0.x.x
   - name: movies
