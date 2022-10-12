@@ -59,7 +59,7 @@ resource "argocd_project" "metrics-server" {
 
     destination {
       server    = digitalocean_kubernetes_cluster.cinema.endpoint
-      namespace = "cinam"
+      namespace = "cinama"
     }
   }
 }
