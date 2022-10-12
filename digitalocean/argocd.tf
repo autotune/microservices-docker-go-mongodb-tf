@@ -160,10 +160,6 @@ resource "argocd_application" "cinema" {
     source {
       helm {
         release_name = "cinema"
-        parameter {
-          name  = "mongodb.replicaCount"
-          value = var.robusta_signing_key
-        }
       }
       repo_url        = "https://github.com/autotune/microservices-docker-go-mongodb-tf"
       path            = "charts/cinema"
