@@ -192,12 +192,12 @@ resource "argocd_application" "metrics-server" {
 
         parameter {
           name  = "defaultArgs[4]"
-          value = ["--kubelet-insecure-tls"]
+          value = "[--kubelet-insecure-tls]"
         }
 
         parameter {
           name  = "defaultArgs[5]"
-          value = ["--kubelet-preferred-address-types=InternalIP,ExternalIP"]
+          value = "[--kubelet-preferred-address-types=InternalIP,ExternalIP]"
         }
 
       }
