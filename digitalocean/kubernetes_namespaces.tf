@@ -6,6 +6,14 @@ resource "kubernetes_namespace" "external-dns" {
   }
 }
 
+resource "kubernetes_namespace" "external-dns-loadtesting" {
+  depends_on = [digitalocean_kubernetes_cluster.loadtesting]
+  provider   = kubernetes.loadtesting
+  metadata {
+    name = "external-dns"
+  }
+}
+
 resource "kubernetes_namespace" "istio-system" {
   depends_on = [digitalocean_kubernetes_cluster.cinema]
   provider   = kubernetes.cinema
@@ -14,14 +22,11 @@ resource "kubernetes_namespace" "istio-system" {
   }
 }
 
-resource "kubernetes_namespace" "devingress" {
-  depends_on = [digitalocean_kubernetes_cluster.cinema]
-  provider   = kubernetes.cinema
+resource "kubernetes_namespace" "istio-system-loadtesting" {
+  depends_on = [digitalocean_kubernetes_cluster.loadtesting]
+  provider   = kubernetes.loadtesting
   metadata {
-    name = "devingress"
-    labels = {
-      istio-injection = "enabled"
-    }
+    name = "istio-system"
   }
 }
 
@@ -44,6 +49,14 @@ resource "kubernetes_namespace" "cert-manager" {
   }
 }
 
+resource "kubernetes_namespace" "cert-manager-loadtesting" {
+  depends_on = [digitalocean_kubernetes_cluster.loadtesting]
+  provider   = kubernetes.loadtesting
+  metadata {
+    name = "cert-manager"
+  }
+}
+
 resource "kubernetes_namespace" "cinema" {
   depends_on = [digitalocean_kubernetes_cluster.cinema]
   provider   = kubernetes.cinema
@@ -51,6 +64,28 @@ resource "kubernetes_namespace" "cinema" {
     name = "cinema"
     labels = {
       istio-injection = "enabled"
+    }
+  }
+}
+
+resource "kubernetes_namespace" "loadtesting" {
+  depends_on = [digitalocean_kubernetes_cluster.loadtesting]
+  provider   = kubernetes.loadtesting
+  metadata {
+   name = "loadtesting"
+    labels = {
+      istio-injection = "enabled"
+    }
+  }
+}
+
+resource "kubernetes_namespace" "robusta" {
+  depends_on = [digitalocean_kubernetes_cluster.cinema]
+  provider   = kubernetes.cinema
+  metadata {
+   name = "robusta"
+    labels = {
+      istio-injection = "disabled"
     }
   }
 }

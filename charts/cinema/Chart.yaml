@@ -8,10 +8,9 @@ version: 0.2.1
 # cinema app version
 appVersion: "v2.1.2"
 dependencies:
-  - condition: mongodb.enabled
-    name: mongodb
-    repository: https://charts.bitnami.com/bitnami
-    version: 13.1.3
+  - condition: community-operator.enabled
+    name: community-operator 
+    version: 0.7.6
   - name: users
     version: 0.x.x
   - name: movies

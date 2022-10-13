@@ -29,10 +29,22 @@ spec:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
         - name: {{ .Chart.Name }}
+          env:
+            - name: MONGODB_USERNAME
+              value: "mms-automation"
+            - name: MONGODB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mongodb-replica-set-agent-password 
+                  key: password
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          volumeMounts:
+            - mountPath: "~/.dockercfg"
+              name: dockerconfig
+              readOnly: true
           args:
             {{- toYaml .Values.args | nindent 12 }}
           ports:
@@ -65,3 +77,8 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+      volumes:
+       - name: dockerconfig
+         secret:
+           secretName: 
+             "docker-login"

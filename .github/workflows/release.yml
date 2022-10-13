@@ -33,8 +33,20 @@ jobs:
           password: ${{ secrets.PACKAGE_REGISTRY_PAT }}
           build_file: Dockerfile
           path: ./users/
-          image: autotune/microservices-docker-go-mongodb-tf/users
-          tag: ${{ steps.slug.outputs.get_version }}
+          image: users
+          tag: ${{ steps.get_version.outputs.VERSION }}
+          cache: true
+          cache_registry: cache
+      - name: GitHub Package Registry - Website
+        uses: aevea/action-kaniko@master
+        with:
+          registry: ghcr.io
+          username: ${{ secrets.GH_USERNAME }}
+          password: ${{ secrets.PACKAGE_REGISTRY_PAT }}
+          build_file: Dockerfile
+          path: ./website/
+          image: website
+          tag: ${{ steps.get_version.outputs.VERSION }}
           cache: true
           cache_registry: cache
       - name: GitHub Package Registry - Movies
@@ -45,11 +57,31 @@ jobs:
           password: ${{ secrets.PACKAGE_REGISTRY_PAT }}
           build_file: Dockerfile
           path: ./movies/
-          image: autotune/microservices-docker-go-mongodb-tf/movies
-          tag: ${{ steps.slug.outputs.get_version }}
+          image: movies
+          tag: ${{ steps.get_version.outputs.VERSION }}
           cache: true
           cache_registry: cache
-
-        
-
-        
+      - name: GitHub Package Registry - Showtimes 
+        uses: aevea/action-kaniko@master
+        with:
+          registry: ghcr.io
+          username: ${{ secrets.GH_USERNAME }}
+          password: ${{ secrets.PACKAGE_REGISTRY_PAT }}
+          build_file: Dockerfile
+          path: ./showtimes/
+          image: showtimes
+          tag: ${{ steps.get_version.outputs.VERSION }}
+          cache: true
+          cache_registry: cache
+      - name: GitHub Package Registry - Bookings
+        uses: aevea/action-kaniko@master
+        with:
+          registry: ghcr.io
+          username: ${{ secrets.GH_USERNAME }}
+          password: ${{ secrets.PACKAGE_REGISTRY_PAT }}
+          build_file: Dockerfile
+          path: ./bookings/
+          image: bookings
+          tag: ${{ steps.get_version.outputs.VERSION }}
+          cache: true
+          cache_registry: cache

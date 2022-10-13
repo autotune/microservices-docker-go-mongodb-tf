@@ -5,12 +5,15 @@
 replicaCount: 1
 
 image:
-  repository: ghcr.io/mmorejon/cinema-website
+  repository: ghcr.io/autotune/microservices-docker-go-mongodb-tf/website
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: "v1.1.16"
 
-imagePullSecrets: []
+imagePullSecrets: [
+  name: docker-login
+]
+
 nameOverride: ""
 fullnameOverride: ""
 
@@ -56,20 +59,20 @@ ingress:
   #    hosts:
   #      - chart-example.local
 
-resources: {}
+resources:
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
   # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-  # limits:
+  limits:
   #   cpu: 100m
-  #   memory: 128Mi
-  # requests:
-  #   cpu: 100m
-  #   memory: 128Mi
+    memory: 1G
+  requests:
+    cpu: 100m
+    memory: 128Mi
 
 autoscaling:
-  enabled: false
+  enabled: true 
   minReplicas: 1
   maxReplicas: 100
   targetCPUUtilizationPercentage: 80
