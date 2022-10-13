@@ -57,11 +57,11 @@ module "vpc-loadtesting" {
   secondary_ranges = {
     prod = [
       {
-        range_name    = "us-central1-01-gke-01-pods"
+        range_name    = "us-central1-01-gke-02-pods"
         ip_cidr_range = "10.4.0.0/16"
       },
       {
-        range_name    = "us-central1-01-gke-01-services"
+        range_name    = "us-central1-01-gke-02-services"
         ip_cidr_range = "10.8.0.0/16"
       },
     ]
