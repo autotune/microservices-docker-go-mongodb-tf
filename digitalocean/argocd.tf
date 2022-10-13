@@ -191,14 +191,10 @@ resource "argocd_application" "metrics-server" {
         release_name = "metrics-server"
 
         parameter {
-          name  = "extraArgs[0]"
-          value = "--kubelet-insecure-tls"
+          name  = "extraArgs"
+          value = "[--kubelet-insecure-tls, --kubelet-preferred-address-types=InternalIP,ExternalIP]"
         }
 
-        parameter {
-          name  = "extraArgs[1]"
-          value = "--kubelet-preferred-address-types=InternalIP,ExternalIP"
-        }
       }
       repo_url        = "https://github.com/kubernetes-sigs/metrics-server"
       path            = "charts/metrics-server"
