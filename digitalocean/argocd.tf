@@ -175,7 +175,7 @@ resource "argocd_application" "cinema" {
 resource "argocd_application" "metrics-server" {
   depends_on = [argocd_project.cinema]
   metadata {
-    name = "metrics-server"
+    name      = "metrics-server"
     namespace = "argocd"
     labels = {
       env = "dev"
@@ -189,6 +189,16 @@ resource "argocd_application" "metrics-server" {
     source {
       helm {
         release_name = "metrics-server"
+
+        parameter {
+          name  = "extraArgs[0]"
+          value = "--kubelet-insecure-tls"
+        }
+
+        parameter {
+          name  = "extraArgs[1]"
+          value = "--kubelet-preferred-address-types=InternalIP,ExternalIP"
+        }
       }
       repo_url        = "https://github.com/kubernetes-sigs/metrics-server"
       path            = "charts/metrics-server"
