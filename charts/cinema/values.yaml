@@ -44,8 +44,8 @@ website:
     enabled: true
     minReplicas: 1
     maxReplicas: 5
-    targetCPUUtilizationPercentage: 10
-    # targetMemoryUtilizationPercentage: 10 
+    targetCPUUtilizationPercentage: 60
+    targetMemoryUtilizationPercentage: 60 
 
 
 # Cinema users values
@@ -79,8 +79,8 @@ users:
     enabled: true
     minReplicas: 1
     maxReplicas: 5
-    targetCPUUtilizationPercentage: 10
-    targetMemoryUtilizationPercentage: 10 
+    targetCPUUtilizationPercentage: 60
+    targetMemoryUtilizationPercentage: 60 
 
 # Cinema movies values
 movies:
@@ -113,8 +113,8 @@ movies:
     enabled: true
     minReplicas: 1
     maxReplicas: 5
-    targetCPUUtilizationPercentage: 10
-    targetMemoryUtilizationPercentage: 10 
+    targetCPUUtilizationPercentage: 60
+    targetMemoryUtilizationPercentage: 60 
 
 # Cinema showtimes values
 showtimes:
@@ -147,8 +147,8 @@ showtimes:
     enabled: true
     minReplicas: 1
     maxReplicas: 5 
-    targetCPUUtilizationPercentage: 10
-    targetMemoryUtilizationPercentage: 10 
+    targetCPUUtilizationPercentage: 60
+    targetMemoryUtilizationPercentage: 60 
 
 # Cinema bookings values
 bookings:
@@ -182,5 +182,5 @@ bookings:
     enabled: true
     minReplicas: 1
     maxReplicas: 5
-    targetCPUUtilizationPercentage: 10
-    targetMemoryUtilizationPercentage: 10 
+    targetCPUUtilizationPercentage: 60
+    targetMemoryUtilizationPercentage: 60 
