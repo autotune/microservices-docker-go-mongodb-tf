@@ -59,7 +59,7 @@ resource "argocd_project" "metrics-server" {
 
     destination {
       server    = digitalocean_kubernetes_cluster.cinema.endpoint
-      namespace = "kube-system"
+      namespace = "cinama"
     }
   }
 }
@@ -173,10 +173,10 @@ resource "argocd_application" "cinema" {
 }
 
 resource "argocd_application" "metrics-server" {
-  depends_on = [argocd_project.metrics-server]
+  depends_on = [argocd_project.cinema]
   metadata {
     name      = "metrics-server"
-    # namespace = "kube-system"
+    namespace = "argocd"
     labels = {
       env = "dev"
     }
@@ -185,10 +185,21 @@ resource "argocd_application" "metrics-server" {
   wait = true
 
   spec {
-    project = "metrics-server"
+    project = "cinema"
     source {
       helm {
         release_name = "metrics-server"
+
+        parameter {
+          name  = "args[0]"
+          value = "--kubelet-insecure-tls"
+        }
+
+        parameter {
+          name  = "args[1]"
+          value = "--kubelet-preferred-address-types=InternalIP,ExternalIP"
+        }
+
       }
       repo_url        = "https://github.com/kubernetes-sigs/metrics-server"
       path            = "charts/metrics-server"
@@ -197,7 +208,7 @@ resource "argocd_application" "metrics-server" {
 
     destination {
       server    = digitalocean_kubernetes_cluster.cinema.endpoint
-      namespace = "kube-system"
+      namespace = "cinema"
     }
   }
 }
