@@ -69,7 +69,7 @@ module "vpc-loadtesting" {
 
   routes = [
     {
-      name              = "egress-internet"
+      name              = "egress-internet-loadtesting"
       description       = "route through IGW to access internet"
       destination_range = "0.0.0.0/0"
       tags              = "egress-inet"
