@@ -9,4 +9,4 @@ spec:
     apiVersion: apps/v1
     kind: StatefulSet
     name: mongodb-replica-set
-  targetCPUUtilizationPercentage: 80
+  targetCPUUtilizationPercentage: 40
