@@ -9,6 +9,4 @@ resource "google_dns_record_set" "ns" {
   managed_zone = google_dns_managed_zone.primary.name
   type         = "NS"
   ttl          = 300
-
-  rrdatas = ["ns1.digitalocean.com.", "ns2.digitalocean.com.", "ns3.digitalocean.com."]
 }
