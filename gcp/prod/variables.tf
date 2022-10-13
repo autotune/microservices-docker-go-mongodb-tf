@@ -114,7 +114,7 @@ variable "gke_external_dns_namespace" {
 variable "gke_service_account" {
   type        = string
   description = "GKE Service Account Member"
-  default     = "terrateam-tf@wayofthesys-cinema.iam.gserviceaccount.com"
+  default     = "terrateam-tf@wayofthesys-cinema-363715.iam.gserviceaccount.com"
 }
 
 variable "mongodb_rootusername" {
