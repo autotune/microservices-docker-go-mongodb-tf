@@ -96,7 +96,7 @@ variable "cinema_node_core_initial_count" {
 variable "gke_external_dns_iam_memeber" {
   type        = string
   description = "GKE ExternalDNS IAM Account Member"
-  default     = "serviceAccount:terrateam-tf@wayofthesys-cinema.iam.gserviceaccount.com"
+  default     = "serviceAccount:terrateam-tf@wayofthesys-cinema-363715.iam.gserviceaccount.com"
 }
 
 variable "gke_external_dns_sa_id" {
