@@ -35,15 +35,15 @@ website:
     # resources, such as Minikube. If you do want to specify resources, uncomment the following
     # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
     limits:
-      memory: 128Mi
+      memory: 256Mi
     requests:
       cpu: 100m
-      memory: 128Mi
+      memory: 256Mi
 
   autoscaling:
     enabled: true
     minReplicas: 1
-    maxReplicas: 10 
+    maxReplicas: 20 
     targetCPUUtilizationPercentage: 60
     targetMemoryUtilizationPercentage: 60 
 
