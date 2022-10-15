@@ -168,13 +168,13 @@ variable "robusta_ui_sink_token" {
   sensitive   = true
 }
 
-variable "robusta_rsa_public_key" {
+variable "robusta_rsa_pub_key" {
   type        = string
   description = "Robusta Generated Public Key"
   sensitive   = true
 }
 
-variable "robusta_rsa_private_key" {
+variable "robusta_rsa_priv_key" {
   type        = string
   description = "Robusta Generated Private Key"
   sensitive   = true

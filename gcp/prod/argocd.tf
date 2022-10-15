@@ -254,12 +254,12 @@ EOT
 
         parameter {
           name  = "rsa.pub"
-          value = var.robusta_rsa_public_key
+          value = var.robusta_rsa_pub_key
         }
 
         parameter {
           name  = "rsa.prv"
-          value = var.robusta_rsa_private_key
+          value = var.robusta_rsa_priv_key
         }
 
       }
