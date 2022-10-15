@@ -275,7 +275,7 @@ resource "helm_release" "argocd" {
 resource "helm_release" "cluster-issuer" {
   provider  = helm.cinema
   name      = "cluster-issuer"
-  chart     = "../charts/cluster-issuer"
+  chart     = "../../charts/cluster-issuer"
   namespace = "kube-system"
   depends_on = [
     module.gke-cinema
