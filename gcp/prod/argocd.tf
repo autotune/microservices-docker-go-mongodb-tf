@@ -145,7 +145,7 @@ resource "argocd_application" "cinema" {
 }
 
 resource "argocd_application" "cinema-robusta" {
-  depends_on = [argocd_project.cinema, kubernetes_namespace.robusta, argocd_cluster.gcp_cinema]
+  depends_on = [argocd_project.cinema, kubernetes_namespace.robusta, argocd_cluster.gcp-cinema]
   provider   = argocd
   metadata {
     name      = "robusta"
