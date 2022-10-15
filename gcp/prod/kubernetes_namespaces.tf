@@ -10,7 +10,7 @@ resource "kubernetes_namespace" "cert-manager" {
   depends_on = [module.gke-cinema]
   provider   = kubernetes.cinema
   metadata {
-    name = "cinema"
+    name = "cert-manager"
   }
 }
 
