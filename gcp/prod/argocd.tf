@@ -5,9 +5,9 @@ resource "argocd_cluster" "do-cinema" {
   depends_on = [helm_release.argocd]
 
   config {
-    bearer_token = data.kubernetes_secret.argocd_manager.data["token"]
+    bearer_token = data.kubernetes_secret.argocd-manager.data["token"]
     tls_client_config {
-      ca_data = data.kubernetes_secret.argocd_manager.data["ca.crt"]
+      ca_data = data.kubernetes_secret.argocd-manager.data["ca.crt"]
     }
   }
 }
@@ -81,6 +81,7 @@ resource "argocd_project" "cinema" {
   }
 }
 
+/*
 resource "argocd_project" "loadtesting" {
   depends_on = [helm_release.argocd]
   metadata {
@@ -112,6 +113,7 @@ resource "argocd_project" "loadtesting" {
     }
   }
 }
+*/
 
 resource "argocd_application" "cinema" {
   depends_on = [argocd_project.cinema]
