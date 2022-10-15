@@ -278,7 +278,7 @@ resource "helm_release" "cluster-issuer" {
   chart     = "../charts/cluster-issuer"
   namespace = "kube-system"
   depends_on = [
-    digitalocean_kubernetes_cluster.cinema,
+    module.gke-cinema
   ]
   set_sensitive {
     name  = "zerossl_email"

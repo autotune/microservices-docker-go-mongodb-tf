@@ -1,4 +1,3 @@
-/*
 resource "kubernetes_namespace" "cinema" {
   depends_on = [module.gke-cinema]
   provider   = kubernetes.cinema
@@ -14,9 +13,7 @@ resource "kubernetes_namespace" "external-dns" {
     name = "dns"
   }
 }
-*/
 
-/*
 resource "kubernetes_namespace" "istio-system" {
   depends_on = [module.gke-cinema]
   provider   = kubernetes.cinema
@@ -73,4 +70,4 @@ resource "kubernetes_namespace" "istio-egress" {
     }
 
   }
-} */
+} 
