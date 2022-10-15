@@ -46,7 +46,7 @@ resource "kubernetes_secret" "mongodb-auth" {
 
 resource "kubernetes_secret" "tls" {
   provider   = kubernetes.cinema
-  depends_on = [module.gke-cinema, module.external-dns, kubernetes_namespace.cinema]
+  depends_on = [module.gke-cinema, kubernetes_namespace.cinema]
   metadata {
     name      = "${replace(var.domain_name[0], ".", "-")}-cinema-tls"
     namespace = "cinema"
