@@ -87,3 +87,18 @@ resource "kubernetes_secret" "wayofthesys-tls" {
 
   }
 }
+
+resource "kubernetes_secret" "external-dns-credentials" {
+  provider   = kubernetes.cinema
+  depends_on = [module.gke-cinema, module.external-dns]
+  metadata {
+    name      = "external-dns"
+    namespace = var.gke_external_dns_namespace
+  }
+
+  data = {
+    "credentials.json" = base64decode(google_service_account_key.external-dns.private_key)
+  }
+
+  type = "kubernetes.io/opaque"
+}

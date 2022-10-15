@@ -17,7 +17,7 @@ resource "helm_release" "external-dns" {
   }
   set_sensitive {
     name  = "serviceAccountSecret"
-    value = "google-service-account"
+    value = "external-dns"
   }
   set {
     name  = "rbac.create"
