@@ -1,4 +1,4 @@
-data "kubernetes_secret" "argocd_manager" {
+data "kubernetes_secret" "argocd-manager" {
   depends_on = [kubernetes_secret.argocd_manager]
   provider   = kubernetes.cinema
   metadata {
