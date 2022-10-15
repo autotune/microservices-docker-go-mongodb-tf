@@ -16,6 +16,14 @@ spec:
     privateKeySecretRef:
         name: zerossl 
     solvers:
+    - dns01:
+        cloudDNS:
+          # The ID of the GCP project
+          project: {{ .Values.zerossl_gcp_project_id }}
+          # This is the secret used to access the service account
+          serviceAccountSecretRef:
+            name: clouddns-account
+            key: credentials.json
     - http01:
         ingress:
           class: istio

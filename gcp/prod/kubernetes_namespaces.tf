@@ -12,6 +12,9 @@ resource "kubernetes_namespace" "cert-manager" {
   metadata {
     name = "cert-manager"
   }
+  labels = {
+    "istio-injection" = "enabled"
+  }
 }
 
 resource "kubernetes_namespace" "external-dns" {
