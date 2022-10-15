@@ -46,7 +46,7 @@ resource "kubernetes_secret" "mongodb-auth" {
 
 resource "kubernetes_secret" "argocd-tls" {
   provider   = kubernetes.cinema
-  depends_on = [digitalocean_kubernetes_cluster.cinema, helm_release.external-dns, kubernetes_namespace.cinema]
+  depends_on = [module.gke-cinema, helm_release.external-dns, kubernetes_namespace.cinema]
   metadata {
     name = "argocd-tls"
     # "${replace(var.domain_name[0], ".", "-")}-tls"
