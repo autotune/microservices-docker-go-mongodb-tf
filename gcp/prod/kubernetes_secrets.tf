@@ -44,12 +44,12 @@ resource "kubernetes_secret" "mongodb-auth" {
   type = "kubernetes.io/opaque"
 }
 
-resource "kubernetes_secret" "tls" {
+resource "kubernetes_secret" "wayofthesys-tls" {
   provider   = kubernetes.cinema
   depends_on = [module.gke-cinema, kubernetes_namespace.cinema]
   metadata {
     name      = "${replace(var.domain_name[0], ".", "-")}-cinema-tls"
-    namespace = "cinema"
+    namespace = "istio-system"
   }
 
   data = {
