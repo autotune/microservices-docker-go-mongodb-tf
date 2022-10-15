@@ -281,7 +281,7 @@ EOT
 }
 
 resource "argocd_application" "cinema-keda" {
-  depends_on = [argocd_project.cinema]
+  depends_on = [argocd_project.cinema, argocd_cluster.gcp-cinema]
   metadata {
     name      = "cinema-keda"
     namespace = "argocd"

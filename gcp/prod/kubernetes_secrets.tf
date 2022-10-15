@@ -3,7 +3,7 @@ resource "kubernetes_secret" "argocd-manager" {
   depends_on = [module.gke-cinema]
   metadata {
     name      = "argocd-manager"
-    namespace = "argocd"
+    namespace = "kube-system"
     annotations = {
       "kubernetes.io/service-account.name" = "argocd-manager"
     }
