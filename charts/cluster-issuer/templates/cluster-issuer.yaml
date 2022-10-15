@@ -7,7 +7,7 @@ spec:
     email: {{ .Values.zerossl_email }}
     server: https://acme.zerossl.com/v2/DV90
     externalAccountBinding:
-      keyID: "Prp8UZWOJHxHgC_u1HOYwg"
+      keyID: mKDJF952oqshUXPZEX7yig 
       # {{ .Values.zerossl_eab_hmac_key_id }}
       keySecretRef:
         name: zerossl-eab-hmac-key 
