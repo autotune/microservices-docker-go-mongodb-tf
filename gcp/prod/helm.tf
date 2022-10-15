@@ -114,7 +114,6 @@ resource "helm_release" "cert-manager-loadtesting" {
 }
 */
 
-/*
 resource "helm_release" "istio-base" {
   provider        = helm.cinema
   repository      = local.istio-repo
@@ -126,6 +125,7 @@ resource "helm_release" "istio-base" {
   depends_on      = [kubernetes_namespace.istio-system]
 }
 
+/*
 resource "helm_release" "istio-base-loadtesting" {
   provider        = helm.loadtesting
   repository      = local.istio-repo
@@ -136,6 +136,7 @@ resource "helm_release" "istio-base-loadtesting" {
   namespace       = kubernetes_namespace.istio-system.metadata.0.name
   depends_on      = [kubernetes_namespace.istio-system]
 }
+*/
 
 resource "helm_release" "istiod" {
   provider        = helm.cinema
@@ -168,6 +169,7 @@ resource "helm_release" "istiod" {
   depends_on = [helm_release.istio-base]
 }
 
+/*
 resource "helm_release" "istiod-loadtesting" {
   provider        = helm.loadtesting
   repository      = local.istio-repo
@@ -198,6 +200,7 @@ resource "helm_release" "istiod-loadtesting" {
   }
   depends_on = [helm_release.istio-base-loadtesting]
 }
+*/
 
 resource "helm_release" "istio-ingress" {
   provider        = helm.cinema
@@ -210,6 +213,7 @@ resource "helm_release" "istio-ingress" {
   depends_on      = [helm_release.istiod]
 }
 
+/*
 resource "helm_release" "istio-ingress-loadtesting" {
   provider        = helm.loadtesting
   repository      = local.istio-repo
@@ -220,6 +224,7 @@ resource "helm_release" "istio-ingress-loadtesting" {
   namespace       = kubernetes_namespace.istio-system.metadata.0.name
   depends_on      = [helm_release.istiod-loadtesting]
 }
+*/
 
 resource "helm_release" "istio-egress" {
   provider        = helm.cinema
@@ -236,6 +241,7 @@ resource "helm_release" "istio-egress" {
   depends_on = [helm_release.istiod]
 }
 
+/*
 resource "helm_release" "istio-egress-loadtesting" {
   provider        = helm.loadtesting
   repository      = local.istio-repo
@@ -250,6 +256,7 @@ resource "helm_release" "istio-egress-loadtesting" {
   }
   depends_on = [helm_release.istiod-loadtesting]
 }
+*/
 
 resource "helm_release" "argocd" {
   depends_on      = [kubernetes_namespace.argocd]
