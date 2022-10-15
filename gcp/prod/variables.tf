@@ -131,3 +131,9 @@ variable "argocd_oidc_client_secret" {
   type        = string
   description = "ArgoCD OIDC Client Secret"
 }
+
+variable "argocd_oidc_client_id" {
+  type        = string
+  description = "ArgoCD OIDC Client ID"
+  sensitive   = true
+}
