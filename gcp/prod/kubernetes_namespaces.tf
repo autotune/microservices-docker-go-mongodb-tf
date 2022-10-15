@@ -90,3 +90,11 @@ resource "kubernetes_namespace" "istio-egress" {
 
   }
 } 
+
+resource "kubernetes_namespace" "robusta" {
+  depends_on = [module.gke-cinema]
+  provider   = kubernetes.cinema
+  metadata {
+    name = "robusta"
+  }
+} 

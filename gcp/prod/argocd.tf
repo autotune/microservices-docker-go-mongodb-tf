@@ -2,7 +2,7 @@ resource "argocd_cluster" "do-cinema" {
   provider   = argocd
   server     = module.gke-cinema.endpoint
   name       = "do-cinema"
-  depends_on = [helm_release.argocd]
+  depends_on = [helm_release.argocd, kubernetes_secret.argocd-manager]
 
   config {
     bearer_token = data.kubernetes_secret.argocd-manager.data["token"]
