@@ -1,6 +1,6 @@
 resource "argocd_cluster" "gcp-cinema" {
   provider   = argocd
-  server     = module.gke-cinema.endpoint
+  server     = "https://${ module.gke-cinema.endpoint }"
   name       = "gcp-cinema"
   depends_on = [helm_release.argocd, kubernetes_secret.argocd-manager]
 
