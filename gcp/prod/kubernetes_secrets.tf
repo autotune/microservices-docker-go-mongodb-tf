@@ -1,6 +1,6 @@
 resource "kubernetes_secret" "argocd-manager" {
   provider   = kubernetes.cinema
-  depends_on = [module.gke-cinema, kubernetes_service_account.argocd-manager]
+  depends_on = [module.gke-cinema]
   metadata {
     name      = "argocd-manager"
     namespace = "kube-system"
