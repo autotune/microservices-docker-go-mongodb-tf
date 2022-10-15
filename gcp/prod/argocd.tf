@@ -1,6 +1,6 @@
 resource "argocd_cluster" "do-cinema" {
   provider   = argocd
-  server     = digitalocean_kubernetes_cluster.cinema.endpoint
+  server     = module.gke-cinema.endpoint
   name       = "do-cinema"
   depends_on = [helm_release.argocd]
 
@@ -12,6 +12,7 @@ resource "argocd_cluster" "do-cinema" {
   }
 }
 
+/*
 resource "argocd_cluster" "do-loadtesting" {
   server     = digitalocean_kubernetes_cluster.loadtesting.endpoint
   name       = "do-loadtesting"
@@ -24,44 +25,13 @@ resource "argocd_cluster" "do-loadtesting" {
     }
   }
 }
+*/
 
 resource "argocd_repository_credentials" "cinema" {
   depends_on      = [helm_release.argocd]
   url             = "git@github.com:autotune/microservices-docker-go-mongodb-tf.git"
   username        = "git"
   ssh_private_key = tls_private_key.argocd.private_key_openssh
-}
-
-resource "argocd_project" "metrics-server" {
-  depends_on = [helm_release.argocd]
-  metadata {
-    name      = "metrics-server"
-    namespace = "argocd"
-    labels = {
-      environment = "dev"
-    }
-  }
-
-  spec {
-
-    cluster_resource_whitelist {
-      group = "*"
-      kind  = "*"
-    }
-
-    namespace_resource_whitelist {
-      group = "*"
-      kind  = "*"
-    }
-
-    description  = "Metrics Server"
-    source_repos = ["https://github.com/kubernetes-sigs/metrics-server"]
-
-    destination {
-      server    = digitalocean_kubernetes_cluster.cinema.endpoint
-      namespace = "cinama"
-    }
-  }
 }
 
 resource "argocd_project" "cinema" {
@@ -89,23 +59,23 @@ resource "argocd_project" "cinema" {
       namespace = "cinema"
     }
     destination {
-      server    = digitalocean_kubernetes_cluster.cinema.endpoint
+      server    = module.gke-cinema.endpoint
       namespace = "kube-system"
     }
     destination {
-      server    = digitalocean_kubernetes_cluster.cinema.endpoint
+      server    = module.gke-cinema.endpoint
       namespace = "cinema"
     }
     destination {
-      server    = digitalocean_kubernetes_cluster.cinema.endpoint
+      server    = module.gke-cinema.endpoint
       namespace = "kube-system"
     }
     destination {
-      server    = digitalocean_kubernetes_cluster.cinema.endpoint
+      server    = module.gke-cinema.endpoint
       namespace = "loadtesting"
     }
     destination {
-      server    = digitalocean_kubernetes_cluster.cinema.endpoint
+      server    = module.gke-cinema.endpoint
       namespace = "robusta"
     }
   }
@@ -166,7 +136,7 @@ resource "argocd_application" "cinema" {
       target_revision = "main"
     }
     destination {
-      server    = digitalocean_kubernetes_cluster.cinema.endpoint
+      server    = module.gke-cinema.endpoint
       namespace = "cinema"
     }
   }
@@ -297,7 +267,7 @@ EOT
       target_revision = "0.10.6"
     }
     destination {
-      server    = digitalocean_kubernetes_cluster.cinema.endpoint
+      server    = module.gke-cinema.endpoint
       namespace = "robusta"
     }
     # we run into https://blog.ediri.io/kube-prometheus-stack-and-argocd-23-how-to-remove-a-workaround
@@ -331,7 +301,7 @@ resource "argocd_application" "cinema-keda" {
       target_revision = "2.8.2"
     }
     destination {
-      server    = digitalocean_kubernetes_cluster.cinema.endpoint
+      server    = module.gke-cinema.endpoint
       namespace = "cinema"
     }
   }
@@ -403,7 +373,7 @@ resource "argocd_application" "keda-scaledobject-cinema-bookings" {
       path            = "charts/keda"
     }
     destination {
-      server    = digitalocean_kubernetes_cluster.cinema.endpoint
+      server    = module.gke-cinema.endpoint
       namespace = "cinema"
     }
   }
@@ -444,7 +414,7 @@ resource "argocd_application" "keda-scaledobject-cinema-users" {
       path            = "charts/keda"
     }
     destination {
-      server    = digitalocean_kubernetes_cluster.cinema.endpoint
+      server    = module.gke-cinema.endpoint
       namespace = "cinema"
     }
   }
@@ -485,7 +455,7 @@ resource "argocd_application" "keda-scaledobject-cinema-movies" {
       path            = "charts/keda"
     }
     destination {
-      server    = digitalocean_kubernetes_cluster.cinema.endpoint
+      server    = module.gke-cinema.endpoint
       namespace = "cinema"
     }
   }
@@ -526,7 +496,7 @@ resource "argocd_application" "keda-scaledobject-cinema-showtimes" {
       path            = "charts/keda"
     }
     destination {
-      server    = digitalocean_kubernetes_cluster.cinema.endpoint
+      server    = module.gke-cinema.endpoint
       namespace = "cinema"
     }
   }
