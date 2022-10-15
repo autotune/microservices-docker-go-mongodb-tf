@@ -16,6 +16,7 @@ resource "kubernetes_cluster_role" "argocd_manager" {
   }
 }
 
+/*
 resource "kubernetes_cluster_role" "loadtesting_manager" {
   provider = kubernetes.loadtesting
   metadata {
@@ -33,4 +34,4 @@ resource "kubernetes_cluster_role" "loadtesting_manager" {
     verbs             = ["*"]
   }
 }
-
+*/
