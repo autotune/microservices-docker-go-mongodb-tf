@@ -298,5 +298,9 @@ resource "helm_release" "cluster-issuer" {
     name  = "zerossl-eab-hmac-key-id"
     value = var.zerossl_eab_hmac_key_id
   }
+  set_sensitive {
+    name = "zerossl_gcp_project_id"
+    value = var.project_id
+  }
 }
 
