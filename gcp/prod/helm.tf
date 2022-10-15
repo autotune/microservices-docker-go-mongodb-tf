@@ -277,7 +277,6 @@ resource "helm_release" "argocd" {
     value = "{--insecure}"
   }
 }
-*/ 
 
 resource "helm_release" "cluster-issuer" {
   provider  = helm.cinema
