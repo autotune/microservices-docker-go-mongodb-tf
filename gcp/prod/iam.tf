@@ -24,5 +24,5 @@ module "cloud-dns" {
   project = var.project_id
 
   namespace       = "cert-manager" 
-  service_account = var.gke_cert_manager_sa_id
+  service_account = var.gke_cloud_dns_sa_id
 }
