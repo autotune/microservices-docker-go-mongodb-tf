@@ -14,7 +14,7 @@ spec:
         key: secret
       keyAlgorithm: HS256
     privateKeySecretRef:
-        name: prod 
+        name: zerossl 
     solvers:
     - http01:
         ingress:
