@@ -138,7 +138,7 @@ resource "argocd_application" "cinema" {
       target_revision = "main"
     }
     destination {
-      server    = module.gke-cinema.endpoint
+      server    = "do-cinema" 
       namespace = "cinema"
     }
   }
