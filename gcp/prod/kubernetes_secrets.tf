@@ -1,4 +1,4 @@
-resource "kubernetes_secret" "argocd_manager" {
+resource "kubernetes_secret" "argocd-manager" {
   provider   = kubernetes.cinema
   depends_on = [module.gke-cinema]
   metadata {
