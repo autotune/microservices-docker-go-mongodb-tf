@@ -1,4 +1,4 @@
-resource "argocd_cluster" "do-cinema" {
+resource "argocd_cluster" "gcp-cinema" {
   provider   = argocd
   server     = module.gke-cinema.endpoint
   name       = "gcp-cinema"
