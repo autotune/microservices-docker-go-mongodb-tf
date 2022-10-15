@@ -1,4 +1,3 @@
-/*
 resource "tls_private_key" "ca" {
   algorithm = "RSA"
   rsa_bits  = "2048"
@@ -67,4 +66,3 @@ resource "tls_locally_signed_cert" "cert" {
     command = "echo '${self.cert_pem}' > ../tls/tls.cert && echo '${tls_self_signed_cert.ca.cert_pem}' >> ../tls/tls.cert && chmod 0600 ../tls/tls.cert"
   }
 }
-*/

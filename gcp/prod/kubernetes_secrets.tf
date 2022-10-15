@@ -1,4 +1,3 @@
-/*
 resource "kubernetes_secret" "zerossl-eab-hmac-key" {
   provider   = kubernetes.cinema
   depends_on = [module.gke-cinema]
@@ -73,4 +72,3 @@ resource "kubernetes_secret" "tls" {
     "tls.key" = tls_private_key.key.private_key_pem
   }
 }
-*/
