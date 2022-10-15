@@ -18,11 +18,11 @@ module "external-dns" {
 }
 
 module "cloud-dns" {
-  source  = "nlamirault/external-dns/google"
-  version = "1.2.0"
+  source = "https://github.com/autotune/terraform-google-external-dns"
 
   project = var.project_id
 
-  namespace       = "cert-manager" 
+  namespace       = "cert-manager"
+  service         = "cloud-dns"
   service_account = var.gke_cloud_dns_sa_id
 }
