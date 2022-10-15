@@ -3,6 +3,10 @@ terraform {
     google = {
       source = "hashicorp/google"
     }
+    argocd = {
+      source  = "oboukili/argocd"
+      version = "3.2.1"
+    }
   }
 }
 
