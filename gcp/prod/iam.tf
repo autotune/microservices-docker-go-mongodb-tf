@@ -18,7 +18,7 @@ module "external-dns" {
 }
 
 module "cloud-dns" {
-  source = "https://github.com/autotune/terraform-google-external-dns"
+  source = "git::https://github.com/autotune/terraform-google-external-dns"
 
   project = var.project_id
 
