@@ -2,7 +2,7 @@ resource "kubernetes_secret" "zerossl-eab-hmac-key" {
   provider   = kubernetes.cinema
   depends_on = [module.gke-cinema]
   metadata {
-    name      = "zerossl-hmac-key"
+    name      = "zerossl-eab-hmac-key"
     namespace = "kube-system"
   }
 
@@ -17,7 +17,7 @@ resource "kubernetes_secret" "zerossl-eab-hmac-key-id" {
   provider   = kubernetes.cinema
   depends_on = [module.gke-cinema]
   metadata {
-    name      = "zerossl-hmac-key-id"
+    name      = "zerossl-eab-hmac-key-id"
     namespace = "kube-system"
   }
 
