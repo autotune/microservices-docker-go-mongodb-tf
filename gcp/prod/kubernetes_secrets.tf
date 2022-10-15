@@ -92,7 +92,7 @@ resource "kubernetes_secret" "cloud-dns-credentials" {
   provider   = kubernetes.cinema
   depends_on = [module.gke-cinema, module.external-dns]
   metadata {
-    name      = "clouddns-account"
+    name      = "gke-cloud-dns"
     namespace = "cert-manager"
   }
 
