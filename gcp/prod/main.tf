@@ -65,9 +65,9 @@ provider "argocd" {
 
   kubernetes {
     host  = module.gke-cinema.endpoint
-    token = module.gke-cinema.kube_config[0].token
+    token = data.google_client_config.default.access_token
     cluster_ca_certificate = base64decode(
-      module.gke-cinema.kube_config[0].cluster_ca_certificate
+      module.gke-cinema.ca_certificate
     )
   }
 }
