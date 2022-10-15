@@ -18,7 +18,7 @@ resource "kubernetes_namespace" "external-dns" {
   depends_on = [module.gke-cinema]
   provider   = kubernetes.cinema
   metadata {
-    name = "dns"
+    name = "external-dns"
   }
 }
 
