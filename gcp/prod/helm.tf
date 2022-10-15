@@ -16,7 +16,7 @@ resource "helm_release" "external-dns" {
     value = var.project_id
   }
   set_sensitive {
-    name  = "serviceAccountSecret"
+    name  = "google.serviceAccountSecret"
     value = "external-dns"
   }
   set {
