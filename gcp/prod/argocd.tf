@@ -1,6 +1,6 @@
 resource "argocd_cluster" "gcp-cinema" {
   provider   = argocd
-  server     = "https://${ module.gke-cinema.endpoint }"
+  server     = "https://${ "https://${module.gke-cinema.endpoint}" }"
   name       = "gcp-cinema"
   depends_on = [helm_release.argocd, kubernetes_secret.argocd-manager]
 
@@ -59,23 +59,23 @@ resource "argocd_project" "cinema" {
       namespace = "cinema"
     }
     destination {
-      server    = module.gke-cinema.endpoint
+      server    = "https://${"https://${module.gke-cinema.endpoint}"}"
       namespace = "kube-system"
     }
     destination {
-      server    = module.gke-cinema.endpoint
+      server    = "https://${module.gke-cinema.endpoint}"
       namespace = "cinema"
     }
     destination {
-      server    = module.gke-cinema.endpoint
+      server    = "https://${module.gke-cinema.endpoint}"
       namespace = "kube-system"
     }
     destination {
-      server    = module.gke-cinema.endpoint
+      server    = "https://${module.gke-cinema.endpoint}"
       namespace = "loadtesting"
     }
     destination {
-      server    = module.gke-cinema.endpoint
+      server    = "https://${module.gke-cinema.endpoint}"
       namespace = "robusta"
     }
   }
@@ -138,7 +138,7 @@ resource "argocd_application" "cinema" {
       target_revision = "main"
     }
     destination {
-      server    = module.gke-cinema.endpoint
+      server    = "https://${module.gke-cinema.endpoint}"
       namespace = "cinema"
     }
   }
@@ -269,7 +269,7 @@ EOT
       target_revision = "0.10.6"
     }
     destination {
-      server    = module.gke-cinema.endpoint
+      server    = "https://${module.gke-cinema.endpoint}"
       namespace = "robusta"
     }
     # we run into https://blog.ediri.io/kube-prometheus-stack-and-argocd-23-how-to-remove-a-workaround
@@ -303,7 +303,7 @@ resource "argocd_application" "cinema-keda" {
       target_revision = "2.8.2"
     }
     destination {
-      server    = module.gke-cinema.endpoint
+      server    = "https://${module.gke-cinema.endpoint}"
       namespace = "cinema"
     }
   }
@@ -375,7 +375,7 @@ resource "argocd_application" "keda-scaledobject-cinema-bookings" {
       path            = "charts/keda"
     }
     destination {
-      server    = module.gke-cinema.endpoint
+      server    = "https://${module.gke-cinema.endpoint}"
       namespace = "cinema"
     }
   }
@@ -416,7 +416,7 @@ resource "argocd_application" "keda-scaledobject-cinema-users" {
       path            = "charts/keda"
     }
     destination {
-      server    = module.gke-cinema.endpoint
+      server    = "https://${module.gke-cinema.endpoint}"
       namespace = "cinema"
     }
   }
@@ -457,7 +457,7 @@ resource "argocd_application" "keda-scaledobject-cinema-movies" {
       path            = "charts/keda"
     }
     destination {
-      server    = module.gke-cinema.endpoint
+      server    = "https://${module.gke-cinema.endpoint}"
       namespace = "cinema"
     }
   }
@@ -498,7 +498,7 @@ resource "argocd_application" "keda-scaledobject-cinema-showtimes" {
       path            = "charts/keda"
     }
     destination {
-      server    = module.gke-cinema.endpoint
+      server    = "https://${module.gke-cinema.endpoint}"
       namespace = "cinema"
     }
   }
