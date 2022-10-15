@@ -23,6 +23,11 @@ data "google_service_account" "gke-external-dns" {
   depends_on = [module.external-dns]
 }
 
+data "google_service_account" "cloud-dns" {
+  account_id = module.cloud-dns.service_account
+  depends_on = [module.cloud-dns]
+}
+
 provider "helm" {
   kubernetes {
     host                   = "https://${module.gke-cinema.endpoint}"
