@@ -58,6 +58,7 @@ resource "argocd_project" "cinema" {
       server    = "https://kubernetes.default.svc"
       namespace = "cinema"
     }
+
     destination {
       server    = "https://${"https://${module.gke-cinema.endpoint}"}"
       namespace = "kube-system"
@@ -70,10 +71,12 @@ resource "argocd_project" "cinema" {
       server    = "https://${module.gke-cinema.endpoint}"
       namespace = "kube-system"
     }
+    /*
     destination {
       server    = "https://${module.gke-cinema.endpoint}"
       namespace = "loadtesting"
     }
+    */
     destination {
       server    = "https://${module.gke-cinema.endpoint}"
       namespace = "robusta"
