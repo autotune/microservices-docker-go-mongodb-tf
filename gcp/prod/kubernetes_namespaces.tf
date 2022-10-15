@@ -11,9 +11,9 @@ resource "kubernetes_namespace" "cert-manager" {
   provider   = kubernetes.cinema
   metadata {
     name = "cert-manager"
-  }
-  labels = {
-    "istio-injection" = "enabled"
+    labels = {
+      "istio.io/rev" = "asm-managed-regular"
+    }
   }
 }
 
