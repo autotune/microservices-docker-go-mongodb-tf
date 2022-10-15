@@ -1,4 +1,4 @@
-resource "kubernetes_cluster_role_binding" "argocd_manager" {
+resource "kubernetes_cluster_role_binding" "argocd-manager" {
   provider = kubernetes.cinema
   metadata {
     name = "argocd-manager-role-binding"
