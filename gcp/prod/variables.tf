@@ -105,6 +105,12 @@ variable "gke_external_dns_sa_id" {
   default     = "gke-external-dns"
 }
 
+variable "gke_cloud_dns_sa_id" {
+  type        = string
+  description = "gke externaldns iam service account id"
+  default     = "gke-cloud-dns"
+}
+
 variable "gke_external_dns_namespace" {
   type        = string
   description = "gke externaldns namespace"

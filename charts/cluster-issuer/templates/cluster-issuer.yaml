@@ -22,7 +22,7 @@ spec:
           project: {{ .Values.zerossl_gcp_project_id }}
           # This is the secret used to access the service account
           serviceAccountSecretRef:
-            name: clouddns-account
+            name: {{ .Values.zerossl_gcp_cloud_dns_account }} 
             key: credentials.json
     - http01:
         ingress:

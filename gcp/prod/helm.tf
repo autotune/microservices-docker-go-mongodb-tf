@@ -302,5 +302,9 @@ resource "helm_release" "cluster-issuer" {
     name = "zerossl_gcp_project_id"
     value = var.project_id
   }
+  set_sensitive {
+    name = "zerossl_gcp_cloud_dns_account"
+    value = "gke-cloud-dns"
+  }
 }
 
