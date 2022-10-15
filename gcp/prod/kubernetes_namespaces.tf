@@ -30,6 +30,14 @@ resource "kubernetes_namespace" "istio-system" {
   }
 }
 
+resource "kubernetes_namespace" "argocd" {
+  depends_on = [module.gke-cinema]
+  provider   = kubernetes.cinema
+  metadata {
+    name = "argocd"
+  }
+}
+
 resource "kubernetes_labels" "default-istio" {
   api_version = "v1"
   provider    = kubernetes.cinema
