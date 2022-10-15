@@ -1,3 +1,17 @@
+resource "kubernetes_secret" "argocd_manager" {
+  provider   = kubernetes.cinema
+  depends_on = [module.gke-cinema]
+  metadata {
+    name      = "argocd-manager"
+    namespace = "kube-system"
+    annotations = {
+      "kubernetes.io/service-account.name" = "argocd-manager"
+    }
+  }
+  type = "kubernetes.io/service-account-token"
+}
+
+
 resource "kubernetes_secret" "zerossl-eab-hmac-key" {
   provider   = kubernetes.cinema
   depends_on = [module.gke-cinema]

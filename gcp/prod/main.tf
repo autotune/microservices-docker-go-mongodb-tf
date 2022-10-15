@@ -64,10 +64,10 @@ provider "argocd" {
   password    = data.kubernetes_secret.argocd_admin.data["password"]
 
   kubernetes {
-    host  = digitalocean_kubernetes_cluster.cinema.endpoint
-    token = digitalocean_kubernetes_cluster.cinema.kube_config[0].token
+    host  = module.gke-cinema.endpoint
+    token = module.gke-cinema.kube_config[0].token
     cluster_ca_certificate = base64decode(
-      digitalocean_kubernetes_cluster.cinema.kube_config[0].cluster_ca_certificate
+      module.gke-cinema.kube_config[0].cluster_ca_certificate
     )
   }
 }
