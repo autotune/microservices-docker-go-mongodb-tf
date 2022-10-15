@@ -44,21 +44,6 @@ resource "kubernetes_secret" "mongodb-auth" {
   type = "kubernetes.io/opaque"
 }
 
-resource "kubernetes_secret" "external-dns-credentials" {
-  provider   = kubernetes.cinema
-  depends_on = [module.gke-cinema, module.external-dns]
-  metadata {
-    name      = "external-dns"
-    namespace = var.gke_external_dns_namespace
-  }
-
-  data = {
-    "credentials.json" = base64decode(google_service_account_key.external-dns.private_key)
-  }
-
-  type = "kubernetes.io/opaque"
-}
-
 resource "kubernetes_secret" "tls" {
   provider   = kubernetes.cinema
   depends_on = [module.gke-cinema, module.external-dns, kubernetes_namespace.cinema]
