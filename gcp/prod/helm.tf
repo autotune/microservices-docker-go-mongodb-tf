@@ -12,7 +12,7 @@ resource "helm_release" "external-dns" {
     value = "google"
   }
   set_sensitive {
-    name  = "project"
+    name  = "google.project"
     value = var.project_id
   }
   set_sensitive {
