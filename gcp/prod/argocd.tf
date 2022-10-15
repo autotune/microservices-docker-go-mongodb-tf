@@ -1,7 +1,7 @@
 resource "argocd_cluster" "do-cinema" {
   provider   = argocd
   server     = module.gke-cinema.endpoint
-  name       = "do-cinema"
+  name       = "gcp-cinema"
   depends_on = [helm_release.argocd, kubernetes_secret.argocd-manager]
 
   config {
@@ -116,7 +116,7 @@ resource "argocd_project" "loadtesting" {
 */
 
 resource "argocd_application" "cinema" {
-  depends_on = [argocd_project.cinema]
+  depends_on = [argocd_project.cinema, argocd_cluster.gcp-cinema]
   metadata {
     name      = "cinema"
     namespace = "argocd"
@@ -138,14 +138,14 @@ resource "argocd_application" "cinema" {
       target_revision = "main"
     }
     destination {
-      server    = "do-cinema" 
+      server    = module.gke-cinema.endpoint
       namespace = "cinema"
     }
   }
 }
 
 resource "argocd_application" "cinema-robusta" {
-  depends_on = [argocd_project.cinema, kubernetes_namespace.robusta]
+  depends_on = [argocd_project.cinema, kubernetes_namespace.robusta, argocd_cluster.gcp_cinema]
   provider   = argocd
   metadata {
     name      = "robusta"

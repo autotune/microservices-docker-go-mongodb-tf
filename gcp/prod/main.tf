@@ -15,6 +15,15 @@ provider "google" {
   region  = "us-central1"
 }
 
+module "gke_auth" {
+  source               = "terraform-google-modules/kubernetes-engine/google//modules/auth"
+
+  project_id           = var.project_id
+  cluster_name         = module.gke-cinema.name
+  location             = module.gke-cinema.location
+  use_private_endpoint = false
+}
+
 data "google_client_config" "default" {
 }
 
@@ -76,4 +85,5 @@ provider "argocd" {
 output "project" {
   value = data.google_client_config.default.project
 }
+
 
