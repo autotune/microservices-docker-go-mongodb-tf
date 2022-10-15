@@ -108,7 +108,7 @@ variable "gke_external_dns_sa_id" {
 variable "gke_external_dns_namespace" {
   type        = string
   description = "gke externaldns namespace"
-  default     = "dns"
+  default     = "external-dns"
 }
 
 variable "gke_service_account" {
