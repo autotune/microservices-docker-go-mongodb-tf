@@ -107,7 +107,7 @@ resource "kubernetes_secret" "wayofthesys-tls" {
   depends_on = [module.gke-cinema, kubernetes_namespace.cinema]
   metadata {
     name      = "${replace(var.domain_name[0], ".", "-")}-tls"
-    namespace = "istio-system"
+    namespace = "cinema"
   }
 
   data = {
