@@ -212,12 +212,12 @@ resource "argocd_application" "cinema" {
         release_name = "cinema"
 
         parameter {
-          name  = "domainName"
+          name  = "website.domainName"
           value = var.domain_name[0]
         }
 
         parameter {
-          name  = "domainNametls"
+          name  = "website.domainNametls"
           value = "${replace(var.domain_name[0], ".", "-")}-tls"
         }
 
