@@ -70,3 +70,21 @@ spec:
          secret:
            secretName: 
              "docker-login"
+    readinessProbe:
+      httpGet:
+        path: /api/bookings/
+        port: 4000
+      periodSeconds: 5
+      successThreshold: 1
+      failureThreshold: 3
+      initialDelaySeconds: 70
+      timeoutSeconds: 60
+    livenessProbe:
+      httpGet:
+        path: /api/bookings/
+        port: 80
+      initialDelaySeconds: 70
+      periodSeconds: 5
+      successThreshold: 1
+      failureThreshold: 3 
+      timeoutSeconds: 60
