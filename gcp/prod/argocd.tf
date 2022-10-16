@@ -297,7 +297,7 @@ EOT
 
         parameter {
           name  = "clusterName"
-          value = "gke_wayofthesys-cinema-363715_us-central1_cinema"
+          value = "gke-cinema"
         }
 
         parameter {
