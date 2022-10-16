@@ -241,7 +241,7 @@ resource "argocd_application" "cinema-robusta" {
       helm {
         release_name = "robusta"
 
-        skip_crds = "true"
+        skip_crds = "false"
 
         values = <<-EOT
 customPlaybooks:
