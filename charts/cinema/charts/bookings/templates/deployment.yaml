@@ -31,10 +31,9 @@ spec:
         - name: {{ .Chart.Name }}
           readinessProbe:
             httpGet:
-              host: $HOSTNAME 
               scheme: HTTP
               path: /api/bookings/
-              port: 4000
+              port: 80 
             periodSeconds: 5
             successThreshold: 1
             failureThreshold: 3
@@ -42,10 +41,9 @@ spec:
             timeoutSeconds: 60
           livenessProbe:
             httpGet:
-              host: $HOSTNAME
               scheme: HTTP
               path: /api/bookings/
-              port:  4000
+              port: 80 
             initialDelaySeconds: 70
             periodSeconds: 5
             successThreshold: 1
