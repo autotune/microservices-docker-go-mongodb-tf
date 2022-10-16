@@ -18,6 +18,8 @@ website:
   imagePullSecrets:  [
     name: docker-login
   ]
+  domainName: ""
+  domainNametls: ""
 
   args:
     - "-usersAPI"
