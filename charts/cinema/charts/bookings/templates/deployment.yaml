@@ -43,6 +43,7 @@ spec:
           livenessProbe:
             httpGet:
               host: localhost
+              scheme: HTTP
               path: /api/bookings/
               port:  4000
             initialDelaySeconds: 70
