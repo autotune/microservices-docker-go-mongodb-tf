@@ -4,7 +4,7 @@ description: A Helm chart to deploy Cinema project in Kubernetes
 # chart type
 type: application
 # chart version
-version: 0.2.1
+version: 0.2.2
 # cinema app version
 appVersion: "v2.1.2"
 dependencies:
