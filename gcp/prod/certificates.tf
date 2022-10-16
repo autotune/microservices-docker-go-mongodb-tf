@@ -28,7 +28,7 @@ resource "kubernetes_manifest" "certificate_cinema" {
     "kind"       = "Certificate"
     "metadata" = {
       "name"      = "cinema-cert"
-      "namespace" = "istio-system"
+      "namespace" = "cinema"
     }
     "spec" = {
       "commonName" = var.domain_name[0]
