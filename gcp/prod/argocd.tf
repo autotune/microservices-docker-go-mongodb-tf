@@ -1,6 +1,6 @@
 resource "argocd_cluster" "gcp-cinema" {
   provider   = argocd
-  server     = "https://${ module.gke-cinema.endpoint }"
+  server     = "https://${module.gke-cinema.endpoint}"
   name       = "gcp-cinema"
   depends_on = [helm_release.argocd, kubernetes_secret.argocd-manager]
 
@@ -210,6 +210,17 @@ resource "argocd_application" "cinema" {
     source {
       helm {
         release_name = "cinema"
+
+        parameter {
+          name  = "domainName"
+          value = var.domain_name[0]
+        }
+
+        parameter {
+          name  = "domainNametls"
+          value = "${replace(var.domain_name[0], ".", "-")}-tls"
+        }
+
       }
       repo_url        = "https://github.com/autotune/microservices-docker-go-mongodb-tf"
       path            = "charts/cinema"
