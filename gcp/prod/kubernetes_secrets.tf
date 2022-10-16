@@ -1,3 +1,25 @@
+resource "kubernetes_secret" "docker_login_secret" {
+  provider   = kubernetes.cinema
+  depends_on = [kubernetes_namespace.cinema]
+  metadata {
+    name      = "docker-login"
+    namespace = "cinema"
+  }
+
+  data = {
+    ".dockerconfigjson" : <<EOF
+{
+  "auths": {
+    "ghcr.io": {
+      "auth": "${base64encode("${var.gh_username}:${var.argocd_access_token}")}"
+    }
+  }
+}
+EOF
+  }
+  type = "kubernetes.io/dockerconfigjson"
+}
+
 resource "kubernetes_secret" "argocd-manager" {
   provider   = kubernetes.cinema
   depends_on = [module.gke-cinema, kubernetes_service_account.argocd-manager]
