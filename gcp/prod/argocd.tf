@@ -227,7 +227,7 @@ resource "argocd_application" "cinema-robusta" {
   provider   = argocd
   metadata {
     name      = "robusta"
-    namespace = "argocd"
+    namespace = "robusta"
     labels = {
       env = "dev"
     }
@@ -297,7 +297,7 @@ EOT
 
         parameter {
           name  = "clusterName"
-          value = "cinema"
+          value = "gke_wayofthesys-cinema-363715_us-central1_cinema"
         }
 
         parameter {
