@@ -9,10 +9,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    -  {{ .domainName }} 
-    secretName: {{ .domainNametls }}
+    -  {{ .Values.domainName }} 
+    secretName: {{ .Values.domainNametls }}
   rules:
-  - host: {{ .domainName }}
+  - host: {{ .Values.domainName }}
     http:
       paths:
       - path: /
