@@ -69,10 +69,12 @@ variable "cinema_node_core_machine_type" {
   default     = "n2-highcpu-4" 
 }
 
+# at 10 GB robusta fails with cinema and argocd 
+# so we need 20 at least
 variable "cinema_node_core_disk_size" {
   type        = string
   description = "Cinema node core machine ssd disk size"
-  default     = "10"
+  default     = "20"
 }
 
 variable "cinema_node_core_min_count" {
