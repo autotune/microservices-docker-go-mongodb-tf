@@ -179,3 +179,13 @@ variable "robusta_rsa_priv_key" {
   description = "Robusta Generated Private Key"
   sensitive   = true
 }
+
+variable "gh_username" {
+  type        = string
+  description = "GitHub username for container registry"
+}
+
+variable "argocd_access_token" {
+  type        = string
+  description = "ArgoCD Access Token"
+}
