@@ -369,6 +369,7 @@ EOT
   }
 }
 
+/*
 resource "argocd_application" "cinema-keda" {
   depends_on = [argocd_project.cinema, argocd_cluster.gcp-cinema]
   metadata {
@@ -398,7 +399,6 @@ resource "argocd_application" "cinema-keda" {
   }
 }
 
-/*
 resource "argocd_application" "keda-loadtesting" {
   depends_on = [argocd_project.loadtesting]
   metadata {
@@ -427,7 +427,6 @@ resource "argocd_application" "keda-loadtesting" {
     }
   }
 }
-*/
 
 resource "argocd_application" "keda-scaledobject-cinema-bookings" {
   depends_on = [argocd_application.cinema-keda]
@@ -592,6 +591,7 @@ resource "argocd_application" "keda-scaledobject-cinema-showtimes" {
     }
   }
 }
+*/
 
 /*
 resource "argocd_application" "locust" {
