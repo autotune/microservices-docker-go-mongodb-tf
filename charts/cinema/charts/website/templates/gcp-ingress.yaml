@@ -1,0 +1,52 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: cinema
+  namespace: cinema
+  annotations:
+    # If the class annotation is not specified it defaults to "gce".
+    kubernetes.io/ingress.class: "gce"
+spec:
+  tls:
+  - hosts:
+    -  {{ .Values.domainName }} 
+    secretName: {{ .Values.domainNametls }}
+  rules:
+  - host: {{ .Values.domainName }}
+    http:
+      paths:
+      - path: /
+        pathType: Prefix 
+        backend:
+          service:
+            name: cinema-website
+            port:
+              number: 80
+      - path: /api/bookings/
+        pathType: Prefix 
+        backend:
+          service:
+            name: cinema-bookings
+            port:
+              number: 80
+      - path: /api/users/
+        pathType: Prefix 
+        backend:
+          service:
+            name: cinema-users
+            port:
+              number: 80
+      - path: /api/movies/
+        pathType: Prefix 
+        backend:
+          service:
+            name: cinema-movies
+            port:
+              number: 80
+      - path: /api/showtimes/
+        pathType: Prefix 
+        backend:
+          service:
+            name: cinema-showtimes
+            port:
+              number: 80
