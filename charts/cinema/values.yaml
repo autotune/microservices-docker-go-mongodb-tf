@@ -45,7 +45,7 @@ website:
   autoscaling:
     enabled: true
     minReplicas: 1
-    maxReplicas: 30 
+    maxReplicas: 15 
     targetCPUUtilizationPercentage: 60
     # targetMemoryUtilizationPercentage: 60 
 
@@ -182,7 +182,7 @@ bookings:
 
   autoscaling:
     enabled: true
-    minReplicas: 1
-    maxReplicas: 5
+    minReplicas: 10
+    maxReplicas: 15
     targetCPUUtilizationPercentage: 60
     # targetMemoryUtilizationPercentage: 60 
