@@ -46,6 +46,7 @@ resource "kubernetes_manifest" "argocd-gateway" {
   }
 }
 
+/*
 resource "kubernetes_manifest" "cinema-gateway" {
   depends_on = [helm_release.argocd]
   provider   = kubernetes.cinema
@@ -94,3 +95,4 @@ resource "kubernetes_manifest" "cinema-gateway" {
     }
   }
 }
+*/

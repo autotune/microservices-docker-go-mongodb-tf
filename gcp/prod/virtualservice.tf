@@ -40,6 +40,7 @@ resource "kubernetes_manifest" "argocd_virtualservice" {
   }
 }
 
+/*
 resource "kubernetes_manifest" "cinema_virtualservice" {
   provider   = kubernetes.cinema
   depends_on = [helm_release.argocd]
@@ -249,3 +250,4 @@ resource "kubernetes_manifest" "cinema_users_virtualservice" {
     }
   }
 }
+*/
