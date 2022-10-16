@@ -29,6 +29,26 @@ spec:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
         - name: {{ .Chart.Name }}
+          readinessProbe:
+            httpGet:
+              scheme: HTTP
+              path: /api/movies/
+              port: 4000
+            periodSeconds: 5
+            successThreshold: 1
+            failureThreshold: 3
+            initialDelaySeconds: 70
+            timeoutSeconds: 60
+          livenessProbe:
+            httpGet:
+              scheme: HTTP
+              path: /api/movies/
+              port: 4000
+            initialDelaySeconds: 70
+            periodSeconds: 5
+            successThreshold: 1
+            failureThreshold: 3
+            timeoutSeconds: 60
           env:
             - name: MONGODB_USERNAME
               value: "mms-automation"
