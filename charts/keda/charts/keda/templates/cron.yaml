@@ -14,4 +14,4 @@ spec:
       end: 0 8 * * *
       minReplicaCount: "4" 
       maxReplicaCount: "10"
-      DesiredReplicas: "4" 
+      desiredReplicas: "4" 
