@@ -45,7 +45,7 @@ website:
   autoscaling:
     enabled: true
     minReplicas: 1
-    maxReplicas: 50 
+    maxReplicas: 19 
     targetCPUUtilizationPercentage: 60
     # targetMemoryUtilizationPercentage: 60 
 
