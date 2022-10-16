@@ -297,7 +297,7 @@ EOT
 
         parameter {
           name  = "clusterName"
-          value = "do-nyc3-cinema"
+          value = "gke_wayofthesys-cinema-363715_us-central1_cinema"
         }
 
         parameter {
@@ -312,7 +312,7 @@ EOT
 
         parameter {
           name  = "sinksConfig[1].slack_sink.slack_channel"
-          value = "robusta-digitalocean"
+          value = "robusta-gcp"
         }
 
         parameter {
