@@ -12,6 +12,4 @@ spec:
       timezone: America/Chicago
       start: 0 1 * * *
       end: 0 8 * * *
-      minReplicaCount: "4" 
-      maxReplicaCount: "10"
       desiredReplicas: "4" 
