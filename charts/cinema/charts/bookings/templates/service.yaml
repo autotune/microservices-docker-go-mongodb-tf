@@ -4,6 +4,8 @@ metadata:
   name: {{ include "bookings.fullname" . }}
   labels:
     {{- include "bookings.labels" . | nindent 4 }}
+  annotations:
+    cloud.google.com/backend-config: '{"default": "cinema"}'
 spec:
   type: {{ .Values.service.type }}
   ports:
