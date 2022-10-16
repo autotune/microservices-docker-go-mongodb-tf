@@ -6,10 +6,10 @@ resource "digitalocean_kubernetes_cluster" "cinema" {
 
   node_pool {
     name       = "core"
-    size       = "s-4vcpu-8gb"
+    size       = "s-4vcpu-4gb"
     auto_scale = true
-    min_nodes  = 0
-    max_nodes  = 0
+    min_nodes  = 1 
+    max_nodes  = 1
   }
   vpc_uuid = digitalocean_vpc.cinema.id
 }
