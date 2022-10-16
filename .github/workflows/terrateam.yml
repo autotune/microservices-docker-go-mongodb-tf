@@ -57,5 +57,6 @@ jobs:
           TF_VAR_robusta_ui_sink_token: ${{ secrets.ROBUSTA_UI_SINK_TOKEN }}
           TF_VAR_robusta_rsa_pub_key: ${{ secrets.ROBUSTA_RSA_PUB_KEY }}
           TF_VAR_robusta_rsa_priv_key: ${{ secrets.ROBUSTA_RSA_PRIV_KEY }}
+          TF_VAR_gh_username: ${{ secrets.GH_USERNAME }} 
 
             
