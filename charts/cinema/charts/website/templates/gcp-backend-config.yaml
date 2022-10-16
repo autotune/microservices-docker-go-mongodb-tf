@@ -4,4 +4,4 @@ metadata:
   name: cinema
 spec:
   cdn:
-    enabled: CDN_ENABLED
+    enabled: true 
