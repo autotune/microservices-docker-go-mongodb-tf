@@ -66,7 +66,7 @@ variable "zerossl_eab_hmac_key_id" {
 variable "cinema_node_core_machine_type" {
   type        = string
   description = "Cinema node core machine type"
-  default     = "n2-highcpu-4" 
+  default     = "n2-highmem-8" 
 }
 
 # at 10 GB robusta fails with cinema and argocd 
