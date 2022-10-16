@@ -12,6 +12,7 @@ resource "argocd_cluster" "gcp-cinema" {
   }
 }
 
+/*
 resource "argocd_project" "metrics-server" {
   depends_on = [helm_release.argocd]
   metadata {
@@ -84,7 +85,7 @@ resource "argocd_application" "metrics-server" {
     }
   }
 }
-
+*/
 
 /*
 resource "argocd_cluster" "do-loadtesting" {
