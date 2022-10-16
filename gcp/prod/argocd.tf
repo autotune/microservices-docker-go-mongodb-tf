@@ -227,7 +227,7 @@ resource "argocd_application" "cinema-robusta" {
   provider   = argocd
   metadata {
     name      = "robusta"
-    namespace = "robusta"
+    namespace = "argocd"
     labels = {
       env = "dev"
     }
