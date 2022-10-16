@@ -32,6 +32,7 @@ spec:
           readinessProbe:
             httpGet:
               host: localhost 
+              scheme: HTTP
               path: /api/bookings/
               port: 4000
             periodSeconds: 5
