@@ -119,7 +119,7 @@ resource "argocd_project" "loadtesting" {
 */
 
 resource "argocd_application" "cinema" {
-  depends_on = [argocd_project.cinema, argocd_cluster.gcp-cinema]
+  depends_on = [argocd_project.cinema, argocd_cluster.gcp-cinema, argocd_repository_credentials.cinema]
   metadata {
     name      = "cinema"
     namespace = "argocd"
@@ -148,7 +148,7 @@ resource "argocd_application" "cinema" {
 }
 
 resource "argocd_application" "cinema-robusta" {
-  depends_on = [argocd_project.cinema, kubernetes_namespace.robusta, argocd_cluster.gcp-cinema]
+  depends_on = [argocd_project.cinema, kubernetes_namespace.robusta, argocd_cluster.gcp-cinema, argocd_repository_credentials.cinema]
   provider   = argocd
   metadata {
     name      = "robusta"
