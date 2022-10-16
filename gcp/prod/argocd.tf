@@ -38,7 +38,7 @@ resource "argocd_project" "metrics-server" {
     source_repos = ["https://github.com/kubernetes-sigs/metrics-server"]
 
     destination {
-      server    = digitalocean_kubernetes_cluster.cinema.endpoint
+      server    = "https://${module.gke-cinema.endpoint}"
       namespace = "cinama"
     }
   }
@@ -79,7 +79,7 @@ resource "argocd_application" "metrics-server" {
     }
 
     destination {
-      server    = digitalocean_kubernetes_cluster.cinema.endpoint
+      server    = "https://${module.gke-cinema.endpoint}"
       namespace = "cinema"
     }
   }
