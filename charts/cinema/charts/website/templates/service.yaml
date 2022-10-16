@@ -4,6 +4,7 @@ metadata:
   name: {{ include "website.fullname" . }}
   labels:
     {{- include "website.labels" . | nindent 4 }}
+  annotations:
     cloud.google.com/backend-config: '{"default": "cinema"}'
 spec:
   type: {{ .Values.service.type }}
