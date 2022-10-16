@@ -260,7 +260,7 @@ EOT
 
         parameter {
           name  = "enablePrometheusStack"
-          value = "false"
+          value = "true"
         }
 
         parameter {
