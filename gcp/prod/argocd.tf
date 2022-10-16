@@ -353,7 +353,7 @@ EOT
     # we run into https://blog.ediri.io/kube-prometheus-stack-and-argocd-23-how-to-remove-a-workaround
     # if replace=true not enabled 
     sync_policy {
-      sync_options = ["replace=true"]
+      sync_options = ["Replace=true"]
     }
   }
 }
