@@ -89,7 +89,7 @@ module "gke-loadtesting" {
   node_pools = [
     {
       name               = "core"
-      machine_type       = var.cinema_node_core_machine_type # slightly above minimum required for Anthos Service Mesh. We easily hit quota with n2
+      machine_type       = var.cinema_node_core_machine_type 
       node_locations     = "us-central1-a"
       min_count          = 1
       max_count          = 3
