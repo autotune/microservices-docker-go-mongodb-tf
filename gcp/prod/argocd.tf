@@ -396,7 +396,7 @@ resource "argocd_application" "locust" {
       target_revision = "master"
     }
     destination {
-      server    = "https://${module.gke-cinema.endpoint}" 
+      server    = "https://${module.gke-loadtesting.endpoint}" 
       namespace = "loadtesting"
     }
   }
