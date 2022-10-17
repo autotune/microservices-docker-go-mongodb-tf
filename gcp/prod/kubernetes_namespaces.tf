@@ -6,6 +6,14 @@ resource "kubernetes_namespace" "cinema" {
   }
 }
 
+resource "kubernetes_namespace" "locust" {
+  depends_on = [module.gke-loadtesting]
+  provider   = kubernetes.loadtesting
+  metadata {
+    name = "loadtesting"
+  }
+}
+
 resource "kubernetes_namespace" "cert-manager" {
   depends_on = [module.gke-cinema]
   provider   = kubernetes.cinema
