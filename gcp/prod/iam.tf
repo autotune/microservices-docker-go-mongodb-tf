@@ -1,3 +1,4 @@
+/*
 resource "google_service_account_key" "external-dns" {
   service_account_id = data.google_service_account.gke-external-dns.name
 }
@@ -26,3 +27,4 @@ module "cloud-dns" {
   service         = "cloud-dns"
   service_account = var.gke_cloud_dns_sa_id
 }
+*/
