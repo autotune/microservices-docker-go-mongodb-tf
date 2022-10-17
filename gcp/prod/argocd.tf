@@ -186,12 +186,12 @@ resource "argocd_project" "loadtesting" {
     source_repos = ["https://github.com/autotune/loadtesting", "https://kedacore.github.io/charts"]
 
     destination {
-      server    = digitalocean_kubernetes_cluster.loadtesting.endpoint
+      server    = "https://${module.gke-loadtesting.endpoint}"
       namespace = "loadtesting"
     }
 
     destination {
-      server    = digitalocean_kubernetes_cluster.loadtesting.endpoint
+      server    = "https://${module.gke-loadtesting.endpoint}"
       namespace = "kube-system"
     }
   }
