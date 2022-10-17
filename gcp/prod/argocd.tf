@@ -13,15 +13,15 @@ resource "argocd_cluster" "gcp-cinema" {
 }
 
 resource "argocd_cluster" "gcp-loadtesting" {
-  provider   = argocd
+  provider   = argocd.loadtesting
   server     = "https://${module.gke-loadtesting.endpoint}"
   name       = "gcp-loadtesting"
   depends_on = [helm_release.argocd, kubernetes_secret.argocd-manager]
 
   config {
-    bearer_token = data.kubernetes_secret.argocd-manager.data["token"]
+    bearer_token = data.kubernetes_secret.loadtesting-manager.data["token"]
     tls_client_config {
-      ca_data = data.kubernetes_secret.argocd-manager.data["ca.crt"]
+      ca_data = data.kubernetes_secret.loadtesting-manager.data["ca.crt"]
     }
   }
 }

@@ -57,6 +57,13 @@ provider "kubernetes" {
   alias                  = "cinema"
 }
 
+provider "kubernetes" {
+  host                   = "https://${module.gke-loadtesting.endpoint}"
+  token                  = data.google_client_config.default.access_token
+  cluster_ca_certificate = base64decode(module.gke-loadtesting.ca_certificate)
+  alias                  = "loadtesting"
+}
+
 data "kubernetes_secret" "argocd_admin" {
   depends_on = [helm_release.argocd]
   provider   = kubernetes.cinema
@@ -79,6 +86,7 @@ provider "argocd" {
       module.gke-cinema.ca_certificate
     )
   }
+  alias = "argocd"
 }
 
 
