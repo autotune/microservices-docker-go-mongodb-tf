@@ -64,6 +64,7 @@ provider "kubernetes" {
   alias                  = "loadtesting"
 }
 
+/*
 data "kubernetes_secret" "argocd_admin" {
   depends_on = [helm_release.argocd]
   provider   = kubernetes.cinema
@@ -72,6 +73,7 @@ data "kubernetes_secret" "argocd_admin" {
     namespace = "argocd"
   }
 }
+*/
 
 provider "argocd" {
   server_addr = "argocd.${var.domain_name[0]}:443"
