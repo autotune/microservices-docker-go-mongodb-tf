@@ -1,3 +1,4 @@
+/*
 resource "kubernetes_namespace" "cinema" {
   depends_on = [module.gke-cinema]
   provider   = kubernetes.cinema
@@ -106,3 +107,4 @@ resource "kubernetes_namespace" "robusta" {
     name = "robusta"
   }
 } 
+*/
