@@ -101,24 +101,16 @@ resource "argocd_application" "metrics-server" {
 }
 */
 
-/*
-resource "argocd_cluster" "do-loadtesting" {
-  server     = digitalocean_kubernetes_cluster.loadtesting.endpoint
-  name       = "do-loadtesting"
-  depends_on = [helm_release.argocd]
-
-  config {
-    bearer_token = data.kubernetes_secret.loadtesting_manager.data["token"]
-    tls_client_config {
-      ca_data = data.kubernetes_secret.loadtesting_manager.data["ca.crt"]
-    }
-  }
-}
-*/
-
 resource "argocd_repository_credentials" "cinema" {
   depends_on      = [helm_release.argocd]
   url             = "git@github.com:autotune/microservices-docker-go-mongodb-tf.git"
+  username        = "git"
+  ssh_private_key = tls_private_key.argocd.private_key_openssh
+}
+
+resource "argocd_repository_credentials" "loadtesting" {
+  depends_on      = [helm_release.argocd]
+  url             = "git@github.com:autotune/loadtesting.git"
   username        = "git"
   ssh_private_key = tls_private_key.argocd.private_key_openssh
 }
@@ -173,7 +165,6 @@ resource "argocd_project" "cinema" {
   }
 }
 
-/*
 resource "argocd_project" "loadtesting" {
   depends_on = [helm_release.argocd]
   metadata {
@@ -205,7 +196,6 @@ resource "argocd_project" "loadtesting" {
     }
   }
 }
-*/
 
 resource "argocd_application" "cinema" {
   depends_on = [argocd_project.cinema, argocd_cluster.gcp-cinema, argocd_repository_credentials.cinema]
