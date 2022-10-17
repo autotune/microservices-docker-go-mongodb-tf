@@ -27,7 +27,6 @@ resource "argocd_cluster" "gcp-loadtesting" {
   }
 }
 
-/*
 resource "argocd_project" "metrics-server" {
   depends_on = [helm_release.argocd]
   metadata {
@@ -100,7 +99,6 @@ resource "argocd_application" "metrics-server" {
     }
   }
 }
-*/
 
 resource "argocd_repository_credentials" "cinema" {
   depends_on      = [helm_release.argocd]
@@ -153,12 +151,10 @@ resource "argocd_project" "cinema" {
       server    = "https://${module.gke-cinema.endpoint}"
       namespace = "kube-system"
     }
-    /*
     destination {
       server    = "https://${module.gke-cinema.endpoint}"
       namespace = "loadtesting"
     }
-    */
     destination {
       server    = "https://${module.gke-cinema.endpoint}"
       namespace = "robusta"
@@ -294,7 +290,6 @@ EOT
           value = "https://github.com/autotune/demo-actions-robusta"
         }
 
-        /*
         parameter {
           name  = "customPlaybooks[0].triggers[0].on_replicaset_update[0].name_prefix"
           value = "{}"
@@ -304,7 +299,6 @@ EOT
           name  = "customPlaybooks[0].triggers.actions[0].resource_babysitter.fields_to_monitor[0]"
           value = "spec.replicas"
         }
-        */
 
         parameter {
           name  = "runner.sendAdditionalTelemetry"
