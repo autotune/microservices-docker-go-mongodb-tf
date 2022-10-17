@@ -17,7 +17,6 @@ resource "kubernetes_cluster_role_binding" "argocd-manager" {
   }
 }
 
-/*
 resource "kubernetes_cluster_role_binding" "loadtesting_manager" {
   provider = kubernetes.loadtesting
   metadata {
@@ -36,5 +35,4 @@ resource "kubernetes_cluster_role_binding" "loadtesting_manager" {
     namespace = kubernetes_service_account.loadtesting_manager.metadata.0.namespace
   }
 }
-*/
 
