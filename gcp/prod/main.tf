@@ -86,7 +86,6 @@ provider "argocd" {
       module.gke-cinema.ca_certificate
     )
   }
-  alias = "argocd"
 }
 
 
