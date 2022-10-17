@@ -9,7 +9,7 @@ resource "kubernetes_service_account" "argocd-manager" {
 resource "kubernetes_service_account" "loadtesting-manager" {
   provider = kubernetes.loadtesting
   metadata {
-    name      = "argocd-loadtesting"
+    name      = "loadtesting-manager"
     namespace = "kube-system"
   }
 }
