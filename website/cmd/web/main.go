@@ -56,7 +56,7 @@ func main() {
 		ErrorLog:     errLog,
 		Handler:      app.routes(),
 		IdleTimeout:  time.Minute,
-		ReadTimeout:  5 * time.Second,
+		ReadTimeout:  30 * time.Second,
 		WriteTimeout: 10 * time.Second,
 	}
 
