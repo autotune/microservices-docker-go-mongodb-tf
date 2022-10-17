@@ -89,12 +89,12 @@ module "gke-loadtesting" {
   node_pools = [
     {
       name               = "core"
-      machine_type       = var.cinema_node_core_machine_type 
+      machine_type       = "n2-highcpu-4" 
       node_locations     = "us-central1-a"
       min_count          = 1
       max_count          = 3
       local_ssd_count    = 1
-      spot               = false
+      spot               = true
       disk_size_gb       = var.cinema_node_core_disk_size
       disk_type          = "pd-standard"
       image_type         = "COS_CONTAINERD"
