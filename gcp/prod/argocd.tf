@@ -1,3 +1,4 @@
+/*
 resource "argocd_cluster" "gcp-cinema" {
   provider   = argocd
   server     = "https://${module.gke-cinema.endpoint}"
@@ -401,3 +402,4 @@ resource "argocd_application" "locust" {
     }
   }
 }
+*/
