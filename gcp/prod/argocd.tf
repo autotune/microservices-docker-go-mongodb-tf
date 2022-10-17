@@ -373,36 +373,6 @@ EOT
   }
 }
 
-/*
-resource "argocd_application" "cinema-keda" {
-  depends_on = [argocd_project.cinema, argocd_cluster.gcp-cinema]
-  metadata {
-    name      = "cinema-keda"
-    namespace = "argocd"
-    labels = {
-      env = "dev"
-    }
-  }
-
-  wait = true
-
-  spec {
-    project = "cinema"
-    source {
-      helm {
-        release_name = "keda"
-      }
-      repo_url        = "https://kedacore.github.io/charts"
-      chart           = "keda"
-      target_revision = "2.8.2"
-    }
-    destination {
-      server    = "https://${module.gke-cinema.endpoint}"
-      namespace = "cinema"
-    }
-  }
-}
-
 resource "argocd_application" "locust" {
   depends_on = [argocd_project.cinema]
   metadata {
