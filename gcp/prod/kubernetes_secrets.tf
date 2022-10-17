@@ -33,19 +33,6 @@ resource "kubernetes_secret" "argocd-manager" {
   type = "kubernetes.io/service-account-token"
 }
 
-resource "kubernetes_secret" "loadtesting-manager" {
-  provider   = kubernetes.loadtesting
-  depends_on = [module.gke-cinema, kubernetes_service_account.loadtesting-manager]
-  metadata {
-    name      = "loadtesting-manager"
-    namespace = "kube-system"
-    annotations = {
-      "kubernetes.io/service-account.name" = "loadtesting-manager"
-    }
-  }
-  type = "kubernetes.io/service-account-token"
-}
-
 resource "kubernetes_secret" "zerossl-eab-hmac-key" {
   provider   = kubernetes.cinema
   depends_on = [module.gke-cinema]
