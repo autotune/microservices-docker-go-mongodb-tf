@@ -1,3 +1,6 @@
+# UNCOMMENT AFTER CLUSTER CREATION
+
+/* 
 resource "kubernetes_manifest" "certificate_argo" {
   depends_on = [module.gke-cinema]
   provider = kubernetes.cinema
@@ -45,3 +48,4 @@ resource "kubernetes_manifest" "certificate_cinema" {
     }
   }
 }
+*/

@@ -1,3 +1,5 @@
+# UNCOMMENT AFTER CLUSTER CREATION
+/*
 resource "kubernetes_manifest" "argocd_virtualservice" {
   provider   = kubernetes.cinema
   depends_on = [module.gke-cinema, helm_release.argocd]
@@ -39,3 +41,4 @@ resource "kubernetes_manifest" "argocd_virtualservice" {
     }
   }
 }
+*/
