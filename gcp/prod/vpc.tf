@@ -48,7 +48,7 @@ module "vpc-loadtesting" {
 
   subnets = [
     {
-      subnet_name   = "loadtesting"
+      subnet_name   = "prod"
       subnet_ip     = "10.2.0.0/16"
       subnet_region = "us-central1"
     }
