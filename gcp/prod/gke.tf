@@ -73,7 +73,7 @@ module "gke-loadtesting" {
   region                     = "us-central1"
   zones                      = ["us-central1-a"]
   network                    = "loadtesting"
-  subnetwork                 = "prod"
+  subnetwork                 = "loadtesting"
   ip_range_pods              = "us-central1-01-gke-02-pods"
   ip_range_services          = "us-central1-01-gke-02-services"
   http_load_balancing        = true
