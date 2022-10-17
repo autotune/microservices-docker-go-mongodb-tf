@@ -16,7 +16,7 @@ resource "kubernetes_cluster_role" "argocd-manager" {
   }
 }
 
-resource "kubernetes_cluster_role" "loadtesting_manager" {
+resource "kubernetes_cluster_role" "loadtesting-manager" {
   provider = kubernetes.loadtesting
   metadata {
     name = "loadtesting-manager-role"
