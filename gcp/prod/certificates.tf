@@ -1,3 +1,4 @@
+/*
 resource "kubernetes_manifest" "certificate_argo" {
   provider = kubernetes.cinema
   manifest = {
@@ -43,3 +44,4 @@ resource "kubernetes_manifest" "certificate_cinema" {
     }
   }
 }
+*/
