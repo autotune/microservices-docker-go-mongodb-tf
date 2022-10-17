@@ -13,7 +13,7 @@ website:
     repository: ghcr.io/autotune/microservices-docker-go-mongodb-tf/website
     pullPolicy: IfNotPresent
     # Overrides the image tag whose default is the chart appVersion.
-    tag: "v1.1.22"
+    tag: "v1.1.23"
 
   imagePullSecrets:  [
     name: docker-login
@@ -56,7 +56,7 @@ users:
     repository: ghcr.io/autotune/microservices-docker-go-mongodb-tf/users
     pullPolicy: IfNotPresent
     # Overrides the image tag whose default is the chart appVersion.
-    tag: "v1.1.22"
+    tag: "v1.1.23"
 
   imagePullSecrets:  [
     name: docker-login
@@ -90,7 +90,7 @@ movies:
     repository: ghcr.io/autotune/microservices-docker-go-mongodb-tf/movies
     pullPolicy: IfNotPresent
     # Overrides the image tag whose default is the chart appVersion.
-    tag: "v1.1.22"
+    tag: "v1.1.23"
 
   imagePullSecrets:  [
     name: docker-login
@@ -124,7 +124,7 @@ showtimes:
     repository: ghcr.io/autotune/microservices-docker-go-mongodb-tf/showtimes
     pullPolicy: IfNotPresent
     # Overrides the image tag whose default is the chart appVersion.
-    tag: "v1.1.22"
+    tag: "v1.1.23"
 
   imagePullSecrets:  [
     name: docker-login
@@ -158,7 +158,7 @@ bookings:
     repository: ghcr.io/autotune/microservices-docker-go-mongodb-tf/bookings
     pullPolicy: IfNotPresent
     # Overrides the image tag whose default is the chart appVersion.
-    tag: "v1.1.22"
+    tag: "v1.1.23"
 
   imagePullSecrets: [ 
     name: docker-login
