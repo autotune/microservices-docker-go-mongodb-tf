@@ -1,6 +1,6 @@
 resource "kubernetes_manifest" "argocd_virtualservice" {
   provider   = kubernetes.cinema
-  depends_on = [helm_release.argocd]
+  depends_on = [module.gke-cinema, helm_release.argocd]
   manifest = {
     "apiVersion" = "networking.istio.io/v1beta1"
     "kind"       = "VirtualService"

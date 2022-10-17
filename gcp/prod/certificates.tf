@@ -1,4 +1,5 @@
 resource "kubernetes_manifest" "certificate_argo" {
+  depends_on = [module.gke-cinema]
   provider = kubernetes.cinema
   manifest = {
     "apiVersion" = "cert-manager.io/v1"
@@ -22,6 +23,7 @@ resource "kubernetes_manifest" "certificate_argo" {
 }
 
 resource "kubernetes_manifest" "certificate_cinema" {
+  depends_on = [module.gke-cinema]
   provider = kubernetes.cinema
   manifest = {
     "apiVersion" = "cert-manager.io/v1"
