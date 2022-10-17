@@ -1,3 +1,4 @@
+/*
 data "kubernetes_secret" "argocd-manager" {
   depends_on = [kubernetes_secret.argocd-manager]
   provider   = kubernetes.cinema
@@ -15,3 +16,4 @@ data "kubernetes_secret" "loadtesting-manager" {
     namespace = "kube-system"
   }
 }
+*/
