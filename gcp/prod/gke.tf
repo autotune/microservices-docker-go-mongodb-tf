@@ -37,7 +37,6 @@ module "gke-cinema" {
       auto_upgrade       = true
       service_account    = var.gke_service_account
       preemptible        = true
-      initial_node_count = var.cinema_node_core_initial_count
     },
   ]
 
