@@ -396,7 +396,7 @@ resource "argocd_application" "locust" {
       target_revision = "master"
     }
     destination {
-      server    = digitalocean_kubernetes_cluster.loadtesting.endpoint
+      server    = "https://${module.gke-cinema.endpoint}" 
       namespace = "loadtesting"
     }
   }
