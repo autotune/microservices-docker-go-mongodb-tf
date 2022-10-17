@@ -1,4 +1,3 @@
-/* 
 resource "helm_release" "external-dns" {
   provider   = helm.cinema
   depends_on = [module.gke-cinema, kubernetes_namespace.external-dns]
@@ -175,4 +174,3 @@ resource "helm_release" "cluster-issuer" {
     value = "gke-cloud-dns"
   }
 }
-*/

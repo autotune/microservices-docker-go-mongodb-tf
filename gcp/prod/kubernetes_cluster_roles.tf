@@ -1,4 +1,3 @@
-/*
 resource "kubernetes_cluster_role" "argocd-manager" {
   provider = kubernetes.cinema
   metadata {
@@ -34,4 +33,3 @@ resource "kubernetes_cluster_role" "loadtesting-manager" {
     verbs             = ["*"]
   }
 }
-*/

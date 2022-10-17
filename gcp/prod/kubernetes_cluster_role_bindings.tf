@@ -1,4 +1,3 @@
-/*
 resource "kubernetes_cluster_role_binding" "argocd-manager" {
   provider = kubernetes.cinema
   metadata {
@@ -36,4 +35,3 @@ resource "kubernetes_cluster_role_binding" "loadtesting-manager" {
     namespace = kubernetes_service_account.loadtesting-manager.metadata.0.namespace
   }
 }
-*/

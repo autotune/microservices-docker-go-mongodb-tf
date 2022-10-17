@@ -1,4 +1,3 @@
-/*
 resource "kubernetes_service_account" "argocd-manager" {
   provider = kubernetes.cinema
   metadata {
@@ -14,4 +13,3 @@ resource "kubernetes_service_account" "loadtesting-manager" {
     namespace = "kube-system"
   }
 }
-*/
