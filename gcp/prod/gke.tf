@@ -94,7 +94,7 @@ module "gke-loadtesting" {
       min_count          = 1
       max_count          = 3
       local_ssd_count    = 1
-      spot               = true
+      spot               = false 
       disk_size_gb       = var.cinema_node_core_disk_size
       disk_type          = "pd-standard"
       image_type         = "COS_CONTAINERD"
@@ -104,7 +104,7 @@ module "gke-loadtesting" {
       auto_upgrade       = true
       service_account    = var.gke_service_account
       preemptible        = true
-      initial_node_count = var.cinema_node_core_initial_count
+      initial_node_count = 1 
     },
   ]
 
