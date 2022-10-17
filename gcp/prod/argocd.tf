@@ -13,7 +13,7 @@ resource "argocd_cluster" "gcp-cinema" {
 }
 
 resource "argocd_cluster" "gcp-loadtesting" {
-  provider   = argocd.loadtesting
+  provider   = argocd
   server     = "https://${module.gke-loadtesting.endpoint}"
   name       = "gcp-loadtesting"
   depends_on = [helm_release.argocd, kubernetes_secret.argocd-manager]
