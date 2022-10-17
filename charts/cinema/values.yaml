@@ -6,7 +6,7 @@
 community-operator:
   # define if use mongodb dependency
   enabled: true
-
+  
 # Cinema website values
 website:
   image:
