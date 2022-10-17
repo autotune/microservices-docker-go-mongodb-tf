@@ -1,3 +1,4 @@
+/*
 resource "kubernetes_secret" "docker_login_secret" {
   provider   = kubernetes.cinema
   depends_on = [kubernetes_namespace.cinema]
@@ -165,3 +166,4 @@ resource "kubernetes_secret" "external-dns-credentials" {
 
   type = "kubernetes.io/opaque"
 }
+*/
