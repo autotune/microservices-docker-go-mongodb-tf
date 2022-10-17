@@ -40,12 +40,12 @@ website:
       memory: 512Mi
     requests:
       cpu: 100m
-      memory: 512Mi
+      memory: 256Mi
 
   autoscaling:
     enabled: true
     minReplicas: 1
-    maxReplicas: 15 
+    maxReplicas: 50 
     targetCPUUtilizationPercentage: 60
     # targetMemoryUtilizationPercentage: 60 
 
