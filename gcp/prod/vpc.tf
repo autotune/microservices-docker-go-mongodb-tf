@@ -48,14 +48,14 @@ module "vpc-loadtesting" {
 
   subnets = [
     {
-      subnet_name   = "prod"
+      subnet_name   = "loadtesting"
       subnet_ip     = "10.2.0.0/16"
       subnet_region = "us-central1"
     }
   ]
 
   secondary_ranges = {
-    prod = [
+    loadtesting = [
       {
         range_name    = "us-central1-01-gke-02-pods"
         ip_cidr_range = "10.3.0.0/16"
